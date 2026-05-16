@@ -23,6 +23,18 @@ def main() -> int:
         print(f"Pasan filtros:  {pasan}")
         print()
 
+        print("--- ID de candidatas (para usar con --licitacion en analizar_candidatas.py) ---")
+        for f in conn.execute(
+            "SELECT id, expediente, provincia, importe_sin_iva, cpv_principal, "
+            "substr(objeto, 1, 65) as obj FROM licitaciones "
+            "WHERE pasa_filtros = 1 ORDER BY importe_sin_iva ASC"
+        ):
+            prov = (f["provincia"] or "?")[:8]
+            imp = f["importe_sin_iva"] or 0
+            cpv = f["cpv_principal"] or "?"
+            print(f"  id={f['id']:>5} | {prov:<8} | {imp:>9.0f} EUR | CPV {cpv:<8} | {f['obj']}")
+        print()
+
         print("--- Top licitaciones que pasan filtros (por importe descendente) ---")
         filas = conn.execute(
             "SELECT expediente, provincia, importe_sin_iva, cpv_principal, "

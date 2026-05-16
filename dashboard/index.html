@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Higiofi — Licitaciones</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+  .badge-alto       { background-color: #dcfce7; color: #166534; }
+  .badge-medio      { background-color: #fef3c7; color: #92400e; }
+  .badge-bajo       { background-color: #f3f4f6; color: #4b5563; }
+  .badge-ninguno    { background-color: #fee2e2; color: #991b1b; }
+  .badge-sin        { background-color: #e0e7ff; color: #3730a3; }
+  .dark .badge-alto    { background-color: rgba(22,163,74,.18); color: #86efac; }
+  .dark .badge-medio   { background-color: rgba(245,158,11,.18); color: #fcd34d; }
+  .dark .badge-bajo    { background-color: rgba(148,163,184,.18); color: #cbd5e1; }
+  .dark .badge-ninguno { background-color: rgba(239,68,68,.18); color: #fca5a5; }
+  .dark .badge-sin     { background-color: rgba(99,102,241,.18); color: #c7d2fe; }
+  .bar-alto    { background-color: #16a34a; }
+  .bar-medio   { background-color: #f59e0b; }
+  .bar-bajo    { background-color: #9ca3af; }
+  .bar-ninguno { background-color: #ef4444; }
+  .bar-sin     { background-color: #6366f1; }
+  .fade-in { animation: fadeIn .25s ease-out; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform:none; } }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(90deg); }
+  .chevron { transition: transform .2s; }
+  .ring-urgent     { box-shadow: inset 3px 0 0 #dc2626; }
+  .ring-urgent-mid { box-shadow: inset 3px 0 0 #f59e0b; }
+  .pill { padding: .25rem .75rem; border-radius: 9999px; font-size: .75rem; font-weight: 500; transition: all .15s; cursor: pointer; user-select: none; }
+  .pill-off { background-color: white; color: #475569; border: 1px solid #e2e8f0; }
+  .pill-off:hover { background-color: #f8fafc; }
+  .pill-on  { background-color: #0f172a; color: white; border: 1px solid #0f172a; }
+  .dark .pill-off { background-color: #1e293b; color: #cbd5e1; border-color: #334155; }
+  .dark .pill-off:hover { background-color: #334155; }
+  .dark .pill-on  { background-color: #f1f5f9; color: #0f172a; border-color: #f1f5f9; }
+  mark.kw { background-color: #fef9c3; color: inherit; padding: 0 2px; border-radius: 2px; font-weight: 500; }
+  .dark mark.kw { background-color: rgba(250,204,21,.25); }
+  body.compacto .card-detail { display: none; }
+  body.compacto .card-motivo { display: none; }
+  body.compacto .card-actions-secondary { display: none; }
+  @media print {
+    header, .no-print, footer, aside, nav, .tabs-bar, .filtros-bar { display: none !important; }
+    body { background: white !important; color: black !important; }
+    article { break-inside: avoid; box-shadow: none !important; border: 1px solid #ddd !important; margin-bottom: 1rem; }
+    .card-detail { display: block !important; }
+  }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-bold">Higiofi · Licitaciones</h1>
+      <p class="text-sm text-slate-500 dark:text-slate-400" id="fecha-hoy"></p>
+    </div>
+    <div class="flex items-center gap-2 no-print">
+      <button id="btn-compacto" title="Modo compacto" class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <button id="btn-export" title="Exportar a PDF (lo visible)" class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </button>
+      <button id="btn-dark" title="Modo oscuro" class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 pb-5">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
+        <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total</div>
+        <div class="text-2xl font-bold tabular-nums" id="kpi-total">—</div>
+      </div>
+      <div class="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-3">
+        <div class="text-xs text-indigo-700 dark:text-indigo-300 uppercase tracking-wide">Sin analizar</div>
+        <div class="text-2xl font-bold tabular-nums text-indigo-700 dark:text-indigo-300" id="kpi-sin-analizar">—</div>
+      </div>
+      <div class="bg-emerald-50 dark:bg-emerald-900/30 rounded-lg p-3">
+        <div class="text-xs text-emerald-700 dark:text-emerald-300 uppercase tracking-wide">En curso</div>
+        <div class="text-2xl font-bold tabular-nums text-emerald-700 dark:text-emerald-300" id="kpi-en-curso">—</div>
+      </div>
+      <div class="bg-orange-50 dark:bg-orange-900/30 rounded-lg p-3">
+        <div class="text-xs text-orange-700 dark:text-orange-300 uppercase tracking-wide">Cierran ≤7 días</div>
+        <div class="text-2xl font-bold tabular-nums text-orange-700 dark:text-orange-300" id="kpi-urgentes">—</div>
+      </div>
+      <div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
+        <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Importe potencial</div>
+        <div class="text-2xl font-bold tabular-nums" id="kpi-importe">—</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 tabs-bar">
+  <div class="max-w-7xl mx-auto px-6 flex gap-1 overflow-x-auto">
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium border-b-2 border-emerald-600 text-emerald-700 dark:text-emerald-400" data-tab="pendientes">
+      Pendientes <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-pendientes">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="en_curso">
+      ★ En curso <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-en-curso">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="cerradas">
+      Cerradas <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-cerradas">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="descartadas">
+      Descartadas <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-descartadas">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="historico">
+      Histórico <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-historico">0</span>
+    </button>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-6 pt-5 space-y-3 filtros-bar no-print">
+  <div class="relative">
+    <input id="busqueda" type="search" placeholder="Buscar por objeto, órgano, expediente, CPV..."
+           class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+    <svg class="absolute left-3 top-3 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+    </svg>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-1.5">
+    <span class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mr-2 w-16">Encaje:</span>
+    <button class="filter-encaje pill pill-on" data-encaje="todos">Todos</button>
+    <button class="filter-encaje pill pill-off" data-encaje="alto" style="background:#dcfce7;color:#166534;border-color:#bbf7d0">Alto</button>
+    <button class="filter-encaje pill pill-off" data-encaje="medio" style="background:#fef3c7;color:#92400e;border-color:#fde68a">Medio</button>
+    <button class="filter-encaje pill pill-off" data-encaje="bajo" style="background:#f3f4f6;color:#4b5563;border-color:#e5e7eb">Bajo</button>
+    <button class="filter-encaje pill pill-off" data-encaje="ninguno" style="background:#fee2e2;color:#991b1b;border-color:#fecaca">Ninguno</button>
+    <button class="filter-encaje pill pill-off" data-encaje="sin_analizar" style="background:#e0e7ff;color:#3730a3;border-color:#c7d2fe">Sin analizar</button>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-1.5">
+    <span class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mr-2 w-16">Plazo:</span>
+    <button class="filter-plazo pill pill-on" data-plazo="todos">Todos</button>
+    <button class="filter-plazo pill pill-off" data-plazo="3">≤3 días</button>
+    <button class="filter-plazo pill pill-off" data-plazo="7">≤7 días</button>
+    <button class="filter-plazo pill pill-off" data-plazo="15">≤15 días</button>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-1.5">
+    <span class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mr-2 w-16">Provincia:</span>
+    <button class="filter-provincia pill pill-on" data-provincia="todas">Todas</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Almería">Almería</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Cádiz">Cádiz</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Córdoba">Córdoba</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Granada">Granada</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Huelva">Huelva</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Jaén">Jaén</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Málaga">Málaga</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Sevilla">Sevilla</button>
+  </div>
+</div>
+
+<main class="max-w-7xl mx-auto px-6 py-6 pb-12 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
+  <div>
+    <div id="lista" class="space-y-3"></div>
+    <div id="vacio" class="hidden text-center py-16 text-slate-400 dark:text-slate-500">
+      <div class="text-5xl mb-3">∅</div>
+      <p>Nada que mostrar con estos filtros.</p>
+    </div>
+  </div>
+
+  <aside class="hidden lg:block no-print">
+    <div class="sticky top-20 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4">
+      <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-3">Resumen visible</h3>
+      <div id="tabla-resumen" class="space-y-1.5 text-xs"></div>
+    </div>
+  </aside>
+</main>
+
+<footer class="max-w-7xl mx-auto px-6 py-6 text-xs text-slate-400 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800">
+  <span id="footer-info"></span> · Sistema interno Higiofi · El estado, notas y recordatorios se guardan en este navegador.
+</footer>
+
+<script>
+// === DATOS — inyectados por scripts/generar_dashboard.py al regenerar ===
+const LICITACIONES = [
+  {
+    "id": 3024,
+    "expediente": "101/2026",
+    "organo": "Alcaldia del Ayuntamiento de Torrox",
+    "provincia": "Málaga",
+    "municipio": "Torrox",
+    "importe_sin_iva": 286178.54,
+    "importe_con_iva": 346276.03,
+    "fecha_publicacion": "2026-05-08T11:19:18.369+02:00",
+    "fecha_limite": "2026-06-11T23:59:00",
+    "cpv": "37535210",
+    "objeto": "Suministro e Instalación elementos infantiles areas infantiles.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=3x9Z5QljRgGExvMJXBMHHQ%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=BUIzs8VCQAtKA3KfLz0pI800XMqfvc1ivwS8GPGOxAF8aQVj3PM36C9ZfM2aoM7s4H5ruRlu1LVzXnuvtLWhXt/RWIjqbMQxqUQR9xQrnMdt/o8fNevwsujgRzaBbugn",
+        "nombre": "PLIEGO TECNICO X LOTES.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=qFPgn%2BSQUm5v6OA42bEdzAS3EkFMn2vJX1JqZ639VYC37jOg4A5mkkGa2n5Ou4qm2HS7yVjU/SDHMLDOgeKCOaCjZohQilx30fdNo20zi3QC1/zDIE0Kw/PWNnLS0Z0z",
+        "nombre": "ANEXO I.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=RK6gwV61macW44Y/f8NhPyGnFY4Q%2BQWOKxc1wN3C2fhnxpDOz3tGMKb0FbAQ1iqymE97u%2BiYgW/L5xlfUZt1%2BPthKiro1YuFT0LdDocigmHVTD3T98KC0nSgQFM0q%2B5s",
+        "nombre": "ANEXO II.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 723,
+    "expediente": "725/2026",
+    "organo": "Consejo de Administración de Desarrollo Urbanístico de El Ejido, S.L.",
+    "provincia": "Almería",
+    "municipio": "El Ejido",
+    "importe_sin_iva": 184879.0,
+    "importe_con_iva": 223703.59,
+    "fecha_publicacion": "2026-05-05T10:28:10.065+02:00",
+    "fecha_limite": "2026-06-11T23:59:00",
+    "cpv": "34928471",
+    "objeto": "Suministro de mtaerial para señalización vertical en el TM de El Ejido",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=B0LtWZYbWkGKeVWTb9Scog%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=dIWNGbTzgGMFIYvlESPaXDAlq0n7KJJOdu3IkNX0z/amjqUv3N/LmoOO8sDFJFsczLr0/gC6W3oRDZ3zTTGt3sOxtA5d/Tq0opA%2B8da42qT3GVhXrFFqN7yFncy7YfRK",
+        "nombre": "725 2026 PPTP.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=Mi35u8kXkTXeg/Mg9fp4gtNonNPmbTdW4UjvBsw7C8xogJgqRn/xUb1oKeKbAejxH%2B1zHKWBbbE2CNBY/eOzTjQdSmPz7y8g9%2BnaXXAB/wXfdyQgZAdTm3EfcUAC7CJ6",
+        "nombre": "725-2026 ANEXOS.doc"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=4BqaMfwMdM3IzrHeFZ2mxz2zt267EZYL9X72biugFI17GXRF40Q2YF6N3IyKHBo5E4RbVrZ0XDDHUHU57qy9Hc69gU5gKKMfV8bkjwMB8E9JOVDbGCDM%2BMigrvuVS7Rv",
+        "nombre": "725 2026 ANEXOS.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 2190,
+    "expediente": "17990/2025",
+    "organo": "Alcaldía del Ayuntamiento de Níjar",
+    "provincia": "Almería",
+    "municipio": "Níjar",
+    "importe_sin_iva": 181818.18,
+    "importe_con_iva": 220000.0,
+    "fecha_publicacion": "2026-05-07T13:41:33.221+02:00",
+    "fecha_limite": "2026-05-22T23:59:00",
+    "cpv": "34928310",
+    "objeto": "Suministro e instalación de vallado de cerramiento para el parque Los Olivicos en Campohermoso con cargo al FEDER, en el marco de los PAI (NÍJAR PARA CONVIVIR)",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=7oExLFwxCTAS7pcxhTeWOg%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=WrywmLq1vaXXIzNOQWSLoXQ1a8HX3yacSpQIBqkkKtkvshBkTTNqE6tJcesly3xArz4tJA0unLLoUVbqAsrCBDKzPXgyGmn4iKwregzdn0V45ClyWkoJ44mKM70IFcOu",
+        "nombre": "PPT.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=pJxeX4Qmd5K5%2BmpVXJ9/iLCzN/izr6mzF/00MeMILObzBrAaI4t/gh2KAfEPTX5Wd/A/BWrp2jawUE1WgCYk1nmaAMztXG7Ba11rh6uGO6kZyAJWGsSt0OzTSTyw9JAs",
+        "nombre": "ANEXO I PLANO VALLADO PERIMETRAL.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=R5CdUHge2UAT3v4/HkDwIDNLs8r4Je%2Bf2O75bbej/z5Q7RPiLTMXNBu4vg9e0YtZp0I2TXo25hxqPHSwNx4RRbUnU3cvqE/9OH4XDF7P6sIZyAJWGsSt0OzTSTyw9JAs",
+        "nombre": "PRESUPUESTO Y MEDICIONES VALLADO PERIMETRAL.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=irf/zEnBUdKWpyHDLbwahJYzJmp1UlVaBAh2hzAoFPIq3B9tQ/3/CGH%2BCrvdUPORGoTFl4tQwmZRowR2xpof0%2B5LmywllzQCaDCWJPSDOt57QB3HKyQaFUExmUVQCerk",
+        "nombre": "RESUMEN DE PRESUPUESTO VALLADO PERIMETRAL.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 2826,
+    "expediente": "P4102900J-2026/000048-PCAS",
+    "organo": "Alcaldía del Ayuntamiento de Castilleja de la Cuesta",
+    "provincia": "Sevilla",
+    "municipio": "Castilleja de la Cuesta",
+    "importe_sin_iva": 87840.0,
+    "importe_con_iva": 106286.4,
+    "fecha_publicacion": "2026-05-08T13:39:14.532+02:00",
+    "fecha_limite": "2026-05-25T23:59:00",
+    "cpv": "34928480",
+    "objeto": "Suministro mediente renting de contenedores y mantenimiento de contenimiento",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=TxDggKPQikFq1DdmE7eaXg%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=3gL9RjUyhvEQt%2BDyycIjcBe%2BNCScUEzWUDXC8JyXGLTxPtOY8jyG/rozl4vvS3g1mCDlGVS1N%2BBaQgT7UvNJQinQbxkr699lK99Jotr8Z3qB0nvVKRzfe4rpHcnlPhSZ",
+        "nombre": "1778240326064_Pliego_de_Prescripciones_T_cnica.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 4750,
+    "expediente": "2026/410072",
+    "organo": "TGSS-Dirección provincial de Sevilla",
+    "provincia": "Sevilla",
+    "municipio": "Sevilla",
+    "importe_sin_iva": 80000.0,
+    "importe_con_iva": 96800.0,
+    "fecha_publicacion": "2026-05-13T11:36:39.816+02:00",
+    "fecha_limite": "2026-05-28T19:00:00",
+    "cpv": "39100000",
+    "objeto": "Suministro de sillas de trabajo de oficina para la DP de la TGSS de Sevilla",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=3NUgR4NviufXOjazN1Dw9Q%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=a%2BtDnjr4%2BKbGFjVX/j%2B4G/3wrMLmimYZDBg3G9HpBmxJwMXRC7rbJqnHdHUQZSLTsqlry05Fo20V4HLhKVZFt6ldykJjo5cFEIy45nvUDj/DdQD9RyhUmzT4jZ2In4zL",
+        "nombre": "7 ANEXO III DLC .pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 3199,
+    "expediente": "SUM.2026.03",
+    "organo": "Presidencia del Consejo de Administración de la Empresa Provincial de Residuos y Medio Ambiente, S.A.",
+    "provincia": "Córdoba",
+    "municipio": "Córdoba",
+    "importe_sin_iva": 70500.0,
+    "importe_con_iva": 85305.0,
+    "fecha_publicacion": "2026-05-08T09:19:30.715+02:00",
+    "fecha_limite": "2026-05-25T23:59:00",
+    "cpv": "34928480",
+    "objeto": "Suministro, Transporte y Montaje de Contenedores Soterrados Hidráulicos en el municipio de Baena (Córdoba) para la Empresa Provincial de Residuos y Medio Ambiente SA",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=xBJENnwMuoVrhBlEHQFSKA%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=cwZWDHuJZ1SjlioyVUCjLYaJQFDgLwsdLZA5xX6tIsvVAX18BpYyoReHcE3RUWbkTrOkc3OaOKs3JyGIPrEmcvTXFNsku4NA1KLFLI9CQ/FJOVDbGCDM%2BMigrvuVS7Rv",
+        "nombre": "DI AT 2026 02 SUM202603 PPT.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 3436,
+    "expediente": "P4102900J-2026/000049-PCAS",
+    "organo": "Alcaldía del Ayuntamiento de Castilleja de la Cuesta",
+    "provincia": "Sevilla",
+    "municipio": "Castilleja de la Cuesta",
+    "importe_sin_iva": 50754.4,
+    "importe_con_iva": 61412.82,
+    "fecha_publicacion": "2026-05-11T12:50:53.603+02:00",
+    "fecha_limite": "2026-05-26T23:59:00",
+    "cpv": "30190000",
+    "objeto": "Suministro de material de oficina y papelería",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=tPQ8UDKDXoImMOlAXxDEjw%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=RRvjdmeQi5u3uCWWaRy4lgFFgfBSfaGoWFBreLld7UTCOc39EkW3jvZAu9HyBNzwUqiyJEfnjCSx%2BVALp7k1Er3fnaKwKGRY1mwAQLPUVAD6CYyL7SIrUOBFfNf52ZqA",
+        "nombre": "1778496622777_Pliego_de_Prescripciones_T_cnica.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 5805,
+    "expediente": "2026/AR43U/00000624E",
+    "organo": "Intendente de San Fernando",
+    "provincia": "Cádiz",
+    "municipio": "San Fernando",
+    "importe_sin_iva": 41635.0,
+    "importe_con_iva": 50378.35,
+    "fecha_publicacion": "2026-05-15T08:44:30.925+02:00",
+    "fecha_limite": "2026-06-01T09:00:00",
+    "cpv": "39100000",
+    "objeto": "Suministro de electrodomésticos y mobiliario de cocina para el C.D.S.C.A. de Oficiales en San Fernando.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=GbsJ8zNwhwYl5NjlNci%2BtA%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=usrb3cXZLXX5IkwtOsR6BcSMWudt/fDqEc2HTeC%2BWgCJPQww95YZPbQnQp%2B7EuvEgyh/N4/tbJpRUlGTeN1xOFt7KDj%2BYUYdglJjdyWGiLbDdQD9RyhUmzT4jZ2In4zL",
+        "nombre": "135763603.PDF"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=QmMdYvotoeeNpMfcWiLz0y7uCXczzcR5GoE16PRLyppn0Fmc4gv7wTz51%2Bcc8NrGIUNRehFf3PqVRwk5k/%2BPJXImAMhTcrQIF1/Fu3F5DEVt/o8fNevwsujgRzaBbugn",
+        "nombre": "135763643.PDF"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=H7NwOZqPpY73qTsn2oF/7KkJWb%2BOSPuOF3mnQ9YvI/XRm1fe4HT9frqAK1yjX9XkVnbPDnm68BOnO3sU1yZo9RAc3/qeoDVCShIUKkLJgkzVTD3T98KC0nSgQFM0q%2B5s",
+        "nombre": "135763651.PDF"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=hSpNe9iF85nxNH5ifnGdf51FN74cZZZISi7QeFSpiEp96rLhS3uVTkNXWoMKLy9RAkdRU389pZY4hxz75vHTi%2BEs9pVbz70SEyMSjgX4fFvfdyQgZAdTm3EfcUAC7CJ6",
+        "nombre": "135763669.PDF"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 2868,
+    "expediente": "52/2026",
+    "organo": "Concejal Responsable del Área de Régimen Interior, Recursos Humanos y Modernización Digital del Ayuntamiento de Huelva",
+    "provincia": "Huelva",
+    "municipio": "Huelva",
+    "importe_sin_iva": 40040.59,
+    "importe_con_iva": 48449.11,
+    "fecha_publicacion": "2026-05-08T13:18:21.718+02:00",
+    "fecha_limite": "2026-05-22T15:00:00",
+    "cpv": "34928400",
+    "objeto": "Suministro de pasarelas articuladas de madera y elementos necesarios para la correcta conservación y mantenimiento para accesos peatonales de la Playa Paraje Natural Marismas del Odiel.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=cu9Br9lXg1s%2B1TMyIiZmzw%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=ya6B%2BEL7pV4MpNcyaU0AFj6RshDZ69XAkiXPOxbPsqUf94stAKspKoI/vO7qPpWRUki39NH0YgyJ5ch%2BcyssYnCVPDCA0SRUNEPGuAEcnfe1aXEvq3KHa/AEHgtDrQw0",
+        "nombre": "PPT DILIGENCIADO.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 263,
+    "expediente": "529/2026",
+    "organo": "Alcaldía del Ayuntamiento de Algeciras",
+    "provincia": "Cádiz",
+    "municipio": "Algeciras",
+    "importe_sin_iva": 39974.46,
+    "importe_con_iva": 48369.1,
+    "fecha_publicacion": "2026-05-05T13:00:34.414+02:00",
+    "fecha_limite": "2026-05-19T23:59:00",
+    "cpv": "30192000",
+    "objeto": "Suministro de material de oficina para el Excmo. Ayuntamiento de Algeciras.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=JJ56Xxs1LYDN3k3tjedSGw%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=Zx/IbvBZPIKiY/ksWwnwpQ2jCya13wMttRbEUEJsscuESO9tkvx61CA6Pdg9LOFy6Ydw7wDi8pXSWfhdNJtlzp1MapWZE8KMayR2G3h2xxyHAj0WEJrB5sP7amrh2jBD",
+        "nombre": "PPT.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 5103,
+    "expediente": "2026/AR43U/00000599E",
+    "organo": "Intendente de San Fernando",
+    "provincia": "Cádiz",
+    "municipio": "San Fernando",
+    "importe_sin_iva": 37535.0,
+    "importe_con_iva": 45417.35,
+    "fecha_publicacion": "2026-05-14T13:20:13.834+02:00",
+    "fecha_limite": "2026-05-29T09:00:00",
+    "cpv": "39100000",
+    "objeto": "Adquisición de mobiliario y material deportivo para el CDSCA de Oficiales en San Fernando.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=1E2qvXYSNHaIzo3LHNPGcQ%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=kY95RYXlT9H3OlNRHd/I/6%2BfPZMZ8c6r1qx9p0V3/YGBJv%2BVXHfrL7p1g21CNe9eijj0Xaz1ltNr5atO0LfvZw5QHKQfoIrwy8oONkx8zqSB0nvVKRzfe4rpHcnlPhSZ",
+        "nombre": "135724089.PDF"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=tGPPFZR3LHpDli3XeviTwU5isOniGjY45Anio7SKwZp2QfMmW/QB1f4s2yedlEk641Q9u%2Byx65DTsJG55qEFoZBwGw0/rvlLOom6ijb5MV76CYyL7SIrUOBFfNf52ZqA",
+        "nombre": "135724279.PDF"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=QNRHYNsp8mGsjWQO%2B%2BMm9W8kOWwgmVloX5IzHeuGOJrqTFaRMf5GDCtRb4KERiraVucvULdycYjkJY5oO5C1AP9vAgur60TzXfK84SBqXNqB0nvVKRzfe4rpHcnlPhSZ",
+        "nombre": "135724374.PDF"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=fB7E9XZ0Ypp5g%2Bpq97zA946Ar6%2BMQZcoCac2qxfet3T9454ztBi6cDp9IEMnJ57R6a4GvjypuUnIOAuAf%2BFudUeVNJct3BBFurW4sbTsf/KB0nvVKRzfe4rpHcnlPhSZ",
+        "nombre": "135724455.PDF"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=OrK5hTxGBPDWg8xGXgargVAL0ZG%2BvXZN/peMrEqRzF9gwYklVkaCW9%2B9Gc8tsqtf4tqLaWk6BWi/EsicD77XMwfNk/PIbY/dkd49NfoRcht45ClyWkoJ44mKM70IFcOu",
+        "nombre": "135725024.PDF"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 4274,
+    "expediente": "CONTR-2026000033",
+    "organo": "Junta de Gobierno del Ayuntamiento de Fuengirola",
+    "provincia": "Málaga",
+    "municipio": "Fuengirola",
+    "importe_sin_iva": 32487.0,
+    "importe_con_iva": 39309.27,
+    "fecha_publicacion": "2026-05-12T09:28:14.706+02:00",
+    "fecha_limite": "2026-05-26T23:59:00",
+    "cpv": "34928520",
+    "objeto": "Suministro, mediante adquisición, de trece elementos de apoyo de electrificación tubulares octogonales.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=W4kGwDnD1eCTylGzYmBF9Q%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=g7rf7tAPG6DvL3YAjS%2BEOCJhVyCZ1cSrrMaL18fl8eBltfCe54KbFZ0NxwNRymFDwu32VvK171xYNN5ripbfTl6Vfb%2B68Dzw6S66w4IC8pIC1/zDIE0Kw/PWNnLS0Z0z",
+        "nombre": "Pliego prescripciones tecnicas 1 firma.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=d%2BnWuvNaQOkmayJukBABeJxTi97rSji%2BRN%2BpX3hr1Eg0MWiHkKGMr%2BR9eHOSJTKXUg9XmiHV%2BLSjjHF3zmGg2S0uvKGC/NR3QmJOwBg90XgC1/zDIE0Kw/PWNnLS0Z0z",
+        "nombre": "03 ANEXO II EXPTE CONTR2026000033.docx"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=VtjmXZFSCCz1dzPF5J4%2BUFM1CfeVd9v%2BRl8AY6n1b%2BeLa7vBUx4oUUmYj/6SP0w31wWoWvP1OI25Y%2BP2LL33onLWsBzhRD%2B3exp%2BStjnDiQ//q7NB2iMZvNyf0xrJmjt",
+        "nombre": "05 ANEXO V EXPTE CONTR2026000033.docx"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=YT6JPBSl4vzEdmckXX0fDPX2/sgPGC6miypkldYOP3d42Ag%2BmpKYEJrMP8a59aaziibAFkFNptDQNy0Q5SUhZ9GPmUyvvHcAXAUV9mlQU9B45ClyWkoJ44mKM70IFcOu",
+        "nombre": "04 ANEXO IV EXPTE CONTR2026000033.docx"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 4940,
+    "expediente": "2026PL041",
+    "organo": "Dirección Gerencia de Limpieza de Málaga Sociedad Anónima Municipal",
+    "provincia": "Málaga",
+    "municipio": "Málaga",
+    "importe_sin_iva": 29987.63,
+    "importe_con_iva": 36286.74,
+    "fecha_publicacion": "2026-05-13T09:08:40.505+02:00",
+    "fecha_limite": "2026-05-27T23:59:00",
+    "cpv": "30192700",
+    "objeto": "Suministro en régimen de adquisición de material general de papelería y oficina por tracto sucesivo para la empresa limpieza de Málaga S.A.M",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=vXLey7%2FZDQw7u6%2B%2FR7DUoA%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=Zg/wSvTV0yGqo6UDyONve5EigXuyffOiyeE1Uf8/jVp7H895WvnDD97%2BkJEPp2V/HdiHlQI4m3nPXDIbzFvKtjl5M5q%2Ba%2B5l7FVEVA%2B411yB0nvVKRzfe4rpHcnlPhSZ",
+        "nombre": "ppt f .pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=3LDzfM2Lewu6W/K28OQ%2BrJDlrFzhWWxxktbnGr6lJQXEePe7XD/Z3lUDWDLrUSRcSLhy0DWwbwxjL8bPpHWsx4XcYXYIvF7JijNPf2%2BOhq0C1/zDIE0Kw/PWNnLS0Z0z",
+        "nombre": "ANEXOS.docx"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 2344,
+    "expediente": "120/2/2026",
+    "organo": "Alcaldía del Ayuntamiento de Cáñar",
+    "provincia": "Granada",
+    "municipio": "Cáñar",
+    "importe_sin_iva": 24793.93,
+    "importe_con_iva": 30000.0,
+    "fecha_publicacion": "2026-05-07T11:47:44.914+02:00",
+    "fecha_limite": "2026-05-22T15:00:00",
+    "cpv": "37535200",
+    "objeto": "suministro e instalación de elementos para área de juegos infantiles en el municipio de Cáñar",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=h9bPjtEL9%2BbVGIpKDxgsAQ%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=4CQ036XksITA6/3Rmw/704mWofttCugHh05sjF3oDlgZpQjqPIETX16bd1VUkOhzPNVvbZKT/VaB/ILPqRTHP2chUKtFyu/hkovgMtnjzpmCx2e6p7hqtlp2aFupgHMr",
+        "nombre": "Pliego de clausulas administrativas particulares.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=6uEeScr85fg4Jme1MSPZTmt1PMC4a1sSCbBDqcxuH2HuZuq2SdFg2L2Je97r7/5EQz3Yg98x0ej4%2BHRPHa53D1oYNbzw%2BXm2oMPFJ7G5y%2BFt/o8fNevwsujgRzaBbugn",
+        "nombre": "RESOLUCION DE ALCALDIA.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=kVEUseUGrITbhA7ssJw3C46Z/it94Jo9lUT8NHKL5O3hObZxKvw6iVLC0h5BNGWl91DN1UlBGXLH4OXfXl9ftG7D4Va4wudMmmzEwzLa6M/6CYyL7SIrUOBFfNf52ZqA",
+        "nombre": "Informe Informe de Secretaria.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 1519,
+    "expediente": "120/2026",
+    "organo": "Alcaldía del Ayuntamiento de Cáñar",
+    "provincia": "Granada",
+    "municipio": "cáñar ( Granada)",
+    "importe_sin_iva": 24793.39,
+    "importe_con_iva": 30000.0,
+    "fecha_publicacion": "2026-05-06T13:32:45.308+02:00",
+    "fecha_limite": "2026-05-21T15:00:00",
+    "cpv": "37535100",
+    "objeto": "Suministro, adecuación, instalación y montaje completo de un área de juegos infantil de uso público en Cáñar.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=dkQv1jpxYZycCF8sV%2BqtYA%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=uVNbgEQaFFCIW8QXM3WVNpLYEt%2BPihamxIw69DaR4pousAYuRP/mYPrigrtkp0VVagrh7ngaNMssP6Riy%2BXD3PWYSApgKlxdZ4F/dV/Y7cxJOVDbGCDM%2BMigrvuVS7Rv",
+        "nombre": "Pliego de clausulas administrativas particulares.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=3NNS0qLZV3EIN5DB7tP0KGOZ4Fc3o3d7%2BUD5GgJrSYB3kAriCWvof9FfVxrlgn6UbV6xo1H/J2wiMSG%2BRcIeJOiAF1Zn3LyKLT5L2Zt9yhaHAj0WEJrB5sP7amrh2jBD",
+        "nombre": "Informe Informe de Secretaria.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=/sUi26P2WE4JFNQgktk1TyqMfm60LFhEV80cfBmY2/jHPMyT0zZZTMFloa1286OFDoVNDqnEC9%2BBQ3i9quAgwbrPk4W/FgeZqSGdQ3kjOPnDdQD9RyhUmzT4jZ2In4zL",
+        "nombre": "RESOLUCION DE ALCALDIA.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 4371,
+    "expediente": "190/2026",
+    "organo": "Alcaldia del Ayuntamiento de Beas de Granada",
+    "provincia": "Granada",
+    "municipio": "Beas de Granada",
+    "importe_sin_iva": 24793.38,
+    "importe_con_iva": 30000.0,
+    "fecha_publicacion": "2026-05-11T18:28:59.380+02:00",
+    "fecha_limite": "2026-05-26T15:00:00",
+    "cpv": "37535210",
+    "objeto": "Suministro e instalación del nuevo parque infantil de la entidad local de Beas de Granada.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=LQjuVbTA%2BQu5HQrHoP3G5A%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=5ApbKK43YCuwWU5gM1Mk/uzgVf7QxJqG8y2DcB0ITgQrLlJhemz7sC3xllbb1MSWLyTRwOmkV/IXCzpP3gh1W1JsliH40l5XP6wiTUAp1NuCx2e6p7hqtlp2aFupgHMr",
+        "nombre": "PPT PARQUES INFANTILES.pdf"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 1435,
+    "expediente": "2026/SAS/000308",
+    "organo": "Órganos Directivos del Ayuntamiento de Sevilla",
+    "provincia": "Sevilla",
+    "municipio": "Sevilla",
+    "importe_sin_iva": 18000.0,
+    "importe_con_iva": 21780.0,
+    "fecha_publicacion": "2026-05-04T09:26:07.607+02:00",
+    "fecha_limite": "2026-05-18T23:59:00",
+    "cpv": "39100000",
+    "objeto": "Suministro de material diverso, auxiliar de oficina, así como el montaje e instalación de los enseres que así lo requieran para las diferentes dependencias de este Excmo. Ayuntamiento",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=4vM3sDy6uF5t5r0ngvMetA%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=hHIOEhLwHj0PpHRKDZEoaNr3Abhh9rmU91e4QtxKeSdSQnKSqNkcY/0xORQEu1t%2BfLgmEMuBc2n5um/v1UVZP5ZTwPMwVz4U87bcZ4LaFkjVTD3T98KC0nSgQFM0q%2B5s",
+        "nombre": "04 PPT.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=YdBSOwS33s6wI5UtF751IenNXu4KuqKRepW/gUcBepXeZjEvAZOrqhgl/rdKMxopVugc8VfnY9NmoR1hy2iDdU4tzcGt6AFxHeDlPA4Y77PDdQD9RyhUmzT4jZ2In4zL",
+        "nombre": "05Anexo PCAP.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=e1HpMrJ%2BCx5uWtQgZ7/FlFmVfcmu8%2BHFWIGcek5x3YlQgRvQ4o3W3q9QrVtaE%2BTJg0eW1N1%2BfFzbiQI8STtgKrl8jW4oMZMACxRi4LRnqZnfdyQgZAdTm3EfcUAC7CJ6",
+        "nombre": "Plantillas licitador.odt"
+      }
+    ],
+    "analisis": null
+  },
+  {
+    "id": 3304,
+    "expediente": "3973 PASS Sum Sillas y Mesas",
+    "organo": "Alcaldía del Ayuntamiento de Chipiona",
+    "provincia": "Cádiz",
+    "municipio": "Chipiona",
+    "importe_sin_iva": 12000.0,
+    "importe_con_iva": 14520.0,
+    "fecha_publicacion": "2026-05-11T14:21:15.077+02:00",
+    "fecha_limite": "2026-05-25T23:59:00",
+    "cpv": "39110000",
+    "objeto": "Suministro mediante alquiler de sillas y mesas para procesos de selección de personal",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=YPvLE9VE7CU%2Bk2oCbDosIw%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=shLMNuM3Rocm8oKlpRG7SI6Y4a%2Blbof1r0%2BQi4t2vH1lQFvVoCIS697JJAiydsDwi4fSI4D5A88Jpc59roplalRC13S2P9HaHan2NvU/9mc//q7NB2iMZvNyf0xrJmjt",
+        "nombre": "02 PPT Suministro de sillas y mesas procesos selectivos.pdf"
+      }
+    ],
+    "analisis": null
+  }
+];
+const META = {"generado_en": "2026-05-16T18:26:43+00:00", "total_db": 24326, "total_candidatas": 18, "con_analisis": 0};
+
+// === CONSTANTES ===
+const KEYWORDS = [
+  "parque","parques","infantil","infantiles","columpio","columpios","tobogán","toboganes",
+  "rocódromo","rocódromos","escalada","balancín","balancines","muelle","muelles",
+  "carrusel","carruseles","valla","vallas","tirolina","cabaña","casita",
+  "mobiliario","banco","bancos","jardinera","jardineras","papelera","papeleras",
+  "fuente","fuentes","sombra","refugio","biosaludable","biosaludables","fitness",
+  "madera","mesa","mesas","silla","sillas","pizarra","pizarras","taquilla","taquillas",
+  "pavimento","césped","papelería","oficina","escolar","escolares","juego","juegos",
+  "señalización","contenedor","contenedores","pasarela","pasarelas","área","áreas"
+];
+const KW_REGEX = new RegExp("\\b(" + KEYWORDS.join("|") + ")\\b", "gi");
+
+const STATE_KEY  = "higiofi_estado_v2";
+const NOTES_KEY  = "higiofi_notas";
+const SNOOZE_KEY = "higiofi_snooze";
+const PREFS_KEY  = "higiofi_prefs";
+
+let estados = JSON.parse(localStorage.getItem(STATE_KEY)  || "{}");
+let notas   = JSON.parse(localStorage.getItem(NOTES_KEY)  || "{}");
+let snoozes = JSON.parse(localStorage.getItem(SNOOZE_KEY) || "{}");
+let prefs   = JSON.parse(localStorage.getItem(PREFS_KEY)  || "{}");
+
+let tabActiva = "pendientes";
+let filtroEncaje = "todos";
+let filtroProvincia = "todas";
+let filtroPlazo = "todos";
+let filtroBusqueda = "";
+
+function save(key, obj) { localStorage.setItem(key, JSON.stringify(obj)); }
+
+function estadoDe(id) {
+  const snz = snoozes[id];
+  if (snz && new Date(snz) > new Date()) return "snoozed";
+  return estados[id] || "pendiente";
+}
+function setEstado(id, nuevo) {
+  if (nuevo === "pendiente") delete estados[id]; else estados[id] = nuevo;
+  delete snoozes[id];
+  save(STATE_KEY, estados); save(SNOOZE_KEY, snoozes);
+  render();
+}
+function snooze(id, dias) {
+  snoozes[id] = new Date(Date.now() + dias * 86400000).toISOString();
+  save(SNOOZE_KEY, snoozes); render();
+}
+function guardarNota(id, t) {
+  if (!t || !t.trim()) delete notas[id]; else notas[id] = t.trim();
+  save(NOTES_KEY, notas); render();
+}
+function editarNota(id) {
+  const n = prompt("Notas para esta licitación:\n(quedan guardadas en este navegador)", notas[id] || "");
+  if (n !== null) guardarNota(id, n);
+}
+function abrirPliegos(id) {
+  const l = LICITACIONES.find(x => x.id === id);
+  if (!l || !l.pliegos_urls || !l.pliegos_urls.length) {
+    alert("Esta licitación no tiene pliegos enlazados.");
+    return;
+  }
+  l.pliegos_urls.forEach(p => window.open(p.url, "_blank"));
+}
+
+function diasRestantes(iso) { return Math.ceil((new Date(iso) - new Date()) / 86400000); }
+function esDeHoy(iso) { return iso && iso.slice(0,10) === new Date().toISOString().slice(0,10); }
+function fmtImporte(n) { return new Intl.NumberFormat("es-ES", { style:"currency", currency:"EUR", maximumFractionDigits:0 }).format(n); }
+function fmtImporteCorto(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1) + "M €";
+  if (n >= 1000)    return Math.round(n/1000) + "K €";
+  return Math.round(n) + " €";
+}
+function fmtFecha(iso) { return new Date(iso).toLocaleDateString("es-ES", { day:"numeric", month:"long" }); }
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function destacar(t) { return escapeHtml(t).replace(KW_REGEX, '<mark class="kw">$1</mark>'); }
+
+function encajeKey(lic)        { return lic.analisis ? lic.analisis.encaje : "sin_analizar"; }
+function encajeBarClass(lic)   { return "bar-" + (lic.analisis ? lic.analisis.encaje : "sin"); }
+function encajeBadgeClass(lic) { return lic.analisis ? "badge-" + lic.analisis.encaje : "badge-sin"; }
+function encajeBadgeTexto(lic) {
+  if (!lic.analisis) return "sin analizar";
+  return `${lic.analisis.encaje} · ${lic.analisis.encaje_score}`;
+}
+function estadoEnCurso(e) { return ["interesa","preparando","presentada"].includes(e); }
+function estadoCerrado(e) { return ["ganada","perdida"].includes(e); }
+
+function tabContiene(estado, lic) {
+  const histo = diasRestantes(lic.fecha_limite) < 0;
+  switch (tabActiva) {
+    case "pendientes":  return estado === "pendiente" && !histo;
+    case "en_curso":    return estadoEnCurso(estado);
+    case "cerradas":    return estadoCerrado(estado);
+    case "descartadas": return estado === "descartada";
+    case "historico":   return histo && !estadoCerrado(estado);
+  }
+  return false;
+}
+
+const TODOS_ESTADOS = [
+  { v: "pendiente",  label: "Pendiente" },
+  { v: "interesa",   label: "★ Me interesa" },
+  { v: "preparando", label: "Preparando oferta" },
+  { v: "presentada", label: "Oferta presentada" },
+  { v: "ganada",     label: "✓ Ganada" },
+  { v: "perdida",    label: "✗ Perdida" },
+  { v: "descartada", label: "Descartada" }
+];
+function selectorEstado(id, actual) {
+  return `<select onchange="setEstado(${id}, this.value)"
+                  class="text-sm px-2 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded">
+    ${TODOS_ESTADOS.map(e => `<option value="${e.v}" ${e.v===actual?"selected":""}>${e.label}</option>`).join("")}
+  </select>`;
+}
+
+function renderCard(lic) {
+  const dias = diasRestantes(lic.fecha_limite);
+  const urgencia = dias < 0 ? "vencida" : dias <= 3 ? "alta" : dias <= 7 ? "media" : "normal";
+  const ringClass = urgencia === "alta" ? "ring-urgent" : urgencia === "media" ? "ring-urgent-mid" : "";
+  const colorDias = dias < 0 ? "text-red-600 dark:text-red-400" : dias <= 3 ? "text-red-600 dark:text-red-400 font-semibold" : dias <= 7 ? "text-orange-600 dark:text-orange-400" : "text-slate-600 dark:text-slate-400";
+  const textoDias = dias < 0 ? "cerrada" : dias === 0 ? "cierra HOY" : dias === 1 ? "1 día" : `${dias} días`;
+  const badgeUrge = urgencia === "alta"
+    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-red-600 text-white">URGE</span>` : "";
+  const badgeNuevo = esDeHoy(lic.fecha_publicacion)
+    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">NUEVO</span>` : "";
+
+  const nPliegos = (lic.pliegos_urls || []).length;
+  const tieneNota = !!notas[lic.id];
+  const estadoActual = estadoDe(lic.id);
+
+  // Bloque de motivo (sólo si hay análisis)
+  const bloqueMotivo = lic.analisis
+    ? `<p class="text-sm text-slate-700 dark:text-slate-300 mb-3 card-motivo">${destacar(lic.analisis.motivo)}</p>`
+    : `<p class="text-sm italic text-indigo-700 dark:text-indigo-300 mb-3 card-motivo">Pendiente de análisis IA. Abre Claude Code para procesar este pliego.</p>`;
+
+  // Bloque desplegable de detalle
+  let bloqueDetalle = "";
+  if (lic.analisis) {
+    const a = lic.analisis;
+    const productos = a.productos_aplicables.length
+      ? a.productos_aplicables.map(p => `<li>${destacar(p)}</li>`).join("")
+      : "<li class='text-slate-400 dark:text-slate-500'>—</li>";
+    const requisitos = a.requisitos_criticos.map(r => `<li>${escapeHtml(r)}</li>`).join("");
+    const banderas = a.banderas_rojas.length
+      ? a.banderas_rojas.map(b => `<li>${escapeHtml(b)}</li>`).join("")
+      : "<li class='text-slate-400 dark:text-slate-500'>Sin banderas rojas.</li>";
+    bloqueDetalle = `
+      <details class="card-detail">
+        <summary class="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 inline-flex items-center gap-1 select-none">
+          <span class="chevron">▸</span> Ver detalle
+        </summary>
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-5 text-sm">
+          <div>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-2">Resumen del pliego</h3>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed">${destacar(a.resumen)}</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-2">Productos aplicables</h3>
+            <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">${productos}</ul>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-2">Requisitos críticos</h3>
+            <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">${requisitos}</ul>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mt-3 mb-2">Banderas rojas</h3>
+            <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">${banderas}</ul>
+          </div>
+        </div>
+      </details>`;
+  }
+
+  let acciones;
+  if (estadoActual === "pendiente") {
+    acciones = `
+      <button onclick="setEstado(${lic.id}, 'descartada')" class="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Descartar</button>
+      <button onclick="snooze(${lic.id}, 1)" class="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" title="La oculto hasta mañana">⏰ Mañana</button>
+      <button onclick="setEstado(${lic.id}, 'interesa')" class="px-4 py-1.5 text-sm font-medium bg-emerald-600 text-white hover:bg-emerald-700 rounded transition">★ Me interesa</button>`;
+  } else {
+    acciones = selectorEstado(lic.id, estadoActual);
+  }
+
+  return `
+    <article class="fade-in bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition overflow-hidden ${ringClass}" data-id="${lic.id}">
+      <div class="h-1 ${encajeBarClass(lic)}"></div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span class="text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded ${encajeBadgeClass(lic)}">${encajeBadgeTexto(lic)}</span>
+              ${badgeNuevo}
+              ${badgeUrge}
+              <span class="text-xs text-slate-500 dark:text-slate-400">${escapeHtml(lic.expediente)}</span>
+              <span class="text-xs text-slate-400">·</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">${escapeHtml(lic.municipio || "?")} (${escapeHtml(lic.provincia || "?")})</span>
+              <span class="text-xs text-slate-400">·</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">CPV ${escapeHtml(lic.cpv || "?")}</span>
+              ${tieneNota ? `<span class="text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/30 px-1.5 py-0.5 rounded">📝 nota</span>` : ""}
+            </div>
+            <h2 class="font-semibold text-slate-900 dark:text-slate-100 text-base leading-tight">${destacar(lic.objeto)}</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(lic.organo)}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="text-xl font-bold tabular-nums">${fmtImporte(lic.importe_sin_iva)}</div>
+            <div class="text-xs ${colorDias}">${textoDias} · ${fmtFecha(lic.fecha_limite)}</div>
+          </div>
+        </div>
+
+        ${bloqueMotivo}
+
+        ${tieneNota ? `<div class="mb-3 text-sm bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-900/50 rounded px-3 py-2 text-amber-900 dark:text-amber-200"><strong class="text-xs uppercase tracking-wide">Nota:</strong> ${escapeHtml(notas[lic.id])}</div>` : ""}
+
+        ${bloqueDetalle}
+
+        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 flex-wrap card-actions-secondary">
+          <div class="flex items-center gap-2 flex-wrap">
+            <a href="${lic.enlace_placsp}" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded transition">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Ver en PLACSP
+            </a>
+            <button onclick="abrirPliegos(${lic.id})"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded transition">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Pliegos (${nPliegos})
+            </button>
+            <button onclick="editarNota(${lic.id})"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded transition">
+              📝 ${tieneNota ? "Editar nota" : "Añadir nota"}
+            </button>
+          </div>
+          <div class="flex items-center gap-2">${acciones}</div>
+        </div>
+      </div>
+    </article>`;
+}
+
+function coincide(lic) {
+  if (filtroEncaje !== "todos") {
+    const ek = encajeKey(lic);
+    if (filtroEncaje !== ek) return false;
+  }
+  if (filtroProvincia !== "todas" && lic.provincia !== filtroProvincia) return false;
+  if (filtroPlazo !== "todos") {
+    const d = diasRestantes(lic.fecha_limite);
+    if (d < 0 || d > parseInt(filtroPlazo, 10)) return false;
+  }
+  if (filtroBusqueda) {
+    const q = filtroBusqueda.toLowerCase();
+    const hay =
+      (lic.objeto || "").toLowerCase().includes(q) ||
+      (lic.organo || "").toLowerCase().includes(q) ||
+      (lic.expediente || "").toLowerCase().includes(q) ||
+      (lic.cpv || "").includes(q) ||
+      (lic.municipio || "").toLowerCase().includes(q);
+    if (!hay) return false;
+  }
+  return true;
+}
+
+function render() {
+  document.getElementById("fecha-hoy").textContent =
+    new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+
+  const total = LICITACIONES.length;
+  const sinAnalizar = LICITACIONES.filter(l => !l.analisis).length;
+  const enCurso = LICITACIONES.filter(l => estadoEnCurso(estadoDe(l.id))).length;
+  const urgentes = LICITACIONES.filter(l => {
+    const d = diasRestantes(l.fecha_limite);
+    return d >= 0 && d <= 7 && estadoDe(l.id) !== "descartada";
+  }).length;
+  const importeTotal = LICITACIONES.filter(l => estadoEnCurso(estadoDe(l.id))).reduce((s, l) => s + (l.importe_sin_iva || 0), 0);
+  document.getElementById("kpi-total").textContent = total;
+  document.getElementById("kpi-sin-analizar").textContent = sinAnalizar;
+  document.getElementById("kpi-en-curso").textContent = enCurso;
+  document.getElementById("kpi-urgentes").textContent = urgentes;
+  document.getElementById("kpi-importe").textContent = importeTotal > 0 ? fmtImporteCorto(importeTotal) : "—";
+
+  const counts = { pendientes: 0, en_curso: 0, cerradas: 0, descartadas: 0, historico: 0 };
+  for (const lic of LICITACIONES) {
+    const est = estadoDe(lic.id);
+    const histo = diasRestantes(lic.fecha_limite) < 0;
+    if (est === "pendiente" && !histo) counts.pendientes++;
+    if (estadoEnCurso(est)) counts.en_curso++;
+    if (estadoCerrado(est)) counts.cerradas++;
+    if (est === "descartada") counts.descartadas++;
+    if (histo && !estadoCerrado(est)) counts.historico++;
+  }
+  document.getElementById("count-pendientes").textContent = counts.pendientes;
+  document.getElementById("count-en-curso").textContent = counts.en_curso;
+  document.getElementById("count-cerradas").textContent = counts.cerradas;
+  document.getElementById("count-descartadas").textContent = counts.descartadas;
+  document.getElementById("count-historico").textContent = counts.historico;
+
+  let visibles = LICITACIONES.filter(l => tabContiene(estadoDe(l.id), l) && coincide(l));
+  // Orden: primero por urgencia ≤7d, luego por encaje_score, luego sin_analizar al final
+  visibles.sort((a, b) => {
+    const da = diasRestantes(a.fecha_limite), db = diasRestantes(b.fecha_limite);
+    if (da >= 0 && db >= 0 && Math.min(da, db) <= 7 && da !== db) return da - db;
+    const sa = a.analisis ? a.analisis.encaje_score : -1;
+    const sb = b.analisis ? b.analisis.encaje_score : -1;
+    if (sa !== sb) return sb - sa;
+    return (b.importe_sin_iva || 0) - (a.importe_sin_iva || 0);
+  });
+
+  const lista = document.getElementById("lista");
+  const vacio = document.getElementById("vacio");
+  if (visibles.length === 0) {
+    lista.innerHTML = "";
+    vacio.classList.remove("hidden");
+  } else {
+    vacio.classList.add("hidden");
+    lista.innerHTML = visibles.map(renderCard).join("");
+  }
+
+  const tabla = document.getElementById("tabla-resumen");
+  if (visibles.length === 0) {
+    tabla.innerHTML = `<p class="text-slate-400 dark:text-slate-500">Sin datos.</p>`;
+  } else {
+    tabla.innerHTML = visibles.map(l => {
+      const d = diasRestantes(l.fecha_limite);
+      const c = d <= 3 ? "text-red-600 dark:text-red-400" : d <= 7 ? "text-orange-600 dark:text-orange-400" : "text-slate-500 dark:text-slate-400";
+      const score = l.analisis ? `encaje ${l.analisis.encaje_score}` : "sin analizar";
+      return `
+        <a href="#" onclick="event.preventDefault();document.querySelector('article[data-id=\\'${l.id}\\']').scrollIntoView({behavior:'smooth',block:'center'})"
+           class="block hover:bg-slate-50 dark:hover:bg-slate-800 rounded p-1.5 -mx-1.5 transition">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-medium truncate flex-1">${escapeHtml(l.municipio || '?')}</span>
+            <span class="tabular-nums shrink-0">${fmtImporteCorto(l.importe_sin_iva || 0)}</span>
+          </div>
+          <div class="${c} text-[10px]">${d < 0 ? "cerrada" : d + "d"} · ${score}</div>
+        </a>`;
+    }).join("");
+  }
+
+  // Footer info
+  if (META && META.generado_en) {
+    document.getElementById("footer-info").textContent =
+      `Regenerado ${new Date(META.generado_en).toLocaleString("es-ES")} · ${META.total_db || 0} licitaciones en BD · ${total} candidatas vivas`;
+  }
+}
+
+// === BINDINGS ===
+function activarPill(g, v, c) {
+  document.querySelectorAll(`.${c}`).forEach(b => { b.classList.remove("pill-on"); b.classList.add("pill-off"); });
+  const s = document.querySelector(`.${c}[data-${g}="${v}"]`);
+  if (s) { s.classList.add("pill-on"); s.classList.remove("pill-off"); }
+}
+document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach(t => {
+    t.classList.remove("border-emerald-600", "text-emerald-700", "dark:text-emerald-400");
+    t.classList.add("border-transparent", "text-slate-500", "dark:text-slate-400");
+  });
+  b.classList.add("border-emerald-600", "text-emerald-700", "dark:text-emerald-400");
+  b.classList.remove("border-transparent", "text-slate-500", "dark:text-slate-400");
+  tabActiva = b.dataset.tab;
+  render();
+}));
+document.querySelectorAll(".filter-encaje").forEach(b => b.addEventListener("click", () => {
+  filtroEncaje = b.dataset.encaje; activarPill("encaje", filtroEncaje, "filter-encaje"); render();
+}));
+document.querySelectorAll(".filter-plazo").forEach(b => b.addEventListener("click", () => {
+  filtroPlazo = b.dataset.plazo; activarPill("plazo", filtroPlazo, "filter-plazo"); render();
+}));
+document.querySelectorAll(".filter-provincia").forEach(b => b.addEventListener("click", () => {
+  filtroProvincia = b.dataset.provincia; activarPill("provincia", filtroProvincia, "filter-provincia"); render();
+}));
+document.getElementById("busqueda").addEventListener("input", e => { filtroBusqueda = e.target.value.trim(); render(); });
+
+document.getElementById("btn-compacto").addEventListener("click", () => {
+  prefs.compacto = !prefs.compacto;
+  document.body.classList.toggle("compacto", prefs.compacto);
+  save(PREFS_KEY, prefs);
+});
+
+function aplicarTema() { document.documentElement.classList.toggle("dark", prefs.dark === true); }
+document.getElementById("btn-dark").addEventListener("click", () => { prefs.dark = !prefs.dark; aplicarTema(); save(PREFS_KEY, prefs); });
+
+document.getElementById("btn-export").addEventListener("click", () => { window.print(); });
+
+if (prefs.compacto) document.body.classList.add("compacto");
+aplicarTema();
+render();
+</script>
+</body>
+</html>

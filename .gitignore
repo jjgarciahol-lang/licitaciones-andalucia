@@ -16,8 +16,9 @@ logs/
 *.log
 
 # --- Catálogo de la empresa (PDF grande, no versionar) ---
+# El PDF original se queda fuera del repo (64 MB). El .txt limpio sí se versiona
+# para reproducibilidad y para que el prompt de IA tenga el contexto exacto.
 prompts/catalogo_empresa.pdf
-prompts/catalogo_empresa.txt
 
 # --- Python ---
 __pycache__/

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Higiofi — Licitaciones</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config = { darkMode: 'class' }</script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif; }
+  .badge-alto       { background-color: #dcfce7; color: #166534; }
+  .badge-medio      { background-color: #fef3c7; color: #92400e; }
+  .badge-bajo       { background-color: #f3f4f6; color: #4b5563; }
+  .badge-ninguno    { background-color: #fee2e2; color: #991b1b; }
+  .badge-sin        { background-color: #e0e7ff; color: #3730a3; }
+  .dark .badge-alto    { background-color: rgba(22,163,74,.18); color: #86efac; }
+  .dark .badge-medio   { background-color: rgba(245,158,11,.18); color: #fcd34d; }
+  .dark .badge-bajo    { background-color: rgba(148,163,184,.18); color: #cbd5e1; }
+  .dark .badge-ninguno { background-color: rgba(239,68,68,.18); color: #fca5a5; }
+  .dark .badge-sin     { background-color: rgba(99,102,241,.18); color: #c7d2fe; }
+  .bar-alto    { background-color: #16a34a; }
+  .bar-medio   { background-color: #f59e0b; }
+  .bar-bajo    { background-color: #9ca3af; }
+  .bar-ninguno { background-color: #ef4444; }
+  .bar-sin     { background-color: #6366f1; }
+  .fade-in { animation: fadeIn .25s ease-out; }
+  @keyframes fadeIn { from { opacity:0; transform: translateY(4px); } to { opacity:1; transform:none; } }
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .chevron { transform: rotate(90deg); }
+  .chevron { transition: transform .2s; }
+  .ring-urgent     { box-shadow: inset 3px 0 0 #dc2626; }
+  .ring-urgent-mid { box-shadow: inset 3px 0 0 #f59e0b; }
+  .pill { padding: .25rem .75rem; border-radius: 9999px; font-size: .75rem; font-weight: 500; transition: all .15s; cursor: pointer; user-select: none; }
+  .pill-off { background-color: white; color: #475569; border: 1px solid #e2e8f0; }
+  .pill-off:hover { background-color: #f8fafc; }
+  .pill-on  { background-color: #0f172a; color: white; border: 1px solid #0f172a; }
+  .dark .pill-off { background-color: #1e293b; color: #cbd5e1; border-color: #334155; }
+  .dark .pill-off:hover { background-color: #334155; }
+  .dark .pill-on  { background-color: #f1f5f9; color: #0f172a; border-color: #f1f5f9; }
+  mark.kw { background-color: #fef9c3; color: inherit; padding: 0 2px; border-radius: 2px; font-weight: 500; }
+  .dark mark.kw { background-color: rgba(250,204,21,.25); }
+  body.compacto .card-detail { display: none; }
+  body.compacto .card-motivo { display: none; }
+  body.compacto .card-actions-secondary { display: none; }
+  @media print {
+    header, .no-print, footer, aside, nav, .tabs-bar, .filtros-bar { display: none !important; }
+    body { background: white !important; color: black !important; }
+    article { break-inside: avoid; box-shadow: none !important; border: 1px solid #ddd !important; margin-bottom: 1rem; }
+    .card-detail { display: block !important; }
+  }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+
+<header class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800">
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between gap-4">
+    <div>
+      <h1 class="text-2xl font-bold">Higiofi · Licitaciones</h1>
+      <p class="text-sm text-slate-500 dark:text-slate-400" id="fecha-hoy"></p>
+    </div>
+    <div class="flex items-center gap-2 no-print">
+      <button id="btn-compacto" title="Modo compacto" class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <button id="btn-export" title="Exportar a PDF (lo visible)" class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+      </button>
+      <button id="btn-dark" title="Modo oscuro" class="p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+        <svg class="w-5 h-5 dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 pb-5">
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+      <div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
+        <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total</div>
+        <div class="text-2xl font-bold tabular-nums" id="kpi-total">—</div>
+      </div>
+      <div class="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-3">
+        <div class="text-xs text-indigo-700 dark:text-indigo-300 uppercase tracking-wide">Sin analizar</div>
+        <div class="text-2xl font-bold tabular-nums text-indigo-700 dark:text-indigo-300" id="kpi-sin-analizar">—</div>
+      </div>
+      <div class="bg-emerald-50 dark:bg-emerald-900/30 rounded-lg p-3">
+        <div class="text-xs text-emerald-700 dark:text-emerald-300 uppercase tracking-wide">En curso</div>
+        <div class="text-2xl font-bold tabular-nums text-emerald-700 dark:text-emerald-300" id="kpi-en-curso">—</div>
+      </div>
+      <div class="bg-orange-50 dark:bg-orange-900/30 rounded-lg p-3">
+        <div class="text-xs text-orange-700 dark:text-orange-300 uppercase tracking-wide">Cierran ≤7 días</div>
+        <div class="text-2xl font-bold tabular-nums text-orange-700 dark:text-orange-300" id="kpi-urgentes">—</div>
+      </div>
+      <div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
+        <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Importe potencial</div>
+        <div class="text-2xl font-bold tabular-nums" id="kpi-importe">—</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-10 tabs-bar">
+  <div class="max-w-7xl mx-auto px-6 flex gap-1 overflow-x-auto">
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium border-b-2 border-emerald-600 text-emerald-700 dark:text-emerald-400" data-tab="pendientes">
+      Pendientes <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-pendientes">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="en_curso">
+      ★ En curso <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-en-curso">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="cerradas">
+      Cerradas <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-cerradas">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="descartadas">
+      Descartadas <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-descartadas">0</span>
+    </button>
+    <button class="tab whitespace-nowrap px-4 py-3 text-sm font-medium text-slate-500 dark:text-slate-400 border-b-2 border-transparent hover:text-slate-900 dark:hover:text-slate-100" data-tab="historico">
+      Histórico <span class="ml-1 text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full px-2 py-0.5" id="count-historico">0</span>
+    </button>
+  </div>
+</div>
+
+<div class="max-w-7xl mx-auto px-6 pt-5 space-y-3 filtros-bar no-print">
+  <div class="relative">
+    <input id="busqueda" type="search" placeholder="Buscar por objeto, órgano, expediente, CPV..."
+           class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500">
+    <svg class="absolute left-3 top-3 w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+    </svg>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-1.5">
+    <span class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mr-2 w-16">Encaje:</span>
+    <button class="filter-encaje pill pill-on" data-encaje="todos">Todos</button>
+    <button class="filter-encaje pill pill-off" data-encaje="alto" style="background:#dcfce7;color:#166534;border-color:#bbf7d0">Alto</button>
+    <button class="filter-encaje pill pill-off" data-encaje="medio" style="background:#fef3c7;color:#92400e;border-color:#fde68a">Medio</button>
+    <button class="filter-encaje pill pill-off" data-encaje="bajo" style="background:#f3f4f6;color:#4b5563;border-color:#e5e7eb">Bajo</button>
+    <button class="filter-encaje pill pill-off" data-encaje="ninguno" style="background:#fee2e2;color:#991b1b;border-color:#fecaca">Ninguno</button>
+    <button class="filter-encaje pill pill-off" data-encaje="sin_analizar" style="background:#e0e7ff;color:#3730a3;border-color:#c7d2fe">Sin analizar</button>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-1.5">
+    <span class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mr-2 w-16">Plazo:</span>
+    <button class="filter-plazo pill pill-on" data-plazo="todos">Todos</button>
+    <button class="filter-plazo pill pill-off" data-plazo="3">≤3 días</button>
+    <button class="filter-plazo pill pill-off" data-plazo="7">≤7 días</button>
+    <button class="filter-plazo pill pill-off" data-plazo="15">≤15 días</button>
+  </div>
+
+  <div class="flex flex-wrap items-center gap-1.5">
+    <span class="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400 mr-2 w-16">Provincia:</span>
+    <button class="filter-provincia pill pill-on" data-provincia="todas">Todas</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Almería">Almería</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Cádiz">Cádiz</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Córdoba">Córdoba</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Granada">Granada</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Huelva">Huelva</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Jaén">Jaén</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Málaga">Málaga</button>
+    <button class="filter-provincia pill pill-off" data-provincia="Sevilla">Sevilla</button>
+  </div>
+</div>
+
+<main class="max-w-7xl mx-auto px-6 py-6 pb-12 grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
+  <div>
+    <div id="lista" class="space-y-3"></div>
+    <div id="vacio" class="hidden text-center py-16 text-slate-400 dark:text-slate-500">
+      <div class="text-5xl mb-3">∅</div>
+      <p>Nada que mostrar con estos filtros.</p>
+    </div>
+  </div>
+
+  <aside class="hidden lg:block no-print">
+    <div class="sticky top-20 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-4">
+      <h3 class="text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 mb-3">Resumen visible</h3>
+      <div id="tabla-resumen" class="space-y-1.5 text-xs"></div>
+    </div>
+  </aside>
+</main>
+
+<footer class="max-w-7xl mx-auto px-6 py-6 text-xs text-slate-400 dark:text-slate-500 border-t border-slate-200 dark:border-slate-800">
+  <span id="footer-info"></span> · Sistema interno Higiofi · El estado, notas y recordatorios se guardan en este navegador.
+</footer>
+
+<script>
+// === DATOS — inyectados por scripts/generar_dashboard.py al regenerar ===
+const LICITACIONES = /*__LICITACIONES_JSON__*/ [];
+const META = /*__META_JSON__*/ {"generado_en": "", "total_db": 0};
+
+// === CONSTANTES ===
+const KEYWORDS = [
+  "parque","parques","infantil","infantiles","columpio","columpios","tobogán","toboganes",
+  "rocódromo","rocódromos","escalada","balancín","balancines","muelle","muelles",
+  "carrusel","carruseles","valla","vallas","tirolina","cabaña","casita",
+  "mobiliario","banco","bancos","jardinera","jardineras","papelera","papeleras",
+  "fuente","fuentes","sombra","refugio","biosaludable","biosaludables","fitness",
+  "madera","mesa","mesas","silla","sillas","pizarra","pizarras","taquilla","taquillas",
+  "pavimento","césped","papelería","oficina","escolar","escolares","juego","juegos",
+  "señalización","contenedor","contenedores","pasarela","pasarelas","área","áreas"
+];
+const KW_REGEX = new RegExp("\\b(" + KEYWORDS.join("|") + ")\\b", "gi");
+
+const STATE_KEY  = "higiofi_estado_v2";
+const NOTES_KEY  = "higiofi_notas";
+const SNOOZE_KEY = "higiofi_snooze";
+const PREFS_KEY  = "higiofi_prefs";
+
+let estados = JSON.parse(localStorage.getItem(STATE_KEY)  || "{}");
+let notas   = JSON.parse(localStorage.getItem(NOTES_KEY)  || "{}");
+let snoozes = JSON.parse(localStorage.getItem(SNOOZE_KEY) || "{}");
+let prefs   = JSON.parse(localStorage.getItem(PREFS_KEY)  || "{}");
+
+let tabActiva = "pendientes";
+let filtroEncaje = "todos";
+let filtroProvincia = "todas";
+let filtroPlazo = "todos";
+let filtroBusqueda = "";
+
+function save(key, obj) { localStorage.setItem(key, JSON.stringify(obj)); }
+
+function estadoDe(id) {
+  const snz = snoozes[id];
+  if (snz && new Date(snz) > new Date()) return "snoozed";
+  return estados[id] || "pendiente";
+}
+function setEstado(id, nuevo) {
+  if (nuevo === "pendiente") delete estados[id]; else estados[id] = nuevo;
+  delete snoozes[id];
+  save(STATE_KEY, estados); save(SNOOZE_KEY, snoozes);
+  render();
+}
+function snooze(id, dias) {
+  snoozes[id] = new Date(Date.now() + dias * 86400000).toISOString();
+  save(SNOOZE_KEY, snoozes); render();
+}
+function guardarNota(id, t) {
+  if (!t || !t.trim()) delete notas[id]; else notas[id] = t.trim();
+  save(NOTES_KEY, notas); render();
+}
+function editarNota(id) {
+  const n = prompt("Notas para esta licitación:\n(quedan guardadas en este navegador)", notas[id] || "");
+  if (n !== null) guardarNota(id, n);
+}
+function abrirPliegos(id) {
+  const l = LICITACIONES.find(x => x.id === id);
+  if (!l || !l.pliegos_urls || !l.pliegos_urls.length) {
+    alert("Esta licitación no tiene pliegos enlazados.");
+    return;
+  }
+  l.pliegos_urls.forEach(p => window.open(p.url, "_blank"));
+}
+
+function diasRestantes(iso) { return Math.ceil((new Date(iso) - new Date()) / 86400000); }
+function esDeHoy(iso) { return iso && iso.slice(0,10) === new Date().toISOString().slice(0,10); }
+function fmtImporte(n) { return new Intl.NumberFormat("es-ES", { style:"currency", currency:"EUR", maximumFractionDigits:0 }).format(n); }
+function fmtImporteCorto(n) {
+  if (n >= 1000000) return (n/1000000).toFixed(1) + "M €";
+  if (n >= 1000)    return Math.round(n/1000) + "K €";
+  return Math.round(n) + " €";
+}
+function fmtFecha(iso) { return new Date(iso).toLocaleDateString("es-ES", { day:"numeric", month:"long" }); }
+function escapeHtml(s) {
+  return (s || "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function destacar(t) { return escapeHtml(t).replace(KW_REGEX, '<mark class="kw">$1</mark>'); }
+
+function encajeKey(lic)        { return lic.analisis ? lic.analisis.encaje : "sin_analizar"; }
+function encajeBarClass(lic)   { return "bar-" + (lic.analisis ? lic.analisis.encaje : "sin"); }
+function encajeBadgeClass(lic) { return lic.analisis ? "badge-" + lic.analisis.encaje : "badge-sin"; }
+function encajeBadgeTexto(lic) {
+  if (!lic.analisis) return "sin analizar";
+  return `${lic.analisis.encaje} · ${lic.analisis.encaje_score}`;
+}
+function estadoEnCurso(e) { return ["interesa","preparando","presentada"].includes(e); }
+function estadoCerrado(e) { return ["ganada","perdida"].includes(e); }
+
+function tabContiene(estado, lic) {
+  const histo = diasRestantes(lic.fecha_limite) < 0;
+  switch (tabActiva) {
+    case "pendientes":  return estado === "pendiente" && !histo;
+    case "en_curso":    return estadoEnCurso(estado);
+    case "cerradas":    return estadoCerrado(estado);
+    case "descartadas": return estado === "descartada";
+    case "historico":   return histo && !estadoCerrado(estado);
+  }
+  return false;
+}
+
+const TODOS_ESTADOS = [
+  { v: "pendiente",  label: "Pendiente" },
+  { v: "interesa",   label: "★ Me interesa" },
+  { v: "preparando", label: "Preparando oferta" },
+  { v: "presentada", label: "Oferta presentada" },
+  { v: "ganada",     label: "✓ Ganada" },
+  { v: "perdida",    label: "✗ Perdida" },
+  { v: "descartada", label: "Descartada" }
+];
+function selectorEstado(id, actual) {
+  return `<select onchange="setEstado(${id}, this.value)"
+                  class="text-sm px-2 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded">
+    ${TODOS_ESTADOS.map(e => `<option value="${e.v}" ${e.v===actual?"selected":""}>${e.label}</option>`).join("")}
+  </select>`;
+}
+
+function renderCard(lic) {
+  const dias = diasRestantes(lic.fecha_limite);
+  const urgencia = dias < 0 ? "vencida" : dias <= 3 ? "alta" : dias <= 7 ? "media" : "normal";
+  const ringClass = urgencia === "alta" ? "ring-urgent" : urgencia === "media" ? "ring-urgent-mid" : "";
+  const colorDias = dias < 0 ? "text-red-600 dark:text-red-400" : dias <= 3 ? "text-red-600 dark:text-red-400 font-semibold" : dias <= 7 ? "text-orange-600 dark:text-orange-400" : "text-slate-600 dark:text-slate-400";
+  const textoDias = dias < 0 ? "cerrada" : dias === 0 ? "cierra HOY" : dias === 1 ? "1 día" : `${dias} días`;
+  const badgeUrge = urgencia === "alta"
+    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-red-600 text-white">URGE</span>` : "";
+  const badgeNuevo = esDeHoy(lic.fecha_publicacion)
+    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">NUEVO</span>` : "";
+
+  const nPliegos = (lic.pliegos_urls || []).length;
+  const tieneNota = !!notas[lic.id];
+  const estadoActual = estadoDe(lic.id);
+
+  // Bloque de motivo (sólo si hay análisis)
+  const bloqueMotivo = lic.analisis
+    ? `<p class="text-sm text-slate-700 dark:text-slate-300 mb-3 card-motivo">${destacar(lic.analisis.motivo)}</p>`
+    : `<p class="text-sm italic text-indigo-700 dark:text-indigo-300 mb-3 card-motivo">Pendiente de análisis IA. Abre Claude Code para procesar este pliego.</p>`;
+
+  // Bloque desplegable de detalle
+  let bloqueDetalle = "";
+  if (lic.analisis) {
+    const a = lic.analisis;
+    const productos = a.productos_aplicables.length
+      ? a.productos_aplicables.map(p => `<li>${destacar(p)}</li>`).join("")
+      : "<li class='text-slate-400 dark:text-slate-500'>—</li>";
+    const requisitos = a.requisitos_criticos.map(r => `<li>${escapeHtml(r)}</li>`).join("");
+    const banderas = a.banderas_rojas.length
+      ? a.banderas_rojas.map(b => `<li>${escapeHtml(b)}</li>`).join("")
+      : "<li class='text-slate-400 dark:text-slate-500'>Sin banderas rojas.</li>";
+    bloqueDetalle = `
+      <details class="card-detail">
+        <summary class="text-sm text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 inline-flex items-center gap-1 select-none">
+          <span class="chevron">▸</span> Ver detalle
+        </summary>
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-5 text-sm">
+          <div>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-2">Resumen del pliego</h3>
+            <p class="text-slate-700 dark:text-slate-300 leading-relaxed">${destacar(a.resumen)}</p>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-2">Productos aplicables</h3>
+            <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">${productos}</ul>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mb-2">Requisitos críticos</h3>
+            <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">${requisitos}</ul>
+            <h3 class="text-xs font-semibold uppercase text-slate-500 dark:text-slate-400 mt-3 mb-2">Banderas rojas</h3>
+            <ul class="list-disc list-inside text-slate-700 dark:text-slate-300 space-y-1">${banderas}</ul>
+          </div>
+        </div>
+      </details>`;
+  }
+
+  let acciones;
+  if (estadoActual === "pendiente") {
+    acciones = `
+      <button onclick="setEstado(${lic.id}, 'descartada')" class="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition">Descartar</button>
+      <button onclick="snooze(${lic.id}, 1)" class="px-3 py-1.5 text-sm text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded transition" title="La oculto hasta mañana">⏰ Mañana</button>
+      <button onclick="setEstado(${lic.id}, 'interesa')" class="px-4 py-1.5 text-sm font-medium bg-emerald-600 text-white hover:bg-emerald-700 rounded transition">★ Me interesa</button>`;
+  } else {
+    acciones = selectorEstado(lic.id, estadoActual);
+  }
+
+  return `
+    <article class="fade-in bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition overflow-hidden ${ringClass}" data-id="${lic.id}">
+      <div class="h-1 ${encajeBarClass(lic)}"></div>
+      <div class="p-5">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1 flex-wrap">
+              <span class="text-xs font-semibold uppercase tracking-wide px-2 py-0.5 rounded ${encajeBadgeClass(lic)}">${encajeBadgeTexto(lic)}</span>
+              ${badgeNuevo}
+              ${badgeUrge}
+              <span class="text-xs text-slate-500 dark:text-slate-400">${escapeHtml(lic.expediente)}</span>
+              <span class="text-xs text-slate-400">·</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">${escapeHtml(lic.municipio || "?")} (${escapeHtml(lic.provincia || "?")})</span>
+              <span class="text-xs text-slate-400">·</span>
+              <span class="text-xs text-slate-500 dark:text-slate-400">CPV ${escapeHtml(lic.cpv || "?")}</span>
+              ${tieneNota ? `<span class="text-xs text-amber-700 dark:text-amber-300 bg-amber-50 dark:bg-amber-900/30 px-1.5 py-0.5 rounded">📝 nota</span>` : ""}
+            </div>
+            <h2 class="font-semibold text-slate-900 dark:text-slate-100 text-base leading-tight">${destacar(lic.objeto)}</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(lic.organo)}</p>
+          </div>
+          <div class="text-right shrink-0">
+            <div class="text-xl font-bold tabular-nums">${fmtImporte(lic.importe_sin_iva)}</div>
+            <div class="text-xs ${colorDias}">${textoDias} · ${fmtFecha(lic.fecha_limite)}</div>
+          </div>
+        </div>
+
+        ${bloqueMotivo}
+
+        ${tieneNota ? `<div class="mb-3 text-sm bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-900/50 rounded px-3 py-2 text-amber-900 dark:text-amber-200"><strong class="text-xs uppercase tracking-wide">Nota:</strong> ${escapeHtml(notas[lic.id])}</div>` : ""}
+
+        ${bloqueDetalle}
+
+        <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2 flex-wrap card-actions-secondary">
+          <div class="flex items-center gap-2 flex-wrap">
+            <a href="${lic.enlace_placsp}" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded transition">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Ver en PLACSP
+            </a>
+            <button onclick="abrirPliegos(${lic.id})"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded transition">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              Pliegos (${nPliegos})
+            </button>
+            <button onclick="editarNota(${lic.id})"
+                    class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded transition">
+              📝 ${tieneNota ? "Editar nota" : "Añadir nota"}
+            </button>
+          </div>
+          <div class="flex items-center gap-2">${acciones}</div>
+        </div>
+      </div>
+    </article>`;
+}
+
+function coincide(lic) {
+  if (filtroEncaje !== "todos") {
+    const ek = encajeKey(lic);
+    if (filtroEncaje !== ek) return false;
+  }
+  if (filtroProvincia !== "todas" && lic.provincia !== filtroProvincia) return false;
+  if (filtroPlazo !== "todos") {
+    const d = diasRestantes(lic.fecha_limite);
+    if (d < 0 || d > parseInt(filtroPlazo, 10)) return false;
+  }
+  if (filtroBusqueda) {
+    const q = filtroBusqueda.toLowerCase();
+    const hay =
+      (lic.objeto || "").toLowerCase().includes(q) ||
+      (lic.organo || "").toLowerCase().includes(q) ||
+      (lic.expediente || "").toLowerCase().includes(q) ||
+      (lic.cpv || "").includes(q) ||
+      (lic.municipio || "").toLowerCase().includes(q);
+    if (!hay) return false;
+  }
+  return true;
+}
+
+function render() {
+  document.getElementById("fecha-hoy").textContent =
+    new Date().toLocaleDateString("es-ES", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+
+  const total = LICITACIONES.length;
+  const sinAnalizar = LICITACIONES.filter(l => !l.analisis).length;
+  const enCurso = LICITACIONES.filter(l => estadoEnCurso(estadoDe(l.id))).length;
+  const urgentes = LICITACIONES.filter(l => {
+    const d = diasRestantes(l.fecha_limite);
+    return d >= 0 && d <= 7 && estadoDe(l.id) !== "descartada";
+  }).length;
+  const importeTotal = LICITACIONES.filter(l => estadoEnCurso(estadoDe(l.id))).reduce((s, l) => s + (l.importe_sin_iva || 0), 0);
+  document.getElementById("kpi-total").textContent = total;
+  document.getElementById("kpi-sin-analizar").textContent = sinAnalizar;
+  document.getElementById("kpi-en-curso").textContent = enCurso;
+  document.getElementById("kpi-urgentes").textContent = urgentes;
+  document.getElementById("kpi-importe").textContent = importeTotal > 0 ? fmtImporteCorto(importeTotal) : "—";
+
+  const counts = { pendientes: 0, en_curso: 0, cerradas: 0, descartadas: 0, historico: 0 };
+  for (const lic of LICITACIONES) {
+    const est = estadoDe(lic.id);
+    const histo = diasRestantes(lic.fecha_limite) < 0;
+    if (est === "pendiente" && !histo) counts.pendientes++;
+    if (estadoEnCurso(est)) counts.en_curso++;
+    if (estadoCerrado(est)) counts.cerradas++;
+    if (est === "descartada") counts.descartadas++;
+    if (histo && !estadoCerrado(est)) counts.historico++;
+  }
+  document.getElementById("count-pendientes").textContent = counts.pendientes;
+  document.getElementById("count-en-curso").textContent = counts.en_curso;
+  document.getElementById("count-cerradas").textContent = counts.cerradas;
+  document.getElementById("count-descartadas").textContent = counts.descartadas;
+  document.getElementById("count-historico").textContent = counts.historico;
+
+  let visibles = LICITACIONES.filter(l => tabContiene(estadoDe(l.id), l) && coincide(l));
+  // Orden: primero por urgencia ≤7d, luego por encaje_score, luego sin_analizar al final
+  visibles.sort((a, b) => {
+    const da = diasRestantes(a.fecha_limite), db = diasRestantes(b.fecha_limite);
+    if (da >= 0 && db >= 0 && Math.min(da, db) <= 7 && da !== db) return da - db;
+    const sa = a.analisis ? a.analisis.encaje_score : -1;
+    const sb = b.analisis ? b.analisis.encaje_score : -1;
+    if (sa !== sb) return sb - sa;
+    return (b.importe_sin_iva || 0) - (a.importe_sin_iva || 0);
+  });
+
+  const lista = document.getElementById("lista");
+  const vacio = document.getElementById("vacio");
+  if (visibles.length === 0) {
+    lista.innerHTML = "";
+    vacio.classList.remove("hidden");
+  } else {
+    vacio.classList.add("hidden");
+    lista.innerHTML = visibles.map(renderCard).join("");
+  }
+
+  const tabla = document.getElementById("tabla-resumen");
+  if (visibles.length === 0) {
+    tabla.innerHTML = `<p class="text-slate-400 dark:text-slate-500">Sin datos.</p>`;
+  } else {
+    tabla.innerHTML = visibles.map(l => {
+      const d = diasRestantes(l.fecha_limite);
+      const c = d <= 3 ? "text-red-600 dark:text-red-400" : d <= 7 ? "text-orange-600 dark:text-orange-400" : "text-slate-500 dark:text-slate-400";
+      const score = l.analisis ? `encaje ${l.analisis.encaje_score}` : "sin analizar";
+      return `
+        <a href="#" onclick="event.preventDefault();document.querySelector('article[data-id=\\'${l.id}\\']').scrollIntoView({behavior:'smooth',block:'center'})"
+           class="block hover:bg-slate-50 dark:hover:bg-slate-800 rounded p-1.5 -mx-1.5 transition">
+          <div class="flex items-center justify-between gap-2">
+            <span class="font-medium truncate flex-1">${escapeHtml(l.municipio || '?')}</span>
+            <span class="tabular-nums shrink-0">${fmtImporteCorto(l.importe_sin_iva || 0)}</span>
+          </div>
+          <div class="${c} text-[10px]">${d < 0 ? "cerrada" : d + "d"} · ${score}</div>
+        </a>`;
+    }).join("");
+  }
+
+  // Footer info
+  if (META && META.generado_en) {
+    document.getElementById("footer-info").textContent =
+      `Regenerado ${new Date(META.generado_en).toLocaleString("es-ES")} · ${META.total_db || 0} licitaciones en BD · ${total} candidatas vivas`;
+  }
+}
+
+// === BINDINGS ===
+function activarPill(g, v, c) {
+  document.querySelectorAll(`.${c}`).forEach(b => { b.classList.remove("pill-on"); b.classList.add("pill-off"); });
+  const s = document.querySelector(`.${c}[data-${g}="${v}"]`);
+  if (s) { s.classList.add("pill-on"); s.classList.remove("pill-off"); }
+}
+document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".tab").forEach(t => {
+    t.classList.remove("border-emerald-600", "text-emerald-700", "dark:text-emerald-400");
+    t.classList.add("border-transparent", "text-slate-500", "dark:text-slate-400");
+  });
+  b.classList.add("border-emerald-600", "text-emerald-700", "dark:text-emerald-400");
+  b.classList.remove("border-transparent", "text-slate-500", "dark:text-slate-400");
+  tabActiva = b.dataset.tab;
+  render();
+}));
+document.querySelectorAll(".filter-encaje").forEach(b => b.addEventListener("click", () => {
+  filtroEncaje = b.dataset.encaje; activarPill("encaje", filtroEncaje, "filter-encaje"); render();
+}));
+document.querySelectorAll(".filter-plazo").forEach(b => b.addEventListener("click", () => {
+  filtroPlazo = b.dataset.plazo; activarPill("plazo", filtroPlazo, "filter-plazo"); render();
+}));
+document.querySelectorAll(".filter-provincia").forEach(b => b.addEventListener("click", () => {
+  filtroProvincia = b.dataset.provincia; activarPill("provincia", filtroProvincia, "filter-provincia"); render();
+}));
+document.getElementById("busqueda").addEventListener("input", e => { filtroBusqueda = e.target.value.trim(); render(); });
+
+document.getElementById("btn-compacto").addEventListener("click", () => {
+  prefs.compacto = !prefs.compacto;
+  document.body.classList.toggle("compacto", prefs.compacto);
+  save(PREFS_KEY, prefs);
+});
+
+function aplicarTema() { document.documentElement.classList.toggle("dark", prefs.dark === true); }
+document.getElementById("btn-dark").addEventListener("click", () => { prefs.dark = !prefs.dark; aplicarTema(); save(PREFS_KEY, prefs); });
+
+document.getElementById("btn-export").addEventListener("click", () => { window.print(); });
+
+if (prefs.compacto) document.body.classList.add("compacto");
+aplicarTema();
+render();
+</script>
+</body>
+</html>

@@ -146,8 +146,6 @@ def reaplicar_filtros(conn: sqlite3.Connection) -> dict[str, int]:
 
     Devuelve diccionario con conteos {antes_pasaban, ahora_pasan, ...}.
     """
-    from src.modelos import Documento  # noqa: F401 — no usado aquí, mantengo importable
-
     filas = conn.execute(
         "SELECT id, uuid_placsp, expediente, objeto, cpv_principal, "
         "importe_sin_iva, importe_con_iva, provincia, fecha_limite_presentacion, "
