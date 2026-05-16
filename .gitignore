@@ -1,0 +1,44 @@
+# --- Datos y secretos ---
+.env
+.env.local
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# --- Datos descargados (no versionar) ---
+data/zips/
+data/pliegos/
+data/licitaciones.db
+
+# --- Logs ---
+logs/
+*.log
+
+# --- Catálogo de la empresa (PDF grande, no versionar) ---
+prompts/catalogo_empresa.pdf
+prompts/catalogo_empresa.txt
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
