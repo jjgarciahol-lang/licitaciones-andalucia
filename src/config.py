@@ -87,21 +87,61 @@ PROVINCIAS_PERMITIDAS = {
     _normalizar(p) for p in _env("PROVINCIAS_PERMITIDAS", _PROVINCIAS_DEFAULT).split(",") if p.strip()
 }
 
-# Lista provisional de CPVs relevantes (mobiliario urbano, parques infantiles, material escolar).
-# Se evalúan como prefijos: un CPV de la licitación es relevante si EMPIEZA por alguno de éstos.
-# Pendiente: sustituir por la lista definitiva que pase el usuario.
+# CPVs relevantes para el catálogo (mobiliario urbano, parques infantiles,
+# material escolar y áreas afines). Se evalúan como PREFIJOS: un CPV de la
+# licitación pasa el filtro si EMPIEZA por alguno de los strings de aquí.
+#
+# Filosofía: somos generosos en el filtro CPV para no perder licitaciones que
+# las administraciones etiquetan con códigos genéricos (39100, 45236...). El
+# análisis posterior con Claude se encarga de descartar las que no encajan
+# realmente con el catálogo de la empresa.
 CPVS_RELEVANTES: tuple[str, ...] = (
-    "34928",   # Mobiliario urbano (bancos, papeleras, marquesinas, jardineras, aparcabicis...)
-    "37535",   # Equipamiento para parques infantiles
-    "37440",   # Equipos de fitness / aparatos biosaludables
-    "37410",   # Equipos para deportes al aire libre
-    "37416",   # Equipos de ocio
-    "39160",   # Mobiliario escolar
-    "39161",   # Mobiliario para guarderías
-    "39162",   # Equipamiento didáctico
-    "44112",   # Diversos elementos de construcción (a veces parques)
-    "45112723",  # Trabajos de paisajismo de zonas de juego
-    "45236210",  # Pavimentación de zonas de juego infantiles
+    # --- Mobiliario urbano (núcleo del catálogo) ----------------------------
+    "34928",     # 34928xxx — Mobiliario urbano: bancos, papeleras, jardineras,
+                 # vallas, barandillas, marquesinas, aparcabicis, fuentes,
+                 # señalización vertical, contenedores, etc.
+
+    # --- Parques infantiles (núcleo del catálogo) ---------------------------
+    "37535",     # 37535xxx — Equipos para áreas de juego infantil: columpios,
+                 # toboganes, balancines, carruseles, casitas, etc.
+    "43325",     # 43325xxx — Equipamiento para parques y zonas de juego
+                 # (algunos órganos lo prefieren a 37535).
+
+    # --- Aparatos biosaludables / deporte al aire libre ---------------------
+    "37440",     # 37440xxx — Equipos de fitness (biosaludables exteriores).
+    "37441",     # 37441xxx — Equipos de aeróbic.
+    "37442",     # 37442xxx — Bancos de musculación / pesas.
+    "37410",     # 37410xxx — Equipos para deportes al aire libre.
+    "37451",     # 37451xxx — Equipos para deportes de campo (porterías,
+                 # canastas exteriores, etc.).
+    "37416",     # 37416xxx — Equipos de ocio.
+
+    # --- Pavimentación y obra asociada a parques/áreas deportivas -----------
+    "45236210",  # Pavimentación de zonas de juego infantil (caucho, etc.).
+    "45236200",  # Pavimentación de instalaciones deportivas.
+    "45112723",  # Trabajos de paisajismo en zonas de juego.
+
+    # --- Material y mobiliario escolar (núcleo del catálogo) ----------------
+    "39160",     # 39160xxx — Mobiliario escolar (mesas, sillas, pizarras,
+                 # armarios, taquillas, gradas escolares).
+    "39161",     # 39161xxx — Mobiliario para guarderías / educación infantil.
+    "39162",     # 39162xxx — Equipo educativo, equipo pedagógico, material
+                 # didáctico, material escolar.
+    "39163",     # 39163xxx — Mobiliario y equipos escolares varios.
+
+    # --- Mobiliario general (a menudo cubre nuestras categorías) ------------
+    # Estos prefijos son amplios y traerán "ruido" — pero también traerán
+    # licitaciones de mobiliario urbano / escolar etiquetadas de forma
+    # genérica. El filtro IA depura.
+    "39100",     # Mobiliario general.
+    "39110",     # Asientos, sillas (escolares, bancos, etc.).
+    "39120",     # Mesas, armarios, escritorios, estanterías.
+    "39150",     # Mobiliario y equipo diverso.
+    "39151",     # Mobiliario diverso (muy común para mobiliario urbano).
+
+    # --- Material de oficina/papelería (colegios y centros educativos) ------
+    "30192",     # Material de oficina (en lotes para colegios).
+    "30190",     # Material de oficina diverso.
 )
 
 # --- IA -----------------------------------------------------------------------
