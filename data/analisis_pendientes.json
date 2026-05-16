@@ -1,0 +1,358 @@
+[
+  {
+    "licitacion_id": 4371,
+    "encaje": "alto",
+    "encaje_score": 92,
+    "motivo": "Suministro e instalación de un parque infantil completo con tirolina, rocódromo, columpios, carrusel, balancín y cabaña-rocódromo. Cada uno de esos elementos figura como familia propia en el catálogo de Higiofi.",
+    "resumen": "Ayuntamiento de Beas de Granada. Suministro e instalación de equipamiento para el parque periurbano 'El Ejido'. Atracciones requeridas: tirolina de 25 m, rocódromo 4 m² (5 niños), red giratoria Ø2200×1900 mm, columpio triple (bebé+plano+cesta adaptada), cabaña-rocódromo 3 m², carrusel giratorio Ø1,25 m (6 niños), balancín 2,50 m (4 niños) y cartelería. Plazo de ejecución 1 mes; garantía 2 años; repuestos 10 años.",
+    "productos_aplicables": [
+      "Columpios (columpio triple bebé+plano+cesta adaptada)",
+      "Rocódromos y Escalada (rocódromo 4 m²)",
+      "Muelles y Balancines (balancín 2,5 m, 4 niños)",
+      "Carruseles (carrusel giratorio Ø1,25 m)",
+      "Juegos Infantiles (tirolina, red giratoria, cabaña-rocódromo)",
+      "Cartelería de parque infantil"
+    ],
+    "requisitos_criticos": [
+      "Certificados de conformidad UNE-EN 1176 y UNE-EN 1177 para todos los elementos",
+      "Cumplimiento del Decreto 127/2001 de Andalucía sobre seguridad en parques infantiles",
+      "Materiales: madera tratada en autoclave anti hongos/insectos, metal galvanizado/inox, tornillería antivandálica, plásticos anti-UV",
+      "Plan de seguridad y salud aprobado más coordinador RD 1627/1997 a cargo del adjudicatario",
+      "Disponibilidad de repuestos durante 10 años tras descatalogación"
+    ],
+    "banderas_rojas": [
+      "Plazo de ejecución de sólo 1 mes para suministrar e instalar todo el parque — verificar disponibilidad inmediata de stock",
+      "El Ayuntamiento prepara el suelo pero el anclaje y la instalación van por cuenta del adjudicatario — incluir coste de cuadrilla y desplazamiento a Beas de Granada"
+    ]
+  },
+  {
+    "licitacion_id": 3304,
+    "encaje": "ninguno",
+    "encaje_score": 5,
+    "motivo": "Contrato de servicio recurrente de alquiler+logística (transporte, montaje y desmontaje) durante 4 años, no un suministro permanente. Higiofi vende equipamiento; no opera flota de alquiler con desplazamientos por evento.",
+    "resumen": "Ayuntamiento de Chipiona (Cádiz). Suministro mediante alquiler de sillas y mesas para procesos selectivos, entre 75 y 1.000 unidades por evento. El adjudicatario asume provisión, transporte, montaje y desmontaje. Duración 4 años. Adjudicación por suma de precios unitarios.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Modelo de alquiler temporal recurrente, no de venta",
+      "Capacidad de flota necesaria: hasta 1.000 mesas y 1.000 sillas por evento"
+    ],
+    "banderas_rojas": [
+      "Higiofi vende mobiliario, no lo alquila — incompatible con el modelo de negocio",
+      "Contrato de 4 años con servicios de logística asociados que requieren personal de montaje"
+    ]
+  },
+  {
+    "licitacion_id": 723,
+    "encaje": "bajo",
+    "encaje_score": 25,
+    "motivo": "Suministro de señalización vial de carretera homologada según Norma 8.1-IC y PG-3 (señales retrorreflectantes para tráfico), no señalización urbana decorativa. Higiofi vende cartelería de parque y señalización urbana, pero la señalización vial homologada requiere certificaciones específicas (UNE-EN 12899-1, RA1/RA2/RA3) que no son su core.",
+    "resumen": "Sociedad pública Desarrollo Urbanístico de El Ejido S.L. (Almería). Acuerdo de suministro de material de señalización vertical para tráfico (señales fijas de circulación) con marcado CE según UNE-EN 12899-1. Precios unitarios sobre un Anexo II de materiales. El adjudicatario debe ofertar todos los materiales del anexo, comprometiéndose a su suministro (o por reventa si no es fabricante).",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Marcado CE según UNE-EN 12899-1 obligatorio",
+      "Materiales retrorreflectantes RA1/RA2/RA3 con declaración de prestaciones",
+      "Estructura portante según UNE-EN 1090-1 (tabla ZA.3)",
+      "Plazo de entrega 5 días por pedido"
+    ],
+    "banderas_rojas": [
+      "Sector de señalización vial muy específico — competencia con fabricantes especializados (Hierros y Aceros del Sur, ICR, Innomarketing, etc.)",
+      "Acuerdo plurianual con precios unitarios — requiere mantener stock y respuesta rápida durante toda la vigencia",
+      "Sujeto a regulación armonizada (SARA) — más exigencias administrativas"
+    ]
+  },
+  {
+    "licitacion_id": 2190,
+    "encaje": "alto",
+    "encaje_score": 78,
+    "motivo": "Suministro e instalación de vallado de cerramiento urbano metálico (perfil U, color imitación acero corten, 2 m de altura, 730 m lineales). Encaja con la familia 'Mobiliario Urbano > Seguridad y Protección' y 'Vallas Infantiles' del catálogo Higiofi (vallado urbano metálico tratado anticorrosión).",
+    "resumen": "Ayuntamiento de Níjar (Almería). Sustitución del vallado de cerramiento del Parque Los Olivicos en Campohermoso (730 m lineales). Comprende desmontaje del vallado existente, picado y regularización del murete de hormigón, colocación de vierteaguas metálico galvanizado, montaje del vallado nuevo (perfil acero en U, lacado color imitación acero corten, altura 2 m) y pintura silicato. Plazo 3 meses. Garantía 5 años anticorrosión. Financiado con FEDER (Plan Acción Integrado 'Níjar para Convivir').",
+    "productos_aplicables": [
+      "Vallado metálico urbano lacado",
+      "Vallas Infantiles / Seguridad y Protección",
+      "Madera Tratada para Exterior (acabado imitación acero corten en metal)"
+    ],
+    "requisitos_criticos": [
+      "Garantía 5 años anticorrosión",
+      "Trabajos previos de albañilería (picado de murete, mortero de regularización, vierteaguas, pintura silicato) — requiere subcontrata de obra menor",
+      "Programa de Trabajo, Plan de Mantenimiento y Plan de Seguridad y Salud antes del inicio",
+      "Coordinador de seguridad con formación específica y recurso preventivo presencial",
+      "Cumplimiento de las normas FEDER (trazabilidad de gastos, identidad gráfica del fondo)"
+    ],
+    "banderas_rojas": [
+      "Obra de albañilería previa significativa — comprobar capacidad propia o subcontratación fiable",
+      "Plazo 3 meses razonable pero con dependencias en obra civil — coordinar bien",
+      "Financiación FEDER implica controles administrativos más exigentes en facturación y justificación"
+    ]
+  },
+  {
+    "licitacion_id": 2826,
+    "encaje": "ninguno",
+    "encaje_score": 5,
+    "motivo": "Renting (NO venta) de 30 contenedores iglú industriales de 2.700 L con sistema de enganche ZETA F90 para carga bilateral robotizada, más mantenimiento de 90 contenedores existentes durante 48 meses. Es ingeniería específica de gestión de residuos urbanos (Contenur, Plastic Omnium, Formato Verde), totalmente fuera del catálogo de Higiofi.",
+    "resumen": "Ayuntamiento de Castilleja de la Cuesta (Sevilla). Contrato mixto de renting con mantenimiento de 30 contenedores tipo iglú ZETA F90 para fracción resto, más mantenimiento preventivo y correctivo de 90 contenedores existentes. Duración 48 meses. Compatibilidad obligatoria con camión recolector municipal de carga bilateral superior con grúa robotizada. Valor estimado 87.840 € sin IVA con opción de compra residual del 1%.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Modelo de negocio: renting con mantenimiento mensual, no venta",
+      "Tecnología específica ZETA F90 / grúa robotizada — sólo proveedores especializados",
+      "Mantenimiento preventivo + correctivo con plazos críticos de respuesta (24h crítica, 48h funcional)"
+    ],
+    "banderas_rojas": [
+      "Higiofi no fabrica contenedores industriales de gran capacidad con sistemas hidráulicos",
+      "Contrato a 4 años con SLA estrictos y partes de trabajo mensuales",
+      "Mercado dominado por fabricantes especializados (Contenur, Sotkon, Plastic Omnium)"
+    ]
+  },
+  {
+    "licitacion_id": 4750,
+    "encaje": "ninguno",
+    "encaje_score": 10,
+    "motivo": "Contrato basado en Acuerdo Marco estatal AM 01/2024 de mobiliario. Sólo pueden ofertar las empresas previamente seleccionadas en ese AM por la Dirección General de Racionalización y Centralización de la Contratación. Higiofi tendría que estar adherida al AM 01/2024 lote 3 (sillas de trabajo de oficina) para poder presentarse. Además son sillas ergonómicas profesionales (Steelcase/Herman Miller-tier), no mobiliario escolar.",
+    "resumen": "TGSS Dirección Provincial de Sevilla. Suministro de 400 sillas ergonómicas de trabajo profesional (giratorias 360°, base 5 apoyos, malla técnica, asiento tapizado >80.000 ciclos abrasión, regulables, brazos ajustables). Contrato basado en el Acuerdo Marco 01/2024 lote 3 'Sillas de trabajo de oficina'. Incluye retirada de 100 sillas a sustituir. Importe 80.000 € sin IVA.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Adhesión obligatoria al Acuerdo Marco 01/2024 (DGRCC) — sólo empresas seleccionadas pueden ofertar",
+      "Sillas ergonómicas profesionales con normativa específica (>80.000 ciclos abrasión, gas con vástago de acero reforzado, etc.)",
+      "Muestra física para validación tras adjudicación provisional"
+    ],
+    "banderas_rojas": [
+      "Si Higiofi no está dentro del AM 01/2024 lote 3, no puede presentarse — verificar antes de invertir tiempo",
+      "Sillas ergonómicas profesionales no son producto principal del catálogo (Higiofi orientado a mobiliario escolar/urbano)"
+    ]
+  },
+  {
+    "licitacion_id": 3199,
+    "encaje": "ninguno",
+    "encaje_score": 5,
+    "motivo": "Suministro, transporte y montaje de 33 contenedores soterrados hidráulicos para residuos urbanos (plataforma elevable, sistema hidráulico Directiva Máquinas 2006/42/CE, buzones acero inoxidable AISI-316). Ingeniería industrial de gestión de residuos completamente fuera del catálogo Higiofi.",
+    "resumen": "Empresa Provincial de Residuos y Medio Ambiente SA (EPREMASA, Córdoba). Suministro de 33 contenedores soterrados hidráulicos completos para Baena: estructura galvanizada, plataforma elevable hidráulica, tapas con resistencia 3.500 kg, buzones de acero inox AISI-316, sistema hidráulico con bomba para 4 contenedores de 1.000-1.100 L. Obra civil por cuenta del Ayuntamiento; transporte y montaje por cuenta del adjudicatario. Garantía 3 años.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Cumplimiento Directiva Máquinas 2006/42/CE (sistema hidráulico)",
+      "UNE-EN 1570 (mesas elevadoras)",
+      "Acero inoxidable AISI-316 en buzones"
+    ],
+    "banderas_rojas": [
+      "Sector industrial dominado por Sotkon, Contenur, Formato Verde — barreras técnicas y de homologación altas",
+      "Sistema hidráulico Directiva Máquinas — requiere declaración CE de máquinas elevadoras"
+    ]
+  },
+  {
+    "licitacion_id": 3436,
+    "encaje": "medio",
+    "encaje_score": 55,
+    "motivo": "Suministro a demanda de material de oficina y papelería en 3 lotes durante 2+2 años. Los lotes 1 (material de oficina ordinario) y 3 (papelería, impresos, sobres, carpetas, folios) encajan con la línea de papelería del catálogo Higiofi. El lote 2 (tóner, tambores, consumibles informáticos) queda fuera.",
+    "resumen": "Ayuntamiento de Castilleja de la Cuesta (Sevilla). Tres lotes: (1) material oficina ordinario, (2) consumibles informáticos, (3) material de papelería, impresos, sobres y carpetas. Suministro a demanda con precios unitarios y entregas sucesivas. Duración 2 años + 2 prórrogas anuales. Adjudicación por procedimiento abierto simplificado.",
+    "productos_aplicables": [
+      "Papelería: sobres, carpetas, folios, impresos (lote 3)",
+      "Material de oficina ordinario: archivo, encuadernación, escritura (lote 1)"
+    ],
+    "requisitos_criticos": [
+      "División en lotes — se puede ofertar a lotes 1 y 3 únicamente",
+      "Suministro a demanda durante 4 años — requiere logística mantenida y stock permanente",
+      "Precios unitarios contractuales con bajas aplicadas — margen muy ajustado típicamente"
+    ],
+    "banderas_rojas": [
+      "Competencia fuerte con suministradores generalistas de papelería (Lyreco, Office Depot, El Corte Inglés Empresas)",
+      "Margen de papelería tradicionalmente bajo en este tipo de contratos de larga duración"
+    ]
+  },
+  {
+    "licitacion_id": 5805,
+    "encaje": "ninguno",
+    "encaje_score": 5,
+    "motivo": "Suministro de electrodomésticos y mobiliario de cocina industrial profesional (cocinas a gas, paellero, horno mixto, plancha, freidora, lavadoras y secadora industriales, planchadora con rodillo, barbacoa de piedra volcánica). Es equipamiento de hostelería profesional, fuera del catálogo Higiofi.",
+    "resumen": "Centro Deportivo y Sociocultural de la Armada de Oficiales en San Fernando (Cádiz). Suministro de 18 artículos para cocina industrial: cocina a gas, paellero, horno mixto, fregaderos, barbacoa piedra volcánica, planchas, freidora, lavadoras industriales antiarrugas, planchadora con rodillo, fuentes de agua, etc. Garantía 3 años. CPV 39314000 (equipo cocinas industriales).",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Equipos profesionales de hostelería con homologaciones específicas",
+      "Garantía 3 años desde recepción"
+    ],
+    "banderas_rojas": [
+      "Sector hostelería profesional (Fagor Industrial, Repagas, Mainho) — fuera del ámbito Higiofi"
+    ]
+  },
+  {
+    "licitacion_id": 2868,
+    "encaje": "alto",
+    "encaje_score": 82,
+    "motivo": "Suministro de pasarelas articuladas de madera tratada (pino silvestre autoclave clase 4) para acceso peatonal a playa. El catálogo Higiofi incluye 'Madera Tratada para Exterior' como familia propia dentro de Mobiliario Urbano. Es producto típico de mobiliario urbano-litoral.",
+    "resumen": "Ayuntamiento de Huelva. Suministro de 550,85 m lineales de pasarela articulada de madera (duelas 1500×95×33 mm de pino silvestre tratado en autoclave clase 4) + 100 listones + 50 postes cilindrados, para accesos peatonales a la Playa Paraje Natural Marismas del Odiel. Plazo 6 semanas. CPV 34928400 Mobiliario Urbano + 03419100 Productos de madera.",
+    "productos_aplicables": [
+      "Madera Tratada para Exterior (pasarelas, listones, postes)",
+      "Mobiliario Urbano de madera para entorno natural"
+    ],
+    "requisitos_criticos": [
+      "Madera de pino silvestre calidad V tratada en autoclave clase de uso 4",
+      "Tratamientos: cepillado, cantos redondeados, lasur color, grabado 'Ayuntamiento de Huelva'",
+      "Trabajos en espacio natural protegido (Paraje Natural Marismas del Odiel) — uso de medios manuales o maquinaria ligera, sin alterar sistemas dunares"
+    ],
+    "banderas_rojas": [
+      "Plazo corto (6 semanas) para fabricación de pasarelas a medida",
+      "Restricciones ambientales del Paraje Natural (Marismas del Odiel es Reserva de la Biosfera y Lugar Ramsar)"
+    ]
+  },
+  {
+    "licitacion_id": 263,
+    "encaje": "medio",
+    "encaje_score": 55,
+    "motivo": "Suministro mixto: material de oficina, tóneres, mobiliario (incluido oficina), complementos, placas conmemorativas y regalos. Higiofi puede atender mobiliario y papelería pero no tóneres ni regalos/premios. CPVs cubren mobiliario (39100/39110/39200) que sí encaja con catálogo Higiofi.",
+    "resumen": "Ayuntamiento de Algeciras (Cádiz) — Almacén Municipal. Suministro a demanda de productos de oficina, tóneres, mobiliario y complementos, placas conmemorativas, etc. para distribución a todas las dependencias municipales. Adjudicación por mejor calidad-precio. Importe 39.974 € sin IVA. CPVs múltiples: 30192000 (oficina), 30125100 (tóner), 39000000/39100000/39110000/39200000 (mobiliario y complementos), 18530000 (regalos/premios).",
+    "productos_aplicables": [
+      "Mobiliario y complementos (CPV 39100/39200) — sillas, mesas, taquillas, archivos",
+      "Material de oficina y papelería"
+    ],
+    "requisitos_criticos": [
+      "Catálogo muy amplio que combina familias muy distintas — competencia con generalistas",
+      "Inscripción en ROLECE obligatoria",
+      "Condición especial de ejecución sobre reciclaje y gestión de residuos"
+    ],
+    "banderas_rojas": [
+      "Tóneres y placas conmemorativas fuera de catálogo — necesario subcontratar o aliarse",
+      "Suministro a demanda con descuento aplicado a todos los precios — margen ajustado"
+    ]
+  },
+  {
+    "licitacion_id": 5103,
+    "encaje": "medio",
+    "encaje_score": 60,
+    "motivo": "Dos lotes diferenciados. Lote 1 (mobiliario interior + bancos + cubos basura) encaja muy bien con el catálogo Higiofi (Mobiliario de Interior + Bancos). Lote 2 (2 bicis elípticas, 2 estáticas indoor, 2 cintas de correr indoor) es material de gimnasio interior profesional, fuera del catálogo (Higiofi tiene biosaludables al aire libre, no equipos indoor).",
+    "resumen": "Centro Deportivo y Sociocultural de la Armada en San Fernando (Cádiz). Lote 1: 200 sillones, 200 sillas, 175 mesas, 30 tumbonas, 4 bancos, 6 cubos de basura, 6 baúles, 281 cojines (CPV 39100000 Mobiliario). Lote 2: 2 bicicletas elípticas, 2 estáticas indoor, 2 cintas de correr (CPV 37441100/37441300 material deportivo). Garantía 3 años. No se admiten entregas parciales.",
+    "productos_aplicables": [
+      "Mobiliario de Interior: sillas, mesas, tumbonas, sillones (lote 1)",
+      "Bancos urbanos (lote 1)",
+      "Papeleras / cubos de basura (lote 1)"
+    ],
+    "requisitos_criticos": [
+      "División por lotes — se puede ofertar sólo al lote 1 si no se cubre el material deportivo indoor",
+      "No se admiten entregas parciales — todo el lote completo de una vez",
+      "Garantía 3 años"
+    ],
+    "banderas_rojas": [
+      "Lote 2 (cintas de correr indoor, bicis estáticas indoor) totalmente fuera de catálogo Higiofi — no abarcable",
+      "Plazo de entrega ofertable en el AM y crítico — verificar capacidad de stock para 850+ unidades de mobiliario interior"
+    ]
+  },
+  {
+    "licitacion_id": 4274,
+    "encaje": "bajo",
+    "encaje_score": 20,
+    "motivo": "Suministro de 13 postes tubulares octogonales de 10 m de altura para soporte de iluminación ornamental, fabricados según UNE-EN 40-5 en acero S500MC galvanizado tricapa. Es industria especializada de columnas de alumbrado público (Salvi, Carandini, Schreder), no mobiliario urbano genérico. Aunque comparte sector con Higiofi (mobiliario urbano), los postes de electrificación requieren cálculos estructurales y certificación específica.",
+    "resumen": "Ayuntamiento de Fuengirola (Málaga). Suministro de 13 apoyos de electrificación tubulares octogonales tipo CH-400 (10 m altura, 400 daN esfuerzo en punta) para soporte de iluminación ornamental. Acero S500MC alta resistencia, galvanizado por inmersión + pintura tricapa, antigrafitis hasta 2 m, garantía 10 años anticorrosión clase C5. Plazo 65 días naturales improrrogables.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Norma UNE-EN 40-5 (postes para alumbrado público)",
+      "Cálculo estructural para viento 28 m/s",
+      "Galvanizado UNE-EN ISO 1461 (>72 µm) y garantía clase C5 durante 120 meses",
+      "Sistema de pintura tricapa termolacada RAL 9007"
+    ],
+    "banderas_rojas": [
+      "Sector dominado por fabricantes especializados de postes (Salvi, Schreder, Carandini, Indalux)",
+      "Plazo improrrogable 65 días naturales — fabricación a medida con homologación",
+      "Higiofi no es fabricante de columnas de alumbrado homologadas"
+    ]
+  },
+  {
+    "licitacion_id": 4940,
+    "encaje": "medio",
+    "encaje_score": 50,
+    "motivo": "Suministro de material de papelería y oficina (fungible y consumible) para la empresa pública LIMASAM. Encaja parcialmente con la línea de papelería del catálogo Higiofi, pero la mayor parte del listado (39 páginas) probablemente incluya tóner, consumibles informáticos y artículos de oficina muy diversos que entran en competencia con generalistas.",
+    "resumen": "Limpieza de Málaga S.A.M. (LIMASAM). Suministro de material fungible y consumible de papelería y oficina por tracto sucesivo. Exigencia de marca reconocida y prestigio, marcado CE, normas UNE-EN-ISO. No se admiten segundas marcas ni importación. Permitidas equivalencias de igual o superior calidad con muestra para evaluación. Importe 29.987 € sin IVA.",
+    "productos_aplicables": [
+      "Papelería y material de oficina ordinario"
+    ],
+    "requisitos_criticos": [
+      "Marca reconocida y de prestigio — no segundas marcas, no importación",
+      "Garantía mínima 12 meses por elemento",
+      "Listado de 39 páginas a revisar en detalle"
+    ],
+    "banderas_rojas": [
+      "Restricción a 'marca reconocida y de prestigio' puede excluir proveedores alternativos del catálogo Higiofi",
+      "Competencia fuerte con suministradores especializados de papelería"
+    ]
+  },
+  {
+    "licitacion_id": 2344,
+    "encaje": "alto",
+    "encaje_score": 92,
+    "motivo": "Suministro, adecuación, instalación y montaje completo de un parque infantil en Cáñar: Maxi Torre Navia, Carrusel Flop, Casita Flor, Muelles Palmera/Cebra/Loro, Asiento Nido + pavimento de caucho continuo 3+1 + adaptación vallado + cartel. Cada elemento es una familia propia del catálogo Higiofi.",
+    "resumen": "Ayuntamiento de Cáñar (Granada). Suministro e instalación completa de área de juegos infantil de uso público con torre Navia, carrusel Flop, casita Flor, tres muelles (Palmera, Cebra, Loro), asiento nido y cartel informativo. Incluye pavimento continuo de caucho 3+1 con capa encapsulada (UNE-EN 1177) y adaptación del vallado existente. Plazo 45 días. Importe 24.793 € sin IVA. Financiado con subvención específica para parques infantiles 2025.",
+    "productos_aplicables": [
+      "Juegos Infantiles (Maxi Torre, casitas, asiento nido)",
+      "Carruseles (Carrusel Flop)",
+      "Muelles y Balancines (Palmera, Cebra, Loro)",
+      "Pavimentos de Seguridad (caucho continuo 3+1 encapsulado)",
+      "Vallas Infantiles",
+      "Cartelería de parque infantil"
+    ],
+    "requisitos_criticos": [
+      "Cumplimiento UNE-EN 1176 (equipamientos áreas de juego) y UNE-EN 1177 (absorción de impactos)",
+      "Excavación de dados de hormigón para anclajes — obra menor incluida",
+      "Subvención específica para parques infantiles 2025 — justificación de gastos elegible",
+      "Plazo 45 días naturales"
+    ],
+    "banderas_rojas": [
+      "Modelos concretos mencionados (Maxi Torre Navia, Carrusel Flop, Casita Flor) — podrían ser marcas comerciales específicas; verificar si son equivalentes a referencias del catálogo o exigen producto exacto"
+    ]
+  },
+  {
+    "licitacion_id": 1435,
+    "encaje": "bajo",
+    "encaje_score": 30,
+    "motivo": "Suministro de material muy diverso y de baja cantidad: parte encaja con mobiliario de oficina/escolar del catálogo Higiofi (tablones de corcho, pizarras, tableros, atriles, perchero, paragüero) pero la mayor parte son electrodomésticos (ventiladores, calentadores, radiadores), consumibles de oficina (encuadernadoras, plastificadoras, grapadoras) y alfombras — fuera del catálogo. Volumen pequeño por artículo.",
+    "resumen": "Ayuntamiento de Sevilla. Suministro a demanda hasta 31/12/2026 de material auxiliar diverso para las dependencias municipales: armarios de llaves, buzones, paragüeros, percheros, reposapiés, flexos LED, lámparas, atriles, reposamuñecas, tablones de corcho, pizarras, vitrinas, ventiladores, calentadores, radiadores, alfombras, encuadernadoras, mástil para bandera, grapadoras, guillotinas y plastificadoras. Lista de 30 artículos con precios unitarios. Garantía 3 años.",
+    "productos_aplicables": [
+      "Pizarras y tablones de anuncios escolares/oficina",
+      "Atriles, percheros, paragüeros, armarios de llaves (mobiliario auxiliar)",
+      "Mástil para bandera"
+    ],
+    "requisitos_criticos": [
+      "Lista cerrada de 30 artículos diferentes con descuento único — todo o nada",
+      "Garantía 3 años",
+      "Plazo de entrega 15 días naturales por pedido"
+    ],
+    "banderas_rojas": [
+      "Mayoría del listado fuera del catálogo Higiofi (electrodomésticos, consumibles oficina, alfombras antideslizantes)",
+      "Descuento único aplicado a todos los precios — si no se cubre todo el catálogo se pierde competitividad"
+    ]
+  },
+  {
+    "licitacion_id": 3024,
+    "encaje": "alto",
+    "encaje_score": 75,
+    "motivo": "El título y el CPV (37535210 — columpios) indican claramente que es suministro e instalación de elementos para áreas infantiles, encajando con el catálogo Higiofi. Sin embargo, los 3 pliegos de PLACSP devuelven error 500 al descargar, por lo que el análisis se basa solo en el título y CPV. Recomendación: descargar pliegos manualmente desde PLACSP antes de decidir.",
+    "resumen": "Ayuntamiento de Torrox (Málaga). Suministro e instalación de elementos infantiles para áreas infantiles. Importe 286.179 € sin IVA — el más alto de las candidatas de mayo. Fecha límite 11 de junio. Pliegos no descargables por error 500 del servidor PLACSP — requiere intervención manual.",
+    "productos_aplicables": [
+      "Juegos Infantiles (presumiblemente — verificar pliego)",
+      "Columpios, Toboganes, Muelles y Balancines (familia 37535210)"
+    ],
+    "requisitos_criticos": [
+      "ATENCIÓN: pliegos inaccesibles — descargar manualmente desde PLACSP antes de evaluar",
+      "Importe alto (286 K€) — verificar solvencia y volumen requeridos"
+    ],
+    "banderas_rojas": [
+      "Pliegos no descargables vía API (error 500 servidor PLACSP) — requiere acceso manual",
+      "El presupuesto alto sugiere requisitos de solvencia técnica/financiera elevados (volumen anual, certificaciones, experiencias previas)"
+    ]
+  },
+  {
+    "licitacion_id": 1519,
+    "encaje": "alto",
+    "encaje_score": 80,
+    "motivo": "Título indica claramente 'Suministro, adecuación, instalación y montaje completo de un área de juegos infantil de uso público en Cáñar'. CPV 37535100 (columpios). Encaje directo con el catálogo Higiofi. Sin embargo, los 3 pliegos PLACSP devuelven error 500 — análisis preliminar basado en título y CPV.",
+    "resumen": "Ayuntamiento de Cáñar (Granada). Suministro, adecuación, instalación y montaje completo de área de juegos infantil de uso público en Cáñar. Importe 24.793 € sin IVA. Fecha límite 21 de mayo. Existe una licitación gemela en el mismo Ayuntamiento (id 2344, expediente 120/2/2026, idéntico importe) cuyos pliegos sí bajaron — probablemente sea la versión actualizada o duplicada del mismo expediente.",
+    "productos_aplicables": [
+      "Juegos Infantiles",
+      "Columpios, Carruseles, Muelles y Balancines",
+      "Pavimentos de Seguridad",
+      "Vallas Infantiles"
+    ],
+    "requisitos_criticos": [
+      "ATENCIÓN: pliegos inaccesibles — descargar manualmente desde PLACSP antes de evaluar",
+      "Existe expediente gemelo id=2344 con pliegos completos — probablemente sea la versión definitiva. Verificar cuál está en vigor"
+    ],
+    "banderas_rojas": [
+      "Pliegos no descargables vía API (error 500 servidor PLACSP) — usar PLACSP manualmente",
+      "Posible duplicado del expediente 120/2/2026 (id=2344) — el mismo Ayuntamiento ha publicado dos versiones con idéntico importe"
+    ]
+  }
+]

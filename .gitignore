@@ -20,6 +20,9 @@ logs/
 # para reproducibilidad y para que el prompt de IA tenga el contexto exacto.
 prompts/catalogo_empresa.pdf
 
+# --- Cachés intermedias que se regeneran con el pipeline ---
+data/candidatas_pendientes.json
+
 # --- Python ---
 __pycache__/
 *.py[cod]
