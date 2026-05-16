@@ -14,7 +14,7 @@ ahora) y dashboard web para que el equipo decida qué licitaciones perseguir.
 - [x] Pipeline diario orquestado
 - [x] Dashboard web con filtros, estados y notas
 - [ ] Análisis IA automatizado vía API Anthropic *(de momento manual con Claude Max)*
-- [ ] Publicación del dashboard en GitHub Pages
+- [x] Publicación del dashboard en GitHub Pages (`docs/index.html`)
 - [ ] Email diario con resumen (Resend)
 
 ## Puesta en marcha
@@ -52,7 +52,7 @@ El entrypoint que ejecuta el Task Scheduler cada mañana es
 4. Reaplica los filtros sobre toda la DB (por si cambiaron los CPVs)
 5. Descarga pliegos PDF de las candidatas vivas que aún no tienen
 6. Extrae texto de cada pliego a `.txt` para que el análisis manual sea rápido
-7. Regenera `dashboard/index.html` con los datos reales
+7. Regenera `docs/index.html` con los datos reales
 8. Registra el resumen en la tabla `log_ejecuciones`
 
 Para lanzarlo manualmente:
@@ -141,14 +141,14 @@ prompts/
   evaluacion_licitacion.md   Prompt principal de evaluación
   catalogo_empresa.txt       Catálogo de Higiofi en texto plano (cacheado en IA)
   catalogo_empresa.pdf       PDF original (excluido del repo, 64 MB)
-dashboard/
+docs/
   template.html       Plantilla con placeholders
   index.html          Generado por generar_dashboard.py — abrir en navegador
 scripts/
   init_db.py                  Crea esquema SQLite
   backfill.py                 Carga histórica de N meses
   pipeline_diario.py          Entrypoint del cron diario
-  generar_dashboard.py        Genera dashboard/index.html desde la DB
+  generar_dashboard.py        Genera docs/index.html desde la DB
   bajar_todas_pliegos.py      Reintenta pliegos de las candidatas
   descargar_y_extraer.py      Pliegos de IDs concretos (para inspección manual)
   auditoria.py                Estado general del sistema

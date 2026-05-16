@@ -25,8 +25,8 @@ from src.config import PROJECT_ROOT  # noqa: E402
 from src.db import conexion  # noqa: E402
 from src.logging_setup import configurar_logging  # noqa: E402
 
-TEMPLATE_PATH = PROJECT_ROOT / "dashboard" / "template.html"
-OUTPUT_PATH   = PROJECT_ROOT / "dashboard" / "index.html"
+TEMPLATE_PATH = PROJECT_ROOT / "docs" / "template.html"
+OUTPUT_PATH   = PROJECT_ROOT / "docs" / "index.html"
 
 
 SQL_CANDIDATAS = """
