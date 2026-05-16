@@ -32,8 +32,9 @@ if (Get-ScheduledTask -TaskName $nombreTarea -ErrorAction SilentlyContinue) {
 # Acción: ejecuta el python del venv con el script del pipeline
 $accion = New-ScheduledTaskAction -Execute $python -Argument "`"$script`"" -WorkingDirectory $raiz
 
-# Disparador: cada día a las 07:00
-$disparador = New-ScheduledTaskTrigger -Daily -At 7:00am
+# Disparador: cada 3 días a las 07:00 (las licitaciones tienen plazos de 10-30 días,
+# revisar a diario es overkill y consume ancho de banda innecesario).
+$disparador = New-ScheduledTaskTrigger -Daily -At 7:00am -DaysInterval 3
 
 # Si el equipo está apagado/dormido a esa hora, ejecutar al despertar
 $ajustes = New-ScheduledTaskSettingsSet `

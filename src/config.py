@@ -82,7 +82,8 @@ for _d in (ZIPS_DIR, PLIEGOS_DIR, LOG_DIR, DB_PATH.parent):
 IMPORTE_MIN = _env_float("IMPORTE_MIN", 1_000.0)
 IMPORTE_MAX = _env_float("IMPORTE_MAX", 500_000.0)
 
-_PROVINCIAS_DEFAULT = "Cádiz,Sevilla,Málaga,Granada,Almería,Jaén,Córdoba,Huelva"
+# Almería excluida en V1: queda demasiado lejos del centro logístico (decisión comercial).
+_PROVINCIAS_DEFAULT = "Cádiz,Sevilla,Málaga,Granada,Jaén,Córdoba,Huelva"
 PROVINCIAS_PERMITIDAS = {
     _normalizar(p) for p in _env("PROVINCIAS_PERMITIDAS", _PROVINCIAS_DEFAULT).split(",") if p.strip()
 }
