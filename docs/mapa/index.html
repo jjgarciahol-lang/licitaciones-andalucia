@@ -37,10 +37,22 @@
   .tipo-ayuntamiento.pill-on        { background:#16a34a; color:white; border-color:#16a34a; box-shadow:0 0 0 2px rgba(22,163,74,.35); }
   .tipo-camping.pill-off            { background:#ccfbf1; color:#115e59; border-color:#99f6e4; }
   .tipo-camping.pill-on             { background:#14b8a6; color:white; border-color:#14b8a6; box-shadow:0 0 0 2px rgba(20,184,166,.35); }
-  .tipo-competencia.pill-off        { background:#f1f5f9; color:#475569; border-color:#e2e8f0; }
-  .tipo-competencia.pill-on         { background:#64748b; color:white; border-color:#64748b; box-shadow:0 0 0 2px rgba(100,116,139,.35); }
+  .tipo-competencia_parques.pill-off    { background:#fae8ff; color:#86198f; border-color:#f5d0fe; }
+  .tipo-competencia_parques.pill-on     { background:#c026d3; color:white; border-color:#c026d3; box-shadow:0 0 0 2px rgba(192,38,211,.35); }
+  .tipo-competencia_mobiliario.pill-off { background:#ffedd5; color:#9a3412; border-color:#fed7aa; }
+  .tipo-competencia_mobiliario.pill-on  { background:#ea580c; color:white; border-color:#ea580c; box-shadow:0 0 0 2px rgba(234,88,12,.35); }
   .tipo-contratista_local.pill-off  { background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff; }
   .tipo-contratista_local.pill-on   { background:#9333ea; color:white; border-color:#9333ea; box-shadow:0 0 0 2px rgba(147,51,234,.35); }
+
+  /* Mini-botones "Todos / Ninguno" para las barras de filtros */
+  .filter-action {
+    font-size: 10px; padding: 3px 8px; border-radius: 6px;
+    background: transparent; color: #64748b; border: 1px solid #e2e8f0;
+    cursor: pointer; white-space: nowrap; transition: all .15s;
+  }
+  .filter-action:hover { background: #f1f5f9; color: #0f172a; }
+  .dark .filter-action { color: #94a3b8; border-color: #334155; }
+  .dark .filter-action:hover { background: #1e293b; color: #f1f5f9; }
 
   /* Pills coloreados por estado interno */
   .estado-sin.pill-off       { background:#e0e7ff; color:#3730a3; border-color:#c7d2fe; }
@@ -67,9 +79,10 @@
   .h-marker-colegio_privado  { background:#ec4899; }
   .h-marker-guarderia        { background:#f59e0b; }
   .h-marker-ayuntamiento     { background:#16a34a; }
-  .h-marker-camping          { background:#14b8a6; }
-  .h-marker-competencia      { background:#64748b; }
-  .h-marker-contratista_local { background:#9333ea; }
+  .h-marker-camping              { background:#14b8a6; }
+  .h-marker-competencia_parques  { background:#c026d3; }
+  .h-marker-competencia_mobiliario { background:#ea580c; }
+  .h-marker-contratista_local    { background:#9333ea; }
 
   /* Marcador con estado "cliente" o "descartado" muestra ring */
   .h-marker.ring-cliente    { box-shadow: 0 1px 4px rgba(0,0,0,.4), 0 0 0 3px #16a34a; }
@@ -178,20 +191,27 @@
   </div>
 
   <!-- Filtros por tipo -->
-  <div class="px-4 pb-2 scroll-x flex gap-2">
-    <span class="text-xs uppercase tracking-wide text-slate-400 self-center mr-1">Tipo:</span>
+  <div class="px-4 pb-2 scroll-x flex gap-2 items-center">
+    <span class="text-xs uppercase tracking-wide text-slate-400 mr-1">Tipo:</span>
+    <button class="filter-action" data-action="select-all"  data-group="tipo">Todos</button>
+    <button class="filter-action" data-action="select-none" data-group="tipo">Ninguno</button>
+    <span class="text-slate-300 dark:text-slate-700 mx-1">·</span>
     <button class="pill tipo-colegio_publico pill-on"  data-filtro-tipo="colegio_publico">Colegios públicos <span class="opacity-70" data-count-tipo="colegio_publico"></span></button>
     <button class="pill tipo-colegio_privado pill-on"  data-filtro-tipo="colegio_privado">Colegios privados <span class="opacity-70" data-count-tipo="colegio_privado"></span></button>
     <button class="pill tipo-guarderia pill-on"        data-filtro-tipo="guarderia">Guarderías <span class="opacity-70" data-count-tipo="guarderia"></span></button>
     <button class="pill tipo-ayuntamiento pill-on"     data-filtro-tipo="ayuntamiento">Ayuntamientos <span class="opacity-70" data-count-tipo="ayuntamiento"></span></button>
     <button class="pill tipo-camping pill-on"          data-filtro-tipo="camping">Campings <span class="opacity-70" data-count-tipo="camping"></span></button>
     <button class="pill tipo-contratista_local pill-off" data-filtro-tipo="contratista_local" title="Empresas con sede en Cádiz que han ganado licitaciones públicas (compradores potenciales como proveedor de obra)">Contratistas locales <span class="opacity-70" data-count-tipo="contratista_local"></span></button>
-    <button class="pill tipo-competencia pill-off"     data-filtro-tipo="competencia" title="Empresas que han ganado licitaciones públicas con CPVs del catálogo Higiofi en Andalucía (competidores directos)">Competencia <span class="opacity-70" data-count-tipo="competencia"></span></button>
+    <button class="pill tipo-competencia_parques pill-off"    data-filtro-tipo="competencia_parques"    title="Empresas que han ganado licitaciones de parques infantiles / biosaludables en Andalucía">Competencia parques <span class="opacity-70" data-count-tipo="competencia_parques"></span></button>
+    <button class="pill tipo-competencia_mobiliario pill-off" data-filtro-tipo="competencia_mobiliario" title="Empresas que han ganado licitaciones de mobiliario urbano / interior / papelería en Andalucía">Competencia mobiliario <span class="opacity-70" data-count-tipo="competencia_mobiliario"></span></button>
   </div>
 
   <!-- Filtros por estado -->
-  <div class="px-4 pb-3 scroll-x flex gap-2">
-    <span class="text-xs uppercase tracking-wide text-slate-400 self-center mr-1">Estado:</span>
+  <div class="px-4 pb-3 scroll-x flex gap-2 items-center">
+    <span class="text-xs uppercase tracking-wide text-slate-400 mr-1">Estado:</span>
+    <button class="filter-action" data-action="select-all"  data-group="estado">Todos</button>
+    <button class="filter-action" data-action="select-none" data-group="estado">Ninguno</button>
+    <span class="text-slate-300 dark:text-slate-700 mx-1">·</span>
     <button class="pill estado-sin pill-on"         data-filtro-estado="sin">Sin contactar</button>
     <button class="pill estado-contactado pill-on"  data-filtro-estado="contactado">Contactado</button>
     <button class="pill estado-oferta pill-on"      data-filtro-estado="oferta">Oferta enviada</button>
@@ -215,23 +235,25 @@
 
 // ============================ Constantes =====================================
 const TIPO_LABELS = {
-  colegio_publico:    'Colegio público',
-  colegio_privado:    'Colegio privado',
-  guarderia:          'Guardería',
-  ayuntamiento:       'Ayuntamiento',
-  camping:            'Camping',
-  contratista_local:  'Contratista local',
-  competencia:        'Competencia (CPV Higiofi)',
+  colegio_publico:         'Colegio público',
+  colegio_privado:         'Colegio privado',
+  guarderia:               'Guardería',
+  ayuntamiento:            'Ayuntamiento',
+  camping:                 'Camping',
+  contratista_local:       'Contratista local',
+  competencia_parques:     'Competencia parques infantiles',
+  competencia_mobiliario:  'Competencia mobiliario / papelería',
 };
 
 const TIPO_ICONO_LETRA = {
-  colegio_publico:    'P',
-  colegio_privado:    'V',
-  guarderia:          'G',
-  ayuntamiento:       'A',
-  camping:            'C',
-  contratista_local:  'T',  // T de "conTratista"
-  competencia:        'X',  // X de "competiX" / rival
+  colegio_publico:         'P',
+  colegio_privado:         'V',
+  guarderia:               'G',
+  ayuntamiento:            'A',
+  camping:                 'C',
+  contratista_local:       'T',  // T de "conTratista"
+  competencia_parques:     'X',  // X de competencia
+  competencia_mobiliario:  'X',
 };
 
 const ESTADOS = [
@@ -427,7 +449,8 @@ function escapeHtml(s) {
 }
 
 // ============================ Filtros ========================================
-// `competencia` no entra en el set inicial: queda apagada por defecto.
+// Las dos categorías de competencia y contratistas no entran en el set inicial:
+// quedan apagadas por defecto (la comercial las activa cuando las quiere ver).
 const filtrosTipo   = new Set(['colegio_publico', 'colegio_privado', 'guarderia', 'ayuntamiento', 'camping']);
 const filtrosEstado = new Set(['sin', 'contactado', 'oferta', 'cliente']);
 // 'descartado' inicialmente OFF
@@ -465,6 +488,27 @@ document.querySelectorAll('[data-filtro-estado]').forEach(btn => {
     const e = btn.dataset.filtroEstado;
     if (filtrosEstado.has(e)) { filtrosEstado.delete(e); btn.classList.replace('pill-on', 'pill-off'); }
     else                      { filtrosEstado.add(e);    btn.classList.replace('pill-off', 'pill-on'); }
+    aplicarFiltros();
+  });
+});
+
+// "Todos / Ninguno" — actúa sobre toda la sección (tipo o estado) de una vez
+document.querySelectorAll('[data-action]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const grupo  = btn.dataset.group;     // "tipo" o "estado"
+    const target = btn.dataset.action;    // "select-all" o "select-none"
+    const set    = grupo === 'tipo' ? filtrosTipo : filtrosEstado;
+    const attr   = grupo === 'tipo' ? 'filtroTipo' : 'filtroEstado';
+    document.querySelectorAll(`[data-filtro-${grupo}]`).forEach(chip => {
+      const key = chip.dataset[attr];
+      if (target === 'select-all') {
+        set.add(key);
+        chip.classList.remove('pill-off'); chip.classList.add('pill-on');
+      } else {
+        set.delete(key);
+        chip.classList.remove('pill-on'); chip.classList.add('pill-off');
+      }
+    });
     aplicarFiltros();
   });
 });

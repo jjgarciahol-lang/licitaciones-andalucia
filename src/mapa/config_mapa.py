@@ -41,11 +41,36 @@ TIPOS_CLIENTE: tuple[str, ...] = (
     "guarderia",
     "ayuntamiento",
     "camping",             # via OSM/Overpass — compran parques infantiles, biosaludables
-    "contratista_local",   # constructoras y paisajistas que ganan obra municipal
-                           # (pendiente: poblar desde adjudicatarios PLACSP)
+    "contratista_local",   # empresas locales que han ganado obra pública (compradores)
 
     # --- Referencia (no clientes — análisis de mercado / competencia) ---
-    "competencia",         # viveros y centros de jardinería — ofrecen producto similar
+    "competencia_parques",      # ganan licitaciones de parques infantiles / biosaludables
+    "competencia_mobiliario",   # ganan licitaciones de mobiliario urbano/interior/papelería
+)
+
+# --- CPVs por categoría de competencia ----------------------------------------
+# Subsets de CPVS_RELEVANTES (src/config.py) agrupados por línea de catálogo.
+# Si una empresa gana en AMBAS categorías, se clasifica como "parques" (es la
+# línea más especializada y diferenciada de Higiofi).
+CPVS_PARQUES: tuple[str, ...] = (
+    "37535",     # Equipos de áreas de juego infantil (columpios, toboganes...)
+    "43325",     # Equipamiento parques y zonas juego
+    "37440",     # Equipos de fitness (biosaludables)
+    "37441",     # Equipos de aeróbic
+    "37442",     # Bancos de musculación / pesas
+    "37410",     # Equipos deportes al aire libre
+    "37416",     # Equipos de ocio
+    "37451",     # Equipos deportes de campo (porterías, canastas...)
+    "45236210",  # Pavimentación zonas juego infantil
+    "45236200",  # Pavimentación instalaciones deportivas
+    "45112723",  # Trabajos paisajismo zonas juego
+)
+
+CPVS_MOBILIARIO: tuple[str, ...] = (
+    "34928",     # Mobiliario urbano (bancos, papeleras, jardineras, fuentes...)
+    "39160", "39161", "39162", "39163",  # Mobiliario escolar / guarderías
+    "39100", "39110", "39120", "39150", "39151",  # Mobiliario general / asientos / mesas
+    "30190", "30192",  # Material y papelería de oficina
 )
 
 # Tipos ocultos por defecto en el frontend (vacío en V1).

@@ -21,8 +21,23 @@ import sqlite3
 
 from src.config import CPVS_RELEVANTES, DB_PATH as DB_LICITACIONES
 from src.mapa.config_mapa import (
-    BBOX_PROVINCIAS, PROVINCIAS_MAPA, cargar_blacklist_competencia,
+    BBOX_PROVINCIAS, CPVS_MOBILIARIO, CPVS_PARQUES, PROVINCIAS_MAPA,
+    cargar_blacklist_competencia,
 )
+
+
+def _clasificar_categoria(cpvs_ganados: str | None) -> str:
+    """Devuelve 'competencia_parques' o 'competencia_mobiliario' según los CPVs
+    ganados por la empresa. Si gana en AMBOS, prevalece 'parques' (categoría
+    más especializada de Higiofi).
+    """
+    if not cpvs_ganados:
+        return "competencia_mobiliario"  # fallback conservador
+    cpvs = [c.strip() for c in cpvs_ganados.split(",")]
+    for cpv in cpvs:
+        if any(cpv.startswith(p) for p in CPVS_PARQUES):
+            return "competencia_parques"
+    return "competencia_mobiliario"
 from src.mapa.db import conexion as conexion_mapa
 from src.mapa.geocoder import Geocoder
 from src.mapa.ingesta_centros import upsert_cliente
@@ -328,9 +343,10 @@ def ingestar_competencia_higiofi() -> dict[str, int]:
                 lat = lat_base + dlat
                 lon = lon_base + dlon
 
+                categoria = _clasificar_categoria(c["cpvs_ganados"])
                 cliente = ClientePotencial(
                     id=_id_estable_competidor(c["nif"]),
-                    tipo="competencia",
+                    tipo=categoria,
                     nombre=c["razon_social"],
                     direccion=_formato_descripcion_competencia(
                         ciudad, c["n_adjudicaciones"],
