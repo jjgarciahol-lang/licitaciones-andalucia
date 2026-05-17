@@ -33,26 +33,31 @@ PROVINCIAS_ANDALUCIA_SIN_ALMERIA: tuple[str, ...] = (
 # --- Tipos de cliente ---------------------------------------------------------
 TIPOS_CLIENTE: tuple[str, ...] = (
     "colegio_publico",
-    "colegio_concertado",
+    "colegio_concertado",  # no se puebla en V1 (la fuente Junta no lo distingue)
     "colegio_privado",
     "guarderia",
     "ayuntamiento",
-    "hotel_familiar",
+    "camping",             # via OSM/Overpass
+    "paisajista",          # via OSM/Overpass — agrupa jardinería + obra civil pequeña
 )
 
-# Tipos ocultos por defecto en el frontend (la comercial los activa con un
-# toggle). Los hoteles tienen mucho ruido — no todos tienen zona infantil.
-TIPOS_OCULTOS_POR_DEFECTO: tuple[str, ...] = ("hotel_familiar",)
+# Tipos ocultos por defecto en el frontend (vacío en V1).
+TIPOS_OCULTOS_POR_DEFECTO: tuple[str, ...] = ()
 
 # --- Fuentes de datos ---------------------------------------------------------
 FUENTES: tuple[str, ...] = (
     "junta_andalucia",   # Catálogo de centros docentes
     "ine",               # Municipios y centroides
     "mptfp",             # Registro de Entidades Locales (contactos)
-    "osm",               # Overpass API (guarderías, hoteles)
-    "nominatim",         # Geocoding fallback
+    "osm",               # Overpass API (campings, paisajistas, obra civil)
+    "nominatim",         # Geocoding (sede ayuntamientos)
     "manual",            # Correcciones a mano
 )
+
+# --- Overpass API -------------------------------------------------------------
+OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+OVERPASS_USER_AGENT = "HigiofiMapaComercial/1.0 (contacto: higiofi.es)"
+OVERPASS_TIMEOUT_S = 90
 
 # --- Nominatim ----------------------------------------------------------------
 # Política de uso de OSM exige User-Agent identificable y rate limit 1 req/s.

@@ -35,8 +35,10 @@
   .tipo-guarderia.pill-on           { background:#f59e0b; color:white; border-color:#f59e0b; box-shadow:0 0 0 2px rgba(245,158,11,.35); }
   .tipo-ayuntamiento.pill-off       { background:#dcfce7; color:#166534; border-color:#bbf7d0; }
   .tipo-ayuntamiento.pill-on        { background:#16a34a; color:white; border-color:#16a34a; box-shadow:0 0 0 2px rgba(22,163,74,.35); }
-  .tipo-hotel_familiar.pill-off     { background:#f3f4f6; color:#4b5563; border-color:#e5e7eb; }
-  .tipo-hotel_familiar.pill-on      { background:#4b5563; color:white; border-color:#4b5563; box-shadow:0 0 0 2px rgba(75,85,99,.35); }
+  .tipo-camping.pill-off            { background:#ccfbf1; color:#115e59; border-color:#99f6e4; }
+  .tipo-camping.pill-on             { background:#14b8a6; color:white; border-color:#14b8a6; box-shadow:0 0 0 2px rgba(20,184,166,.35); }
+  .tipo-paisajista.pill-off         { background:#fee2e2; color:#991b1b; border-color:#fecaca; }
+  .tipo-paisajista.pill-on          { background:#dc2626; color:white; border-color:#dc2626; box-shadow:0 0 0 2px rgba(220,38,38,.35); }
 
   /* Pills coloreados por estado interno */
   .estado-sin.pill-off       { background:#e0e7ff; color:#3730a3; border-color:#c7d2fe; }
@@ -63,7 +65,8 @@
   .h-marker-colegio_privado  { background:#ec4899; }
   .h-marker-guarderia        { background:#f59e0b; }
   .h-marker-ayuntamiento     { background:#16a34a; }
-  .h-marker-hotel_familiar   { background:#4b5563; }
+  .h-marker-camping          { background:#14b8a6; }
+  .h-marker-paisajista       { background:#dc2626; }
 
   /* Marcador con estado "cliente" o "descartado" muestra ring */
   .h-marker.ring-cliente    { box-shadow: 0 1px 4px rgba(0,0,0,.4), 0 0 0 3px #16a34a; }
@@ -178,7 +181,8 @@
     <button class="pill tipo-colegio_privado pill-on"  data-filtro-tipo="colegio_privado">Colegios privados <span class="opacity-70" data-count-tipo="colegio_privado"></span></button>
     <button class="pill tipo-guarderia pill-on"        data-filtro-tipo="guarderia">Guarderías <span class="opacity-70" data-count-tipo="guarderia"></span></button>
     <button class="pill tipo-ayuntamiento pill-on"     data-filtro-tipo="ayuntamiento">Ayuntamientos <span class="opacity-70" data-count-tipo="ayuntamiento"></span></button>
-    <button class="pill tipo-hotel_familiar pill-off"  data-filtro-tipo="hotel_familiar">Hoteles <span class="opacity-70" data-count-tipo="hotel_familiar"></span></button>
+    <button class="pill tipo-camping pill-on"          data-filtro-tipo="camping">Campings <span class="opacity-70" data-count-tipo="camping"></span></button>
+    <button class="pill tipo-paisajista pill-on"       data-filtro-tipo="paisajista">Paisajistas / obra civil <span class="opacity-70" data-count-tipo="paisajista"></span></button>
   </div>
 
   <!-- Filtros por estado -->
@@ -211,7 +215,8 @@ const TIPO_LABELS = {
   colegio_privado:  'Colegio privado',
   guarderia:        'Guardería',
   ayuntamiento:     'Ayuntamiento',
-  hotel_familiar:   'Hotel familiar',
+  camping:          'Camping',
+  paisajista:       'Paisajista / obra civil',
 };
 
 const TIPO_ICONO_LETRA = {
@@ -219,7 +224,8 @@ const TIPO_ICONO_LETRA = {
   colegio_privado:  'V',
   guarderia:        'G',
   ayuntamiento:     'A',
-  hotel_familiar:   'H',
+  camping:          'C',
+  paisajista:       'J',
 };
 
 const ESTADOS = [
@@ -415,8 +421,7 @@ function escapeHtml(s) {
 }
 
 // ============================ Filtros ========================================
-const filtrosTipo   = new Set(['colegio_publico', 'colegio_privado', 'guarderia', 'ayuntamiento']);
-// 'hotel_familiar' inicialmente OFF
+const filtrosTipo   = new Set(['colegio_publico', 'colegio_privado', 'guarderia', 'ayuntamiento', 'camping', 'paisajista']);
 const filtrosEstado = new Set(['sin', 'contactado', 'oferta', 'cliente']);
 // 'descartado' inicialmente OFF
 
