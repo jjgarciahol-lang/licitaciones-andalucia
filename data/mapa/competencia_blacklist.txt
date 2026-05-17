@@ -1,0 +1,10 @@
+# NIFs de empresas que aparecen como "competencia" pero NO compiten con Higiofi.
+# Suelen ser constructoras o empresas de obra civil que ganan licitaciones
+# mixtas (suministro + obra) pero compran el material a proveedores como
+# Higiofi en lugar de fabricarlo.
+#
+# Formato: un NIF por línea. Texto tras "#" se ignora.
+# Reejecutar scripts/mapa/sincronizar_contratistas.py --solo competencia
+# y scripts/exportar_competidores.py para aplicar cambios.
+
+B11572195  # NUPREN, S.L. (Ubrique) - constructora, contrato mixto suministro+obra

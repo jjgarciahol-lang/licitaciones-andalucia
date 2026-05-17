@@ -20,7 +20,9 @@ import math
 import sqlite3
 
 from src.config import CPVS_RELEVANTES, DB_PATH as DB_LICITACIONES
-from src.mapa.config_mapa import BBOX_PROVINCIAS, PROVINCIAS_MAPA
+from src.mapa.config_mapa import (
+    BBOX_PROVINCIAS, PROVINCIAS_MAPA, cargar_blacklist_competencia,
+)
 from src.mapa.db import conexion as conexion_mapa
 from src.mapa.geocoder import Geocoder
 from src.mapa.ingesta_centros import upsert_cliente
@@ -218,10 +220,27 @@ def _formato_descripcion_competencia(municipio: str | None, n_adj: int, importe:
     return " · ".join(partes)
 
 
+# Palabras clave en razón social que indican "constructora / obra civil" más que
+# "proveedor de mobiliario". Si aparecen en el nombre, la empresa probablemente
+# COMPRA productos Higiofi para instalarlos (cliente) en lugar de venderlos
+# (competencia). No es infalible — NUPREN, por ejemplo, no contiene ninguna de
+# estas — pero filtra los casos más obvios.
+_KEYWORDS_CONSTRUCTORA = (
+    "CONSTRUC", "OBRA", "EDIFIC", "INGENIER",
+    "RESTAURACION", "REFORMAS", "PROMOCIONES",
+)
+
+
 def _consultar_competencia_higiofi() -> list[dict]:
-    """Empresas que han ganado licitaciones con CPV del catálogo Higiofi en Andalucía."""
+    """Empresas que han ganado licitaciones con CPV del catálogo Higiofi en
+    Andalucía como SUMINISTRO (no como obra). Excluye empresas cuya razón
+    social sugiere que son constructoras (que comprarían a Higiofi, no
+    compiten con él).
+    """
     cpv_or = " OR ".join([f"l.cpv_principal LIKE '{p}%'" for p in CPVS_RELEVANTES])
     placeholders = ",".join("?" * len(PROVINCIAS_ANDALUCIA))
+    # Filtro adicional contra nombres de constructora
+    name_excl = " AND ".join([f"UPPER(a.razon_social) NOT LIKE '%{kw}%'" for kw in _KEYWORDS_CONSTRUCTORA])
     conn = sqlite3.connect(str(DB_LICITACIONES))
     conn.row_factory = sqlite3.Row
     try:
@@ -237,9 +256,11 @@ def _consultar_competencia_higiofi() -> list[dict]:
             FROM adjudicaciones a
             JOIN licitaciones l ON a.uuid_placsp = l.uuid_placsp
             WHERE ({cpv_or})
+              AND l.tipo_contrato = 'Suministros'
               AND l.provincia IN ({placeholders})
               AND a.nif IS NOT NULL
               AND a.razon_social IS NOT NULL
+              AND {name_excl}
             GROUP BY a.nif
             ORDER BY n_adjudicaciones DESC, importe_total DESC
         """
@@ -256,6 +277,12 @@ def ingestar_competencia_higiofi() -> dict[str, int]:
     """Pobla `competencia` en clientes.db con empresas que han ganado
     licitaciones de CPVs del catálogo Higiofi en Andalucía."""
     empresas = _consultar_competencia_higiofi()
+    blacklist = cargar_blacklist_competencia()
+    if blacklist:
+        antes = len(empresas)
+        empresas = [e for e in empresas if e["nif"] not in blacklist]
+        log.info("Blacklist aplicada: %d NIFs excluidos (de %d → %d candidatos)",
+                 antes - len(empresas), antes, len(empresas))
     log.info("Competidores a procesar: %d", len(empresas))
 
     nuevos = 0

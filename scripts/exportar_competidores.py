@@ -30,15 +30,29 @@ from openpyxl.utils import get_column_letter  # noqa: E402
 
 from src.config import CPVS_RELEVANTES, DB_PATH  # noqa: E402
 from src.logging_setup import configurar_logging  # noqa: E402
+from src.mapa.config_mapa import cargar_blacklist_competencia  # noqa: E402
 
 
 PROVINCIAS_ANDALUCIA = (
     "Cádiz", "Sevilla", "Málaga", "Granada", "Huelva", "Jaén", "Córdoba", "Almería",
 )
 
+# Heurística: keywords en razón social que sugieren "constructora" más que
+# "proveedor de mobiliario". Una constructora gana licitaciones de obra que
+# incluyen parques/mobiliario pero COMPRA el material a proveedores como
+# Higiofi — es cliente potencial, no competencia.
+_KEYWORDS_CONSTRUCTORA = (
+    "CONSTRUC", "OBRA", "EDIFIC", "INGENIER",
+    "RESTAURACION", "REFORMAS", "PROMOCIONES",
+)
+
 
 def _agregado_por_nif(conn: sqlite3.Connection, solo_andalucia: bool) -> list[dict]:
-    """Empresas que ganaron licitaciones con CPV Higiofi, agregadas por NIF."""
+    """Competencia: empresas que ganaron CPV Higiofi como SUMINISTRO (no obra).
+
+    Excluye razones sociales que suenan a constructora (las constructoras son
+    clientes potenciales, no competencia).
+    """
     cpv_or = " OR ".join([f"l.cpv_principal LIKE '{p}%'" for p in CPVS_RELEVANTES])
     where_provincia = ""
     params: list = []
@@ -46,6 +60,7 @@ def _agregado_por_nif(conn: sqlite3.Connection, solo_andalucia: bool) -> list[di
         placeholders = ",".join("?" * len(PROVINCIAS_ANDALUCIA))
         where_provincia = f"AND l.provincia IN ({placeholders})"
         params.extend(PROVINCIAS_ANDALUCIA)
+    name_excl = " AND ".join([f"UPPER(a.razon_social) NOT LIKE '%{kw}%'" for kw in _KEYWORDS_CONSTRUCTORA])
 
     q = f"""
         SELECT
@@ -64,8 +79,10 @@ def _agregado_por_nif(conn: sqlite3.Connection, solo_andalucia: bool) -> list[di
         FROM adjudicaciones a
         JOIN licitaciones l ON a.uuid_placsp = l.uuid_placsp
         WHERE ({cpv_or})
+          AND l.tipo_contrato = 'Suministros'
           AND a.nif IS NOT NULL
           AND a.razon_social IS NOT NULL
+          AND {name_excl}
           {where_provincia}
         GROUP BY a.nif
         ORDER BY n_adjudicaciones DESC, importe_total DESC
@@ -179,12 +196,16 @@ def main() -> int:
         salida = (Path(__file__).resolve().parent.parent / salida).resolve()
     salida.parent.mkdir(parents=True, exist_ok=True)
 
+    blacklist = cargar_blacklist_competencia()
+    if blacklist:
+        log.info("Blacklist activa: %d NIFs excluidos", len(blacklist))
+
     conn = sqlite3.connect(str(DB_PATH))
     conn.row_factory = sqlite3.Row
     try:
         log.info("Consultando adjudicaciones...")
-        andalucia = _agregado_por_nif(conn, solo_andalucia=True)
-        espana = _agregado_por_nif(conn, solo_andalucia=False)
+        andalucia = [e for e in _agregado_por_nif(conn, solo_andalucia=True) if e["nif"] not in blacklist]
+        espana = [e for e in _agregado_por_nif(conn, solo_andalucia=False) if e["nif"] not in blacklist]
         detalle = _adjudicaciones_detalle(conn)
     finally:
         conn.close()

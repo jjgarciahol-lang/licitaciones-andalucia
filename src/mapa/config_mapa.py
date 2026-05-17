@@ -83,6 +83,22 @@ JUNTA_CENTROS_CSV_URL = (
 JUNTA_CENTROS_CSV_LOCAL: Path = MAPA_DATA_DIR / "raw" / "da_centros.csv"
 JUNTA_CENTROS_CSV_LOCAL.parent.mkdir(parents=True, exist_ok=True)
 
+# Blacklist de NIFs que aparecen como competencia pero son constructoras
+# (mantenida a mano por la comercial).
+COMPETENCIA_BLACKLIST_PATH: Path = MAPA_DATA_DIR / "competencia_blacklist.txt"
+
+
+def cargar_blacklist_competencia() -> set[str]:
+    """Lee NIFs de la blacklist. Una línea por NIF; texto tras '#' se ignora."""
+    if not COMPETENCIA_BLACKLIST_PATH.exists():
+        return set()
+    nifs: set[str] = set()
+    for linea in COMPETENCIA_BLACKLIST_PATH.read_text(encoding="utf-8").splitlines():
+        linea = linea.split("#", 1)[0].strip()
+        if linea:
+            nifs.add(linea)
+    return nifs
+
 # --- Bounding boxes por provincia (lon_min, lat_min, lon_max, lat_max) -------
 # Usados para acotar resultados de Nominatim a la provincia correcta y para
 # validar a posteriori que las coordenadas obtenidas son plausibles.
