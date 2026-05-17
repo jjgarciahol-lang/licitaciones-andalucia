@@ -145,6 +145,81 @@
   .fab:active { transform: scale(.92); }
   .dark .fab { background:#f1f5f9; color:#0f172a; }
 
+  /* FAB de Ruta — arriba derecha, por encima del de geolocalización */
+  .fab-ruta {
+    position: absolute; bottom: 88px; right: 16px; z-index: 1000;
+    width: 52px; height: 52px; border-radius: 50%;
+    background: white; color: #0f172a; border: 2px solid #0f172a;
+    box-shadow: 0 4px 12px rgba(0,0,0,.3);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: transform .15s;
+  }
+  .fab-ruta:active { transform: scale(.92); }
+  .fab-ruta.activo { background:#06b6d4; color:white; border-color:#06b6d4; }
+  .dark .fab-ruta { background:#1e293b; color:#f1f5f9; border-color:#f1f5f9; }
+  .dark .fab-ruta.activo { background:#06b6d4; color:white; border-color:#06b6d4; }
+
+  /* Modo ruta: el cursor sobre el mapa cambia y los markers tienen efecto hover */
+  body.modo-ruta #map { cursor: crosshair; }
+  body.modo-ruta .h-marker { transition: transform .15s; }
+  body.modo-ruta .h-marker:hover { transform: scale(1.15); }
+
+  /* Badge numerado para marcadores que están en la ruta */
+  .ruta-badge {
+    position: absolute; top: -8px; right: -8px;
+    background: #06b6d4; color: white;
+    width: 20px; height: 20px; border-radius: 50%;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,.3);
+    border: 2px solid white;
+  }
+
+  /* Panel inferior de "Ruta del día" */
+  .panel-ruta {
+    position: absolute; left: 0; right: 0; bottom: 0; z-index: 1001;
+    background: white; border-top: 1px solid #e2e8f0;
+    box-shadow: 0 -4px 12px rgba(0,0,0,.1);
+    max-height: 50vh; display: flex; flex-direction: column;
+    transform: translateY(100%); transition: transform .25s ease-out;
+  }
+  .panel-ruta.abierto { transform: translateY(0); }
+  .dark .panel-ruta { background:#0f172a; border-top-color:#334155; }
+  .panel-ruta header { padding: 12px 14px; border-bottom: 1px solid #e2e8f0;
+                       display: flex; align-items: center; justify-content: space-between; }
+  .dark .panel-ruta header { border-bottom-color:#334155; }
+  .panel-ruta ol { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex: 1; }
+  .panel-ruta ol li { padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
+                       display: flex; align-items: center; gap: 10px; }
+  .dark .panel-ruta ol li { border-bottom-color:#1e293b; }
+  .panel-ruta ol li:last-child { border-bottom: none; }
+  .parada-num { width: 26px; height: 26px; border-radius: 50%;
+                background:#06b6d4; color:white; font-size:13px; font-weight:700;
+                display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .parada-info { flex: 1; min-width: 0; }
+  .parada-nombre { font-size: 13px; font-weight: 500; line-height: 1.3;
+                   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .parada-municipio { font-size: 11px; color: #64748b; }
+  .dark .parada-municipio { color: #94a3b8; }
+  .parada-remove { width: 28px; height: 28px; border-radius: 6px; border:none;
+                   background: transparent; color: #94a3b8; font-size: 18px;
+                   cursor: pointer; transition: all .15s; }
+  .parada-remove:hover { background: #fee2e2; color: #dc2626; }
+  .panel-ruta footer { padding: 10px 14px; border-top: 1px solid #e2e8f0;
+                       display: flex; gap: 8px; }
+  .dark .panel-ruta footer { border-top-color:#334155; }
+  .btn-ruta-primario { flex: 1; padding: 10px; border-radius: 8px; border: none;
+                       background: #06b6d4; color: white; font-weight: 600;
+                       font-size: 14px; cursor: pointer; }
+  .btn-ruta-primario:hover { background: #0891b2; }
+  .btn-ruta-primario:disabled { background: #cbd5e1; cursor: not-allowed; }
+  .btn-ruta-secundario { padding: 10px 14px; border-radius: 8px;
+                         border: 1px solid #e2e8f0; background: transparent;
+                         color: #475569; font-size: 13px; cursor: pointer; }
+  .btn-ruta-secundario:hover { background: #f1f5f9; }
+  .dark .btn-ruta-secundario { border-color:#334155; color:#cbd5e1; }
+  .dark .btn-ruta-secundario:hover { background:#1e293b; }
+
   /* KPIs compactos */
   .kpi-num { font-variant-numeric: tabular-nums; font-weight: 700; }
 
@@ -227,6 +302,27 @@
   <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m-4-4h8m4 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg>
 </button>
 
+<!-- Botón: Modo Ruta (planificar visitas del día) -->
+<button id="fab-ruta" class="fab-ruta" title="Planificar ruta de visitas">
+  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+</button>
+
+<!-- Panel inferior: lista de paradas del día -->
+<div id="panel-ruta" class="panel-ruta">
+  <header>
+    <div>
+      <h3 class="font-semibold text-sm">Ruta del día</h3>
+      <p class="text-xs text-slate-500 dark:text-slate-400"><span id="ruta-count">0</span> paradas — toca un marcador para añadirlo</p>
+    </div>
+    <button id="btn-cerrar-ruta" class="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 text-2xl leading-none">&times;</button>
+  </header>
+  <ol id="ruta-lista"></ol>
+  <footer>
+    <button id="btn-vaciar-ruta" class="btn-ruta-secundario">Vaciar</button>
+    <button id="btn-abrir-gmaps" class="btn-ruta-primario" disabled>🧭 Abrir en Google Maps</button>
+  </footer>
+</div>
+
 <!-- ============================================================ SCRIPTS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
@@ -268,6 +364,7 @@ const STORAGE_PREFIX = 'higiofi-mapa-v1';
 const KEY_DARK     = `${STORAGE_PREFIX}-dark`;
 const KEY_ESTADO   = (id) => `${STORAGE_PREFIX}-estado-${id}`;
 const KEY_NOTAS    = (id) => `${STORAGE_PREFIX}-notas-${id}`;
+const KEY_RUTA     = `${STORAGE_PREFIX}-ruta`;  // array de ids de paradas en orden
 
 // ============================ Estado interno (localStorage) ==================
 function getEstado(id) { return localStorage.getItem(KEY_ESTADO(id)) || 'sin'; }
@@ -315,23 +412,37 @@ const cluster = L.markerClusterGroup({
 map.addLayer(cluster);
 
 // ============================ Marcadores =====================================
-function makeMarker(feature) {
-  const p = feature.properties;
-  const [lon, lat] = feature.geometry.coordinates;
+function _iconoMarker(p) {
   const estado = getEstado(p.id);
   const ringClass = estado !== 'sin' ? `ring-${estado}` : '';
-  const icon = L.divIcon({
+  const idxRuta = paradas.indexOf(p.id);
+  const badge = idxRuta >= 0 ? `<div class="ruta-badge">${idxRuta + 1}</div>` : '';
+  return L.divIcon({
     className: '',
     iconSize: [30, 30],
     iconAnchor: [15, 15],
     popupAnchor: [0, -15],
-    html: `<div class="h-marker h-marker-${p.tipo} ${ringClass}">${TIPO_ICONO_LETRA[p.tipo] || '?'}</div>`,
+    html: `<div class="h-marker h-marker-${p.tipo} ${ringClass}" style="position:relative">${TIPO_ICONO_LETRA[p.tipo] || '?'}${badge}</div>`,
   });
-  const m = L.marker([lat, lon], { icon });
+}
+
+function makeMarker(feature) {
+  const p = feature.properties;
+  const [lon, lat] = feature.geometry.coordinates;
+  const m = L.marker([lat, lon], { icon: _iconoMarker(p) });
   m.feature = feature;            // L.geoJSON pattern
   m.options.cliente = p;          // referencia rápida
   m.bindPopup(() => popupHTML(p), { maxWidth: 320, autoPanPaddingTopLeft: [10, 80] });
   m.on('popupopen', () => bindPopupEvents(p, m));
+  // Click: en modo ruta añade/quita la parada en lugar de abrir popup
+  m.on('click', (e) => {
+    if (modoRuta) {
+      e.originalEvent?.preventDefault?.();
+      L.DomEvent.stopPropagation(e);
+      m.closePopup();
+      toggleParada(p);
+    }
+  });
   return m;
 }
 
@@ -432,16 +543,7 @@ function bindPopupEvents(p, marker) {
 }
 
 function refrescarIconoMarker(marker) {
-  const p = marker.options.cliente;
-  const estado = getEstado(p.id);
-  const ringClass = estado !== 'sin' ? `ring-${estado}` : '';
-  marker.setIcon(L.divIcon({
-    className: '',
-    iconSize: [30, 30],
-    iconAnchor: [15, 15],
-    popupAnchor: [0, -15],
-    html: `<div class="h-marker h-marker-${p.tipo} ${ringClass}">${TIPO_ICONO_LETRA[p.tipo] || '?'}</div>`,
-  }));
+  marker.setIcon(_iconoMarker(marker.options.cliente));
 }
 
 function escapeHtml(s) {
@@ -519,6 +621,116 @@ document.getElementById('busqueda').addEventListener('input', () => {
   busquedaTimer = setTimeout(aplicarFiltros, 200);
 });
 
+// ============================ Modo Ruta del día ==============================
+let modoRuta = false;
+let paradas = JSON.parse(localStorage.getItem(KEY_RUTA) || '[]'); // ids en orden
+const fabRuta = document.getElementById('fab-ruta');
+const panelRuta = document.getElementById('panel-ruta');
+const rutaLista = document.getElementById('ruta-lista');
+const rutaCount = document.getElementById('ruta-count');
+const btnAbrirGmaps = document.getElementById('btn-abrir-gmaps');
+
+function guardarRuta() { localStorage.setItem(KEY_RUTA, JSON.stringify(paradas)); }
+
+function toggleParada(p) {
+  const idx = paradas.indexOf(p.id);
+  if (idx >= 0) paradas.splice(idx, 1);
+  else paradas.push(p.id);
+  guardarRuta();
+  renderRuta();
+  // Refresca los iconos de los markers afectados (badge numerado)
+  TODOS_MARKERS.forEach(m => {
+    if (paradas.includes(m.options.cliente.id) || m.options.cliente.id === p.id) {
+      refrescarIconoMarker(m);
+    }
+  });
+}
+
+function renderRuta() {
+  rutaCount.textContent = paradas.length;
+  rutaLista.innerHTML = '';
+  // Mapeo id -> feature para buscar info rápido
+  const porId = new Map(TODOS_MARKERS.map(m => [m.options.cliente.id, m.options.cliente]));
+  paradas.forEach((id, idx) => {
+    const p = porId.get(id);
+    if (!p) return; // marker no cargado (raro, pero defensivo)
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <div class="parada-num">${idx + 1}</div>
+      <div class="parada-info">
+        <div class="parada-nombre">${escapeHtml(p.nombre)}</div>
+        <div class="parada-municipio">${escapeHtml(p.municipio || '')}</div>
+      </div>
+      <button class="parada-remove" title="Quitar de la ruta">×</button>
+    `;
+    li.querySelector('.parada-remove').addEventListener('click', () => toggleParada(p));
+    // Click en el nombre centra el mapa sobre ese punto
+    li.querySelector('.parada-info').addEventListener('click', () => {
+      const m = TODOS_MARKERS.find(mk => mk.options.cliente.id === id);
+      if (m) map.setView(m.getLatLng(), 15);
+    });
+    rutaLista.appendChild(li);
+  });
+  btnAbrirGmaps.disabled = paradas.length === 0;
+}
+
+function activarModoRuta(on) {
+  modoRuta = on;
+  fabRuta.classList.toggle('activo', on);
+  document.body.classList.toggle('modo-ruta', on);
+  if (on) {
+    panelRuta.classList.add('abierto');
+    renderRuta();
+  } else {
+    panelRuta.classList.remove('abierto');
+  }
+}
+
+fabRuta.addEventListener('click', () => activarModoRuta(!modoRuta));
+document.getElementById('btn-cerrar-ruta').addEventListener('click', () => activarModoRuta(false));
+
+document.getElementById('btn-vaciar-ruta').addEventListener('click', () => {
+  if (paradas.length === 0) return;
+  if (!confirm(`¿Vaciar las ${paradas.length} paradas de la ruta?`)) return;
+  const idsAntiguos = [...paradas];
+  paradas = [];
+  guardarRuta();
+  renderRuta();
+  // Refresca iconos de los que ya no están en la ruta
+  TODOS_MARKERS.forEach(m => {
+    if (idsAntiguos.includes(m.options.cliente.id)) refrescarIconoMarker(m);
+  });
+});
+
+btnAbrirGmaps.addEventListener('click', () => {
+  if (paradas.length === 0) return;
+  const porId = new Map(TODOS_MARKERS.map(m => [m.options.cliente.id, m]));
+  const coords = paradas
+    .map(id => porId.get(id))
+    .filter(Boolean)
+    .map(m => `${m.getLatLng().lat},${m.getLatLng().lng}`);
+  if (coords.length === 0) return;
+  // Google Maps: origin + destination + hasta 8 waypoints intermedios (10 total).
+  // Si hay más, avisamos y truncamos a los 10 primeros.
+  if (coords.length > 10) {
+    if (!confirm(`Tienes ${coords.length} paradas pero Google Maps admite máximo 10 por ruta. ¿Abrir solo las 10 primeras?`)) return;
+    coords.length = 10;
+  }
+  const origin = coords[0];
+  const destination = coords[coords.length - 1];
+  const waypoints = coords.slice(1, -1);
+  const params = new URLSearchParams({
+    api: '1', origin, destination, travelmode: 'driving',
+  });
+  if (waypoints.length > 0) {
+    // optimize:true deja que Google Maps reordene los waypoints intermedios
+    // para minimizar tiempo de conducción.
+    params.set('waypoints', 'optimize:true|' + waypoints.join('|'));
+  }
+  const url = `https://www.google.com/maps/dir/?${params}`;
+  window.open(url, '_blank', 'noopener');
+});
+
 // ============================ Geolocalización ================================
 let layerUbicacion;
 document.getElementById('fab-locate').addEventListener('click', () => {
@@ -551,6 +763,20 @@ fetch('data/clientes.geojson')
       const n = counts[el.dataset.countTipo] || 0;
       el.textContent = n ? `(${n})` : '';
     });
+
+    // Limpieza: descarta de la ruta paradas cuyos ids ya no existan
+    const idsExistentes = new Set(TODOS_MARKERS.map(m => m.options.cliente.id));
+    const antes = paradas.length;
+    paradas = paradas.filter(id => idsExistentes.has(id));
+    if (paradas.length !== antes) guardarRuta();
+
+    // Refresca iconos de markers que estén en la ruta (para mostrar badge)
+    if (paradas.length > 0) {
+      TODOS_MARKERS.forEach(m => {
+        if (paradas.includes(m.options.cliente.id)) refrescarIconoMarker(m);
+      });
+      renderRuta();
+    }
 
     aplicarFiltros();
   })
