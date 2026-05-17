@@ -175,20 +175,38 @@
     border: 2px solid white;
   }
 
-  /* Panel inferior de "Ruta del día" */
+  /* Layout principal: mapa a la izquierda + panel-ruta a la derecha en escritorio */
+  .map-and-panel { display: flex; flex: 1 1 auto; min-height: 0; }
+  #map { flex: 1 1 auto; min-width: 0; }
+
+  /* Panel "Ruta del día" — escritorio: lateral derecho, redimensiona el mapa */
   .panel-ruta {
-    position: absolute; left: 0; right: 0; bottom: 0; z-index: 1001;
-    background: white; border-top: 1px solid #e2e8f0;
-    box-shadow: 0 -4px 12px rgba(0,0,0,.1);
-    max-height: 50vh; display: flex; flex-direction: column;
-    transform: translateY(100%); transition: transform .25s ease-out;
+    background: white;
+    border-left: 1px solid #e2e8f0;
+    box-shadow: -4px 0 12px rgba(0,0,0,.06);
+    width: 0; flex-shrink: 0; overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: width .25s ease-out;
   }
-  .panel-ruta.abierto { transform: translateY(0); }
-  .dark .panel-ruta { background:#0f172a; border-top-color:#334155; }
+  .panel-ruta.abierto { width: 340px; }
+  .dark .panel-ruta { background:#0f172a; border-left-color:#334155; }
+  /* Móvil: vuelve a comportamiento inferior con altura fija + scroll interno */
+  @media (max-width: 767px) {
+    .panel-ruta {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 1001;
+      width: auto; height: 40vh; max-height: 320px;
+      border-left: none; border-top: 1px solid #e2e8f0;
+      box-shadow: 0 -4px 12px rgba(0,0,0,.1);
+      transform: translateY(100%); transition: transform .25s ease-out;
+    }
+    .panel-ruta.abierto { width: auto; transform: translateY(0); }
+    .dark .panel-ruta { border-top-color:#334155; border-left-color:transparent; }
+  }
   .panel-ruta header { padding: 12px 14px; border-bottom: 1px solid #e2e8f0;
-                       display: flex; align-items: center; justify-content: space-between; }
+                       display: flex; align-items: center; justify-content: space-between;
+                       flex-shrink: 0; }
   .dark .panel-ruta header { border-bottom-color:#334155; }
-  .panel-ruta ol { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex: 1; }
+  .panel-ruta ol { list-style: none; padding: 0; margin: 0; overflow-y: auto; flex: 1 1 auto; min-height: 0; }
   .panel-ruta ol li { padding: 10px 14px; border-bottom: 1px solid #f1f5f9;
                        display: flex; align-items: center; gap: 10px; }
   .dark .panel-ruta ol li { border-bottom-color:#1e293b; }
@@ -295,20 +313,19 @@
   </div>
 </header>
 
-<!-- ============================================================ MAPA -->
-<div id="map" class="relative"></div>
+<!-- ============================================================ MAPA + PANEL -->
+<main class="map-and-panel">
+  <div id="map" class="relative">
+    <button id="fab-locate" class="fab" title="Mostrar mi ubicación">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m-4-4h8m4 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg>
+    </button>
+    <button id="fab-ruta" class="fab-ruta" title="Planificar ruta de visitas">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+    </button>
+  </div>
 
-<button id="fab-locate" class="fab" title="Mostrar mi ubicación">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m-4-4h8m4 0a8 8 0 11-16 0 8 8 0 0116 0z"/></svg>
-</button>
-
-<!-- Botón: Modo Ruta (planificar visitas del día) -->
-<button id="fab-ruta" class="fab-ruta" title="Planificar ruta de visitas">
-  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
-</button>
-
-<!-- Panel inferior: lista de paradas del día -->
-<div id="panel-ruta" class="panel-ruta">
+  <!-- Panel de paradas del día (lateral en escritorio, inferior en móvil) -->
+  <aside id="panel-ruta" class="panel-ruta">
   <header>
     <div>
       <h3 class="font-semibold text-sm">Ruta del día</h3>
@@ -321,7 +338,8 @@
     <button id="btn-vaciar-ruta" class="btn-ruta-secundario">Vaciar</button>
     <button id="btn-abrir-gmaps" class="btn-ruta-primario" disabled>🧭 Abrir en Google Maps</button>
   </footer>
-</div>
+  </aside>
+</main>
 
 <!-- ============================================================ SCRIPTS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -684,6 +702,8 @@ function activarModoRuta(on) {
   } else {
     panelRuta.classList.remove('abierto');
   }
+  // Tras la transición CSS (.25s), recalcula tamaño del mapa
+  setTimeout(() => map.invalidateSize(), 280);
 }
 
 fabRuta.addEventListener('click', () => activarModoRuta(!modoRuta));
