@@ -40,6 +40,28 @@ class Licitacion:
 
 
 @dataclass
+class Adjudicacion:
+    """Adjudicatario de una licitación (un `<cac:TenderResult>` del XML CODICE).
+
+    Una licitación puede tener varias adjudicaciones (por lotes). El cruce con
+    el mapa comercial usa `nif` como clave para detectar el mismo contratista
+    ganando licitaciones distintas.
+    """
+    uuid_placsp: str               # FK lógica a licitaciones.uuid_placsp
+    nif: str | None                # NIF / CIF español del adjudicatario
+    razon_social: str | None
+    importe_adjudicacion: float | None  # cbc:LowerTenderAmount (suele coincidir con el adjudicado)
+    fecha_adjudicacion: str | None      # cbc:AwardDate (YYYY-MM-DD)
+    result_code: str | None             # cbc:ResultCode CODICE (8=adjudicado, 9=formalizado, etc.)
+    es_pyme: bool | None                # cbc:SMEAwardedIndicator
+    pais: str | None                    # cbc:AwardedOwnerNationalityCode (ES, FR, ...)
+    direccion: str | None               # PhysicalLocation > Address (texto agregado)
+    ciudad: str | None
+    provincia: str | None               # CountrySubentity / NUTS
+    codigo_postal: str | None
+
+
+@dataclass
 class ResultadoAnalisisIA:
     """JSON que devuelve Claude tras analizar los pliegos."""
     encaje: str                                  # alto | medio | bajo | ninguno

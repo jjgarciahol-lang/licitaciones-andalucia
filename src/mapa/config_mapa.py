@@ -53,12 +53,13 @@ TIPOS_OCULTOS_POR_DEFECTO: tuple[str, ...] = ()
 
 # --- Fuentes de datos ---------------------------------------------------------
 FUENTES: tuple[str, ...] = (
-    "junta_andalucia",   # Catálogo de centros docentes
-    "ine",               # Municipios y centroides
-    "mptfp",             # Registro de Entidades Locales (contactos)
-    "osm",               # Overpass API (campings, paisajistas, obra civil)
-    "nominatim",         # Geocoding (sede ayuntamientos)
-    "manual",            # Correcciones a mano
+    "junta_andalucia",       # Catálogo de centros docentes
+    "ine",                   # Municipios y centroides
+    "mptfp",                 # Registro de Entidades Locales (contactos)
+    "osm",                   # Overpass API (campings, competencia)
+    "nominatim",             # Geocoding (sede ayuntamientos)
+    "placsp_adjudicaciones", # Contratistas locales derivados de adjudicaciones PLACSP
+    "manual",                # Correcciones a mano
 )
 
 # --- Overpass API -------------------------------------------------------------

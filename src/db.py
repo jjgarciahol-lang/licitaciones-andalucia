@@ -121,6 +121,39 @@ CREATE TABLE IF NOT EXISTS log_ejecuciones (
 
 CREATE INDEX IF NOT EXISTS idx_log_fecha        ON log_ejecuciones(fecha_inicio);
 CREATE INDEX IF NOT EXISTS idx_log_etapa_estado ON log_ejecuciones(etapa, estado);
+
+-- ============================================================================
+-- adjudicaciones: empresas que han ganado licitaciones (un <cac:TenderResult>
+-- del XML CODICE). Una licitación puede tener varias adjudicaciones por lotes.
+--
+-- Esta tabla se puebla con un pipeline independiente del flujo principal:
+-- scripts/extraer_adjudicaciones.py itera los ZIPs de PLACSP y extrae solo
+-- los TenderResult, sea cual sea el estado del expediente. Es la base del
+-- subproyecto mapa para la capa "contratista_local".
+-- ============================================================================
+CREATE TABLE IF NOT EXISTS adjudicaciones (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    uuid_placsp TEXT NOT NULL,
+    nif TEXT,
+    razon_social TEXT,
+    importe_adjudicacion REAL,
+    fecha_adjudicacion TEXT,
+    result_code TEXT,
+    es_pyme INTEGER,
+    pais TEXT,
+    direccion TEXT,
+    ciudad TEXT,
+    provincia TEXT,
+    codigo_postal TEXT,
+    fecha_ingesta TEXT NOT NULL DEFAULT (datetime('now'))
+);
+
+-- Una licitación con un NIF concreto = una adjudicación única (por si se
+-- reejecuta el script de extracción).
+CREATE UNIQUE INDEX IF NOT EXISTS idx_adj_uuid_nif ON adjudicaciones(uuid_placsp, nif);
+CREATE INDEX IF NOT EXISTS idx_adj_nif      ON adjudicaciones(nif);
+CREATE INDEX IF NOT EXISTS idx_adj_provincia ON adjudicaciones(provincia);
+CREATE INDEX IF NOT EXISTS idx_adj_fecha     ON adjudicaciones(fecha_adjudicacion);
 """
 
 

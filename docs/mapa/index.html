@@ -39,6 +39,8 @@
   .tipo-camping.pill-on             { background:#14b8a6; color:white; border-color:#14b8a6; box-shadow:0 0 0 2px rgba(20,184,166,.35); }
   .tipo-competencia.pill-off        { background:#f1f5f9; color:#475569; border-color:#e2e8f0; }
   .tipo-competencia.pill-on         { background:#64748b; color:white; border-color:#64748b; box-shadow:0 0 0 2px rgba(100,116,139,.35); }
+  .tipo-contratista_local.pill-off  { background:#f3e8ff; color:#6b21a8; border-color:#e9d5ff; }
+  .tipo-contratista_local.pill-on   { background:#9333ea; color:white; border-color:#9333ea; box-shadow:0 0 0 2px rgba(147,51,234,.35); }
 
   /* Pills coloreados por estado interno */
   .estado-sin.pill-off       { background:#e0e7ff; color:#3730a3; border-color:#c7d2fe; }
@@ -67,6 +69,7 @@
   .h-marker-ayuntamiento     { background:#16a34a; }
   .h-marker-camping          { background:#14b8a6; }
   .h-marker-competencia      { background:#64748b; }
+  .h-marker-contratista_local { background:#9333ea; }
 
   /* Marcador con estado "cliente" o "descartado" muestra ring */
   .h-marker.ring-cliente    { box-shadow: 0 1px 4px rgba(0,0,0,.4), 0 0 0 3px #16a34a; }
@@ -182,6 +185,7 @@
     <button class="pill tipo-guarderia pill-on"        data-filtro-tipo="guarderia">Guarderías <span class="opacity-70" data-count-tipo="guarderia"></span></button>
     <button class="pill tipo-ayuntamiento pill-on"     data-filtro-tipo="ayuntamiento">Ayuntamientos <span class="opacity-70" data-count-tipo="ayuntamiento"></span></button>
     <button class="pill tipo-camping pill-on"          data-filtro-tipo="camping">Campings <span class="opacity-70" data-count-tipo="camping"></span></button>
+    <button class="pill tipo-contratista_local pill-off" data-filtro-tipo="contratista_local" title="Empresas con sede en Cádiz que han ganado licitaciones públicas (compradores potenciales como proveedor de obra)">Contratistas locales <span class="opacity-70" data-count-tipo="contratista_local"></span></button>
     <button class="pill tipo-competencia pill-off"     data-filtro-tipo="competencia" title="Viveros y centros de jardinería (no son clientes, son referencia de competencia)">Competencia <span class="opacity-70" data-count-tipo="competencia"></span></button>
   </div>
 
@@ -211,21 +215,23 @@
 
 // ============================ Constantes =====================================
 const TIPO_LABELS = {
-  colegio_publico:  'Colegio público',
-  colegio_privado:  'Colegio privado',
-  guarderia:        'Guardería',
-  ayuntamiento:     'Ayuntamiento',
-  camping:          'Camping',
-  competencia:      'Competencia (vivero/jardinería)',
+  colegio_publico:    'Colegio público',
+  colegio_privado:    'Colegio privado',
+  guarderia:          'Guardería',
+  ayuntamiento:       'Ayuntamiento',
+  camping:            'Camping',
+  contratista_local:  'Contratista local',
+  competencia:        'Competencia (vivero/jardinería)',
 };
 
 const TIPO_ICONO_LETRA = {
-  colegio_publico:  'P',
-  colegio_privado:  'V',
-  guarderia:        'G',
-  ayuntamiento:     'A',
-  camping:          'C',
-  competencia:      'R',  // R de "Referencia"
+  colegio_publico:    'P',
+  colegio_privado:    'V',
+  guarderia:          'G',
+  ayuntamiento:       'A',
+  camping:            'C',
+  contratista_local:  'T',  // T de "conTratista"
+  competencia:        'R',  // R de "Referencia"
 };
 
 const ESTADOS = [
