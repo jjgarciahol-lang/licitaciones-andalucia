@@ -459,20 +459,36 @@ let TODOS_MARKERS = [];
 
 function aplicarFiltros() {
   const texto = document.getElementById('busqueda').value.trim().toLowerCase();
+  let fueraTipo = 0, fueraEstado = 0, fueraTexto = 0;
   const visibles = TODOS_MARKERS.filter(m => {
     const p = m.options.cliente;
-    if (!filtrosTipo.has(p.tipo)) return false;
-    if (!filtrosEstado.has(getEstado(p.id))) return false;
+    if (!filtrosTipo.has(p.tipo))               { fueraTipo++;   return false; }
+    if (!filtrosEstado.has(getEstado(p.id)))    { fueraEstado++; return false; }
     if (texto) {
       const hay = `${p.nombre} ${p.direccion || ''} ${p.municipio || ''}`.toLowerCase();
-      if (!hay.includes(texto)) return false;
+      if (!hay.includes(texto))                 { fueraTexto++;  return false; }
     }
     return true;
   });
   cluster.clearLayers();
   cluster.addLayers(visibles);
   document.getElementById('kpi-resumen').textContent = `${visibles.length.toLocaleString('es-ES')} resultados visibles`;
+  // Debug: en consola del navegador (F12) cada vez que se aplican filtros
+  console.log('[mapa]', {
+    total: TODOS_MARKERS.length,
+    visibles: visibles.length,
+    fueraTipo, fueraEstado, fueraTexto,
+    filtrosTipo: [...filtrosTipo],
+    filtrosEstado: [...filtrosEstado],
+  });
 }
+
+// Captura cualquier error JS y muestra dónde
+window.addEventListener('error', e => {
+  console.error('[mapa] ERROR:', e.message, 'en', e.filename + ':' + e.lineno);
+  const kpi = document.getElementById('kpi-resumen');
+  if (kpi) kpi.textContent = `⚠ Error: ${e.message}`;
+});
 
 document.querySelectorAll('[data-filtro-tipo]').forEach(btn => {
   btn.addEventListener('click', () => {
