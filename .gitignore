@@ -16,6 +16,10 @@ data/licitaciones.db
 # El GeoJSON sí se versiona porque lo sirve GitHub Pages.
 data/mapa/raw/
 
+# Archivos lock de Excel/LibreOffice (~$archivo.xlsx mientras está abierto)
+~$*
+.~lock.*
+
 # --- Logs ---
 logs/
 *.log

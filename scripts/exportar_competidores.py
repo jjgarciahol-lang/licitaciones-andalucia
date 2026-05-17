@@ -30,7 +30,21 @@ from openpyxl.utils import get_column_letter  # noqa: E402
 
 from src.config import CPVS_RELEVANTES, DB_PATH  # noqa: E402
 from src.logging_setup import configurar_logging  # noqa: E402
-from src.mapa.config_mapa import cargar_blacklist_competencia  # noqa: E402
+from src.mapa.config_mapa import (  # noqa: E402
+    CPVS_PARQUES, cargar_blacklist_competencia,
+)
+
+
+def _categoria_higiofi(cpvs_ganados: str | None) -> str:
+    """Devuelve 'Parques' o 'Mobiliario / papelería' según los CPVs ganados.
+    Si gana en ambos, prevalece Parques (más especializado)."""
+    if not cpvs_ganados:
+        return "Mobiliario / papelería"
+    for cpv in cpvs_ganados.split(","):
+        cpv = cpv.strip()
+        if any(cpv.startswith(p) for p in CPVS_PARQUES):
+            return "Parques"
+    return "Mobiliario / papelería"
 
 
 PROVINCIAS_ANDALUCIA = (
@@ -153,6 +167,7 @@ def _escribir_hoja(ws, columnas: list[tuple[str, str, int]], filas: list[dict]) 
 
 
 COLUMNAS_RESUMEN: list[tuple[str, str, int]] = [
+    ("categoria",        "Categoría",           22),
     ("razon_social",     "Razón social",        45),
     ("nif",              "NIF",                 14),
     ("ciudad",           "Ciudad sede",         22),
@@ -206,6 +221,9 @@ def main() -> int:
         log.info("Consultando adjudicaciones...")
         andalucia = [e for e in _agregado_por_nif(conn, solo_andalucia=True) if e["nif"] not in blacklist]
         espana = [e for e in _agregado_por_nif(conn, solo_andalucia=False) if e["nif"] not in blacklist]
+        # Añade columna "categoría" (Parques / Mobiliario) a cada empresa
+        for fila in andalucia + espana:
+            fila["categoria"] = _categoria_higiofi(fila.get("cpvs_ganados"))
         detalle = _adjudicaciones_detalle(conn)
     finally:
         conn.close()
