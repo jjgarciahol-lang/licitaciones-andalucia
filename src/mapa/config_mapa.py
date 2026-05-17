@@ -31,14 +31,21 @@ PROVINCIAS_ANDALUCIA_SIN_ALMERIA: tuple[str, ...] = (
 )
 
 # --- Tipos de cliente ---------------------------------------------------------
+# Nota: los tipos se dividen en CLIENTES POTENCIALES (quien compra a Higiofi)
+# y REFERENCIA (no compran, pero útiles para análisis de mercado).
 TIPOS_CLIENTE: tuple[str, ...] = (
+    # --- Clientes potenciales ---
     "colegio_publico",
     "colegio_concertado",  # no se puebla en V1 (la fuente Junta no lo distingue)
     "colegio_privado",
     "guarderia",
     "ayuntamiento",
-    "camping",             # via OSM/Overpass
-    "paisajista",          # via OSM/Overpass — agrupa jardinería + obra civil pequeña
+    "camping",             # via OSM/Overpass — compran parques infantiles, biosaludables
+    "contratista_local",   # constructoras y paisajistas que ganan obra municipal
+                           # (pendiente: poblar desde adjudicatarios PLACSP)
+
+    # --- Referencia (no clientes — análisis de mercado / competencia) ---
+    "competencia",         # viveros y centros de jardinería — ofrecen producto similar
 )
 
 # Tipos ocultos por defecto en el frontend (vacío en V1).
