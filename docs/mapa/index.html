@@ -186,7 +186,7 @@
     <button class="pill tipo-ayuntamiento pill-on"     data-filtro-tipo="ayuntamiento">Ayuntamientos <span class="opacity-70" data-count-tipo="ayuntamiento"></span></button>
     <button class="pill tipo-camping pill-on"          data-filtro-tipo="camping">Campings <span class="opacity-70" data-count-tipo="camping"></span></button>
     <button class="pill tipo-contratista_local pill-off" data-filtro-tipo="contratista_local" title="Empresas con sede en Cádiz que han ganado licitaciones públicas (compradores potenciales como proveedor de obra)">Contratistas locales <span class="opacity-70" data-count-tipo="contratista_local"></span></button>
-    <button class="pill tipo-competencia pill-off"     data-filtro-tipo="competencia" title="Viveros y centros de jardinería (no son clientes, son referencia de competencia)">Competencia <span class="opacity-70" data-count-tipo="competencia"></span></button>
+    <button class="pill tipo-competencia pill-off"     data-filtro-tipo="competencia" title="Empresas que han ganado licitaciones públicas con CPVs del catálogo Higiofi en Andalucía (competidores directos)">Competencia <span class="opacity-70" data-count-tipo="competencia"></span></button>
   </div>
 
   <!-- Filtros por estado -->
@@ -221,7 +221,7 @@ const TIPO_LABELS = {
   ayuntamiento:       'Ayuntamiento',
   camping:            'Camping',
   contratista_local:  'Contratista local',
-  competencia:        'Competencia (vivero/jardinería)',
+  competencia:        'Competencia (CPV Higiofi)',
 };
 
 const TIPO_ICONO_LETRA = {
@@ -231,7 +231,7 @@ const TIPO_ICONO_LETRA = {
   ayuntamiento:       'A',
   camping:            'C',
   contratista_local:  'T',  // T de "conTratista"
-  competencia:        'R',  // R de "Referencia"
+  competencia:        'X',  // X de "competiX" / rival
 };
 
 const ESTADOS = [

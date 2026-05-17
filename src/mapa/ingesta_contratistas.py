@@ -16,15 +16,22 @@ from __future__ import annotations
 
 import hashlib
 import logging
+import math
 import sqlite3
-from math import cos, radians
 
-from src.config import DB_PATH as DB_LICITACIONES
+from src.config import CPVS_RELEVANTES, DB_PATH as DB_LICITACIONES
 from src.mapa.config_mapa import BBOX_PROVINCIAS, PROVINCIAS_MAPA
 from src.mapa.db import conexion as conexion_mapa
 from src.mapa.geocoder import Geocoder
 from src.mapa.ingesta_centros import upsert_cliente
 from src.mapa.modelos import ClientePotencial
+
+# Provincias andaluzas — para filtrar "licitaciones en Andalucía" cuando se
+# busca competencia real (empresas que ganaron CPVs Higiofi en territorio de
+# la comercial).
+PROVINCIAS_ANDALUCIA = (
+    "Cádiz", "Sevilla", "Málaga", "Granada", "Huelva", "Jaén", "Córdoba", "Almería",
+)
 
 log = logging.getLogger(__name__)
 
@@ -42,11 +49,8 @@ def _offset_por_nif(nif: str) -> tuple[float, float]:
     de ~150m alrededor del centroide.
     """
     h = hashlib.md5(nif.encode("utf-8")).digest()
-    # Usamos dos bytes como ángulo y distancia
     angulo_deg = (h[0] / 255.0) * 360.0
     distancia_m = 50 + (h[1] / 255.0) * 150.0  # entre 50 y 200 metros
-
-    import math
     angulo_rad = math.radians(angulo_deg)
     # 1 grado lat ≈ 111000 m; 1 grado lon ≈ 111000 * cos(lat) ≈ 90000 en Cádiz
     dlat = (distancia_m * math.cos(angulo_rad)) / 111000.0
@@ -188,6 +192,147 @@ def ingestar() -> dict[str, int]:
         "sin_ciudad": sin_ciudad,
         "sin_coords": sin_coords,
         "geocoded": geocoded,
+        "nuevos": nuevos,
+        "actualizados": actualizados,
+        "municipios_unicos": len(cache_municipios),
+    }
+
+
+# ============================== COMPETENCIA HIGIOFI ==========================
+# Empresas que han ganado licitaciones con CPVs del catálogo Higiofi
+# (mobiliario urbano, parques infantiles, mobiliario escolar, papelería) en
+# Andalucía. Son competencia REAL — no como los viveros de OSM que vendían
+# plantas. Aquí Kompan, Benito Urban, HPC Ibérica, etc. aparecerán.
+
+def _formato_descripcion_competencia(municipio: str | None, n_adj: int, importe: float | None, cpvs: str | None) -> str:
+    partes = [municipio or "?"]
+    forma = "victoria en Andalucía" if n_adj == 1 else "victorias en Andalucía"
+    partes.append(f"{n_adj} {forma}")
+    imp = _formato_importe(importe)
+    if imp:
+        partes.append(f"{imp} total")
+    if cpvs:
+        # Tomamos solo el primer CPV como muestra, formateado
+        primer_cpv = cpvs.split(",")[0].strip()
+        partes.append(f"CPV {primer_cpv}")
+    return " · ".join(partes)
+
+
+def _consultar_competencia_higiofi() -> list[dict]:
+    """Empresas que han ganado licitaciones con CPV del catálogo Higiofi en Andalucía."""
+    cpv_or = " OR ".join([f"l.cpv_principal LIKE '{p}%'" for p in CPVS_RELEVANTES])
+    placeholders = ",".join("?" * len(PROVINCIAS_ANDALUCIA))
+    conn = sqlite3.connect(str(DB_LICITACIONES))
+    conn.row_factory = sqlite3.Row
+    try:
+        q = f"""
+            SELECT
+                a.nif,
+                MAX(a.razon_social) AS razon_social,
+                MAX(a.ciudad)       AS ciudad,
+                MAX(a.provincia)    AS provincia,
+                COUNT(*)            AS n_adjudicaciones,
+                SUM(a.importe_adjudicacion) AS importe_total,
+                GROUP_CONCAT(DISTINCT l.cpv_principal) AS cpvs_ganados
+            FROM adjudicaciones a
+            JOIN licitaciones l ON a.uuid_placsp = l.uuid_placsp
+            WHERE ({cpv_or})
+              AND l.provincia IN ({placeholders})
+              AND a.nif IS NOT NULL
+              AND a.razon_social IS NOT NULL
+            GROUP BY a.nif
+            ORDER BY n_adjudicaciones DESC, importe_total DESC
+        """
+        return [dict(r) for r in conn.execute(q, PROVINCIAS_ANDALUCIA)]
+    finally:
+        conn.close()
+
+
+def _id_estable_competidor(nif: str) -> str:
+    return hashlib.sha1(f"competidor:nif:{nif}".encode("utf-8")).hexdigest()[:16]
+
+
+def ingestar_competencia_higiofi() -> dict[str, int]:
+    """Pobla `competencia` en clientes.db con empresas que han ganado
+    licitaciones de CPVs del catálogo Higiofi en Andalucía."""
+    empresas = _consultar_competencia_higiofi()
+    log.info("Competidores a procesar: %d", len(empresas))
+
+    nuevos = 0
+    actualizados = 0
+    sin_ciudad = 0
+    sin_coords = 0
+
+    # Cache de geocoding: igual que en contratistas, geocodificamos solo el
+    # municipio. Aquí las empresas pueden estar en cualquier provincia de
+    # España, no solo Andalucía — la competencia es nacional.
+    cache_municipios: dict[tuple[str, str], tuple[float | None, float | None]] = {}
+
+    with Geocoder() as geocoder, conexion_mapa() as conn:
+        conn.execute("BEGIN")
+        try:
+            for c in empresas:
+                ciudad = (c["ciudad"] or "").strip()
+                provincia = (c["provincia"] or "").strip()
+                if not ciudad:
+                    sin_ciudad += 1
+                    continue
+
+                # Si la "provincia" parece un código NUTS (ej. ES424), no lo
+                # incluimos en la query a Nominatim — solo confunde. Para esos
+                # casos vamos con "ciudad, España".
+                es_nuts = (
+                    provincia and provincia.startswith("ES")
+                    and len(provincia) == 5
+                )
+                provincia_query = "España" if (not provincia or es_nuts) else provincia
+                clave = (ciudad.lower(), provincia_query.lower())
+                if clave not in cache_municipios:
+                    query = f"{ciudad}, {provincia_query}"
+                    resultado = geocoder.buscar(query)
+                    cache_municipios[clave] = (resultado.lat, resultado.lon)
+
+                lat_base, lon_base = cache_municipios[clave]
+                if lat_base is None or lon_base is None:
+                    sin_coords += 1
+                    continue
+
+                dlat, dlon = _offset_por_nif(c["nif"])
+                lat = lat_base + dlat
+                lon = lon_base + dlon
+
+                cliente = ClientePotencial(
+                    id=_id_estable_competidor(c["nif"]),
+                    tipo="competencia",
+                    nombre=c["razon_social"],
+                    direccion=_formato_descripcion_competencia(
+                        ciudad, c["n_adjudicaciones"],
+                        c["importe_total"], c["cpvs_ganados"],
+                    ),
+                    municipio=ciudad.title() if ciudad.isupper() or ciudad.islower() else ciudad,
+                    # provincia es NOT NULL en el esquema. Si no la conocemos
+                    # (NUTS no mapeado, etc.) ponemos un fallback descriptivo.
+                    provincia=provincia if provincia and not es_nuts else "(otra)",
+                    lat=lat,
+                    lon=lon,
+                    codigo_origen=c["nif"],
+                    fuente="placsp_adjudicaciones",
+                    confianza="alta",
+                )
+                resultado = upsert_cliente(conn, cliente)
+                if resultado == "nuevo":
+                    nuevos += 1
+                else:
+                    actualizados += 1
+            conn.execute("COMMIT")
+        except Exception:
+            conn.execute("ROLLBACK")
+            raise
+
+    return {
+        "empresas_leidas": len(empresas),
+        "sin_ciudad": sin_ciudad,
+        "sin_coords": sin_coords,
         "nuevos": nuevos,
         "actualizados": actualizados,
         "municipios_unicos": len(cache_municipios),

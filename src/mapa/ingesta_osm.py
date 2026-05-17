@@ -108,25 +108,10 @@ def ingestar_campings() -> dict[str, int]:
     )
 
 
-# ============================== COMPETENCIA ==================================
-# Viveros y centros de jardinería: NO son clientes — Higiofi le vende a
-# administración y centros educativos, no a tiendas detallistas. Pero son
-# útiles para análisis de mercado: dónde está la competencia geográfica.
-# Quité los tags `office=construction_company` y `craft=builder` porque casi
-# no estaban poblados en OSM España y mezclaban categorías.
-
-FILTROS_COMPETENCIA = [
-    '["shop"="garden_centre"]',
-    '["craft"="gardener"]',
-]
-
-
-def ingestar_competencia() -> dict[str, int]:
-    return _ingestar_por_tipo(
-        filtros=FILTROS_COMPETENCIA,
-        tipo="competencia",
-        nombre_fallback="Tienda",
-    )
+# NOTA: la categoría "competencia" se llena ahora desde PLACSP, no desde OSM
+# (ver src/mapa/ingesta_contratistas.py:ingestar_competencia_higiofi). Los
+# viveros/jardinerías que metíamos por OSM NO son competencia real de Higiofi
+# — venden plantas, no mobiliario urbano ni parques infantiles.
 
 
 # ============================== ORQUESTACIÓN =================================
