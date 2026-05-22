@@ -85,10 +85,14 @@
   </div>
 
   <div class="max-w-7xl mx-auto px-6 pb-5">
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
       <div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
         <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total</div>
         <div class="text-2xl font-bold tabular-nums" id="kpi-total">—</div>
+      </div>
+      <div class="bg-emerald-600 rounded-lg p-3">
+        <div class="text-xs text-emerald-50 uppercase tracking-wide">Nuevas</div>
+        <div class="text-2xl font-bold tabular-nums text-white" id="kpi-nuevas">—</div>
       </div>
       <div class="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-3">
         <div class="text-xs text-indigo-700 dark:text-indigo-300 uppercase tracking-wide">Sin analizar</div>
@@ -241,7 +245,31 @@ const LICITACIONES = [
         "Pliegos no descargables vía API (error 500 servidor PLACSP) — requiere acceso manual",
         "El presupuesto alto sugiere requisitos de solvencia técnica/financiera elevados (volumen anual, certificaciones, experiencias previas)"
       ]
-    }
+    },
+    "es_nueva": false
+  },
+  {
+    "id": 103189,
+    "expediente": "AVM.SUM-2026000006",
+    "organo": "Junta de Gobierno del Ayuntamiento de Vélez-Málaga",
+    "provincia": "Málaga",
+    "municipio": "Vélez Málaga",
+    "importe_sin_iva": 90404.22,
+    "importe_con_iva": 109389.11,
+    "fecha_publicacion": "2026-05-18T09:36:54.030+02:00",
+    "fecha_limite": "2026-06-01T23:59:00",
+    "cpv": "34928470",
+    "objeto": "Suministro e instalación de señalética. Plan Director de Señalización Turística Municipal Accesible.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=TDYb%2FWDBWV9Whbmkna2nXQ%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=lPhEXDTFinZ3YLWWFFGYiZhDmK0QSXGV/MGHLDyBImPbsE6VUAMZjBhWpLjTPUH61xMrdw9z3TJ0KtSart08MRG03tSiFcf0mflxm7lG5p/DdQD9RyhUmzT4jZ2In4zL",
+        "nombre": "Pliego_de_prescripciones_tecnicas.pdf"
+      }
+    ],
+    "analisis": null,
+    "es_nueva": true
   },
   {
     "id": 2826,
@@ -279,7 +307,8 @@ const LICITACIONES = [
         "Contrato a 4 años con SLA estrictos y partes de trabajo mensuales",
         "Mercado dominado por fabricantes especializados (Contenur, Sotkon, Plastic Omnium)"
       ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 4750,
@@ -316,7 +345,31 @@ const LICITACIONES = [
         "Si Higiofi no está dentro del AM 01/2024 lote 3, no puede presentarse — verificar antes de invertir tiempo",
         "Sillas ergonómicas profesionales no son producto principal del catálogo (Higiofi orientado a mobiliario escolar/urbano)"
       ]
-    }
+    },
+    "es_nueva": false
+  },
+  {
+    "id": 103235,
+    "expediente": "83/2025",
+    "organo": "Comisión Ejecutiva de la Gerencia de Urbanismo de Sevilla",
+    "provincia": "Sevilla",
+    "municipio": "Sevilla",
+    "importe_sin_iva": 75290.0,
+    "importe_con_iva": 91100.9,
+    "fecha_publicacion": "2026-05-18T08:56:26.526+02:00",
+    "fecha_limite": "2026-06-03T11:00:00",
+    "cpv": "34928471",
+    "objeto": "Suministro y colocación de separadores de vías ciclistas, incluso la retirada y transporte a vertedero de los existentes, en diferentes puntos de la Ciudad de Sevilla.",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=%2F%2BOHki66QU0tm4eBPtV6eQ%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=aT0WsxGV%2BFqfcew5rhXTSniOIlCwzOnA%2BWHirp5AwHTwifz%2BH35H7p6ECxBMYYSciB3VGD2G7aCt2aOctEsSLh/nrRN1Ei9lZbM%2Bxox33Xc//q7NB2iMZvNyf0xrJmjt",
+        "nombre": "83-25 PLIEGO PRESCRIPCIONES TECNICAS 20-02-26.PDF"
+      }
+    ],
+    "analisis": null,
+    "es_nueva": true
   },
   {
     "id": 3199,
@@ -353,7 +406,8 @@ const LICITACIONES = [
         "Sector industrial dominado por Sotkon, Contenur, Formato Verde — barreras técnicas y de homologación altas",
         "Sistema hidráulico Directiva Máquinas — requiere declaración CE de máquinas elevadoras"
       ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 3436,
@@ -393,7 +447,8 @@ const LICITACIONES = [
         "Competencia fuerte con suministradores generalistas de papelería (Lyreco, Office Depot, El Corte Inglés Empresas)",
         "Margen de papelería tradicionalmente bajo en este tipo de contratos de larga duración"
       ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 5805,
@@ -443,7 +498,8 @@ const LICITACIONES = [
       "banderas_rojas": [
         "Sector hostelería profesional (Fagor Industrial, Repagas, Mainho) — fuera del ámbito Higiofi"
       ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 2868,
@@ -483,47 +539,8 @@ const LICITACIONES = [
         "Plazo corto (6 semanas) para fabricación de pasarelas a medida",
         "Restricciones ambientales del Paraje Natural (Marismas del Odiel es Reserva de la Biosfera y Lugar Ramsar)"
       ]
-    }
-  },
-  {
-    "id": 263,
-    "expediente": "529/2026",
-    "organo": "Alcaldía del Ayuntamiento de Algeciras",
-    "provincia": "Cádiz",
-    "municipio": "Algeciras",
-    "importe_sin_iva": 39974.46,
-    "importe_con_iva": 48369.1,
-    "fecha_publicacion": "2026-05-05T13:00:34.414+02:00",
-    "fecha_limite": "2026-05-19T23:59:00",
-    "cpv": "30192000",
-    "objeto": "Suministro de material de oficina para el Excmo. Ayuntamiento de Algeciras.",
-    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=JJ56Xxs1LYDN3k3tjedSGw%3D%3D",
-    "pliegos_urls": [
-      {
-        "tipo": "PPT",
-        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=Zx/IbvBZPIKiY/ksWwnwpQ2jCya13wMttRbEUEJsscuESO9tkvx61CA6Pdg9LOFy6Ydw7wDi8pXSWfhdNJtlzp1MapWZE8KMayR2G3h2xxyHAj0WEJrB5sP7amrh2jBD",
-        "nombre": "PPT.pdf"
-      }
-    ],
-    "analisis": {
-      "encaje": "medio",
-      "encaje_score": 55,
-      "motivo": "Suministro mixto: material de oficina, tóneres, mobiliario (incluido oficina), complementos, placas conmemorativas y regalos. Higiofi puede atender mobiliario y papelería pero no tóneres ni regalos/premios. CPVs cubren mobiliario (39100/39110/39200) que sí encaja con catálogo Higiofi.",
-      "resumen": "Ayuntamiento de Algeciras (Cádiz) — Almacén Municipal. Suministro a demanda de productos de oficina, tóneres, mobiliario y complementos, placas conmemorativas, etc. para distribución a todas las dependencias municipales. Adjudicación por mejor calidad-precio. Importe 39.974 € sin IVA. CPVs múltiples: 30192000 (oficina), 30125100 (tóner), 39000000/39100000/39110000/39200000 (mobiliario y complementos), 18530000 (regalos/premios).",
-      "productos_aplicables": [
-        "Mobiliario y complementos (CPV 39100/39200) — sillas, mesas, taquillas, archivos",
-        "Material de oficina y papelería"
-      ],
-      "requisitos_criticos": [
-        "Catálogo muy amplio que combina familias muy distintas — competencia con generalistas",
-        "Inscripción en ROLECE obligatoria",
-        "Condición especial de ejecución sobre reciclaje y gestión de residuos"
-      ],
-      "banderas_rojas": [
-        "Tóneres y placas conmemorativas fuera de catálogo — necesario subcontratar o aliarse",
-        "Suministro a demanda con descuento aplicado a todos los precios — margen ajustado"
-      ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 5103,
@@ -584,7 +601,8 @@ const LICITACIONES = [
         "Lote 2 (cintas de correr indoor, bicis estáticas indoor) totalmente fuera de catálogo Higiofi — no abarcable",
         "Plazo de entrega ofertable en el AM y crítico — verificar capacidad de stock para 850+ unidades de mobiliario interior"
       ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 4274,
@@ -638,7 +656,8 @@ const LICITACIONES = [
         "Plazo improrrogable 65 días naturales — fabricación a medida con homologación",
         "Higiofi no es fabricante de columnas de alumbrado homologadas"
       ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 4940,
@@ -682,7 +701,46 @@ const LICITACIONES = [
         "Restricción a 'marca reconocida y de prestigio' puede excluir proveedores alternativos del catálogo Higiofi",
         "Competencia fuerte con suministradores especializados de papelería"
       ]
-    }
+    },
+    "es_nueva": false
+  },
+  {
+    "id": 104108,
+    "expediente": "485/25",
+    "organo": "Diputada delegada de Presidencia, Gobierno Interior y Vivienda",
+    "provincia": "Córdoba",
+    "municipio": "Córdoba",
+    "importe_sin_iva": 25834.79,
+    "importe_con_iva": 31260.1,
+    "fecha_publicacion": "2026-05-20T09:13:52.286+02:00",
+    "fecha_limite": "2026-06-04T23:59:00",
+    "cpv": "30192000",
+    "objeto": "Suministro de material de oficina y técnico, con destino a la Diputación Provincial de Córdoba y el sector público institucional provincial",
+    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=38cKZnPNlYSsNfRW6APEDw%3D%3D",
+    "pliegos_urls": [
+      {
+        "tipo": "PPT",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=x3jN8WhxZX%2BNpVYQLLM22xEPdKghqpl6gSs7/GwE0iJymAd3%2B2kIbE4MPFfSY/lpsvBFSrdU1oUX3Zd1FWGFiJs80KKR/Uf8A0IOL9dZe1eB0nvVKRzfe4rpHcnlPhSZ",
+        "nombre": "002_PPTP.pdf"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=2CN7dQBNC5XavzbUZ9vLHAsj/mUuEXfpabm2oHgp8jbQUaW2gZv0l3VvkTGmeraDlPAR9nIQHOcms0q31Q2RoiOAHVtH2Ob10ORHchBvpWi1aXEvq3KHa/AEHgtDrQw0",
+        "nombre": "Anexo 6.doc"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=K2vZNmYnuQFNqD7SPIOrdn5WjT%2BIPD4jvdXQ2pgI2uxaHalmBq%2BqPhOakjs/pPhY%2BVt4bspMr3a1V%2Brvjoph60KxnyFpmgCz50vvFPyGZY%2BHAj0WEJrB5sP7amrh2jBD",
+        "nombre": "Anexo 4.doc"
+      },
+      {
+        "tipo": "anexo",
+        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=EreXHLdBejMd50/drrIaDUcic%2BNpchMcupYH1vpAM6s%2BzLMN8R/hXcy74bLd0EqKBpKgo3BR7KmtbE8ByXij6qjkdZDcHQ9mjO5JjVYwVhCB0nvVKRzfe4rpHcnlPhSZ",
+        "nombre": "Plantilla oferta economica.xls"
+      }
+    ],
+    "analisis": null,
+    "es_nueva": true
   },
   {
     "id": 2344,
@@ -692,8 +750,8 @@ const LICITACIONES = [
     "municipio": "Cáñar",
     "importe_sin_iva": 24793.93,
     "importe_con_iva": 30000.0,
-    "fecha_publicacion": "2026-05-07T11:47:44.914+02:00",
-    "fecha_limite": "2026-05-22T15:00:00",
+    "fecha_publicacion": "2026-05-21T09:51:15.410+02:00",
+    "fecha_limite": "2026-05-28T15:00:00",
     "cpv": "37535200",
     "objeto": "suministro e instalación de elementos para área de juegos infantiles en el municipio de Cáñar",
     "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=h9bPjtEL9%2BbVGIpKDxgsAQ%3D%3D",
@@ -736,58 +794,8 @@ const LICITACIONES = [
       "banderas_rojas": [
         "Modelos concretos mencionados (Maxi Torre Navia, Carrusel Flop, Casita Flor) — podrían ser marcas comerciales específicas; verificar si son equivalentes a referencias del catálogo o exigen producto exacto"
       ]
-    }
-  },
-  {
-    "id": 1519,
-    "expediente": "120/2026",
-    "organo": "Alcaldía del Ayuntamiento de Cáñar",
-    "provincia": "Granada",
-    "municipio": "cáñar ( Granada)",
-    "importe_sin_iva": 24793.39,
-    "importe_con_iva": 30000.0,
-    "fecha_publicacion": "2026-05-06T13:32:45.308+02:00",
-    "fecha_limite": "2026-05-21T15:00:00",
-    "cpv": "37535100",
-    "objeto": "Suministro, adecuación, instalación y montaje completo de un área de juegos infantil de uso público en Cáñar.",
-    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=dkQv1jpxYZycCF8sV%2BqtYA%3D%3D",
-    "pliegos_urls": [
-      {
-        "tipo": "PPT",
-        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=uVNbgEQaFFCIW8QXM3WVNpLYEt%2BPihamxIw69DaR4pousAYuRP/mYPrigrtkp0VVagrh7ngaNMssP6Riy%2BXD3PWYSApgKlxdZ4F/dV/Y7cxJOVDbGCDM%2BMigrvuVS7Rv",
-        "nombre": "Pliego de clausulas administrativas particulares.pdf"
-      },
-      {
-        "tipo": "anexo",
-        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=3NNS0qLZV3EIN5DB7tP0KGOZ4Fc3o3d7%2BUD5GgJrSYB3kAriCWvof9FfVxrlgn6UbV6xo1H/J2wiMSG%2BRcIeJOiAF1Zn3LyKLT5L2Zt9yhaHAj0WEJrB5sP7amrh2jBD",
-        "nombre": "Informe Informe de Secretaria.pdf"
-      },
-      {
-        "tipo": "anexo",
-        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=/sUi26P2WE4JFNQgktk1TyqMfm60LFhEV80cfBmY2/jHPMyT0zZZTMFloa1286OFDoVNDqnEC9%2BBQ3i9quAgwbrPk4W/FgeZqSGdQ3kjOPnDdQD9RyhUmzT4jZ2In4zL",
-        "nombre": "RESOLUCION DE ALCALDIA.pdf"
-      }
-    ],
-    "analisis": {
-      "encaje": "alto",
-      "encaje_score": 80,
-      "motivo": "Título indica claramente 'Suministro, adecuación, instalación y montaje completo de un área de juegos infantil de uso público en Cáñar'. CPV 37535100 (columpios). Encaje directo con el catálogo Higiofi. Sin embargo, los 3 pliegos PLACSP devuelven error 500 — análisis preliminar basado en título y CPV.",
-      "resumen": "Ayuntamiento de Cáñar (Granada). Suministro, adecuación, instalación y montaje completo de área de juegos infantil de uso público en Cáñar. Importe 24.793 € sin IVA. Fecha límite 21 de mayo. Existe una licitación gemela en el mismo Ayuntamiento (id 2344, expediente 120/2/2026, idéntico importe) cuyos pliegos sí bajaron — probablemente sea la versión actualizada o duplicada del mismo expediente.",
-      "productos_aplicables": [
-        "Juegos Infantiles",
-        "Columpios, Carruseles, Muelles y Balancines",
-        "Pavimentos de Seguridad",
-        "Vallas Infantiles"
-      ],
-      "requisitos_criticos": [
-        "ATENCIÓN: pliegos inaccesibles — descargar manualmente desde PLACSP antes de evaluar",
-        "Existe expediente gemelo id=2344 con pliegos completos — probablemente sea la versión definitiva. Verificar cuál está en vigor"
-      ],
-      "banderas_rojas": [
-        "Pliegos no descargables vía API (error 500 servidor PLACSP) — usar PLACSP manualmente",
-        "Posible duplicado del expediente 120/2/2026 (id=2344) — el mismo Ayuntamiento ha publicado dos versiones con idéntico importe"
-      ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 4371,
@@ -833,58 +841,8 @@ const LICITACIONES = [
         "Plazo de ejecución de sólo 1 mes para suministrar e instalar todo el parque — verificar disponibilidad inmediata de stock",
         "El Ayuntamiento prepara el suelo pero el anclaje y la instalación van por cuenta del adjudicatario — incluir coste de cuadrilla y desplazamiento a Beas de Granada"
       ]
-    }
-  },
-  {
-    "id": 1435,
-    "expediente": "2026/SAS/000308",
-    "organo": "Órganos Directivos del Ayuntamiento de Sevilla",
-    "provincia": "Sevilla",
-    "municipio": "Sevilla",
-    "importe_sin_iva": 18000.0,
-    "importe_con_iva": 21780.0,
-    "fecha_publicacion": "2026-05-04T09:26:07.607+02:00",
-    "fecha_limite": "2026-05-18T23:59:00",
-    "cpv": "39100000",
-    "objeto": "Suministro de material diverso, auxiliar de oficina, así como el montaje e instalación de los enseres que así lo requieran para las diferentes dependencias de este Excmo. Ayuntamiento",
-    "enlace_placsp": "https://contrataciondelestado.es/wps/poc?uri=deeplink:detalle_licitacion&idEvl=4vM3sDy6uF5t5r0ngvMetA%3D%3D",
-    "pliegos_urls": [
-      {
-        "tipo": "PPT",
-        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=hHIOEhLwHj0PpHRKDZEoaNr3Abhh9rmU91e4QtxKeSdSQnKSqNkcY/0xORQEu1t%2BfLgmEMuBc2n5um/v1UVZP5ZTwPMwVz4U87bcZ4LaFkjVTD3T98KC0nSgQFM0q%2B5s",
-        "nombre": "04 PPT.pdf"
-      },
-      {
-        "tipo": "anexo",
-        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=YdBSOwS33s6wI5UtF751IenNXu4KuqKRepW/gUcBepXeZjEvAZOrqhgl/rdKMxopVugc8VfnY9NmoR1hy2iDdU4tzcGt6AFxHeDlPA4Y77PDdQD9RyhUmzT4jZ2In4zL",
-        "nombre": "05Anexo PCAP.pdf"
-      },
-      {
-        "tipo": "anexo",
-        "url": "https://contrataciondelestado.es/FileSystem/servlet/GetDocumentByIdServlet?cifrado=QUC1GjXXSiLkydRHJBmbpw%3D%3D&DocumentIdParam=e1HpMrJ%2BCx5uWtQgZ7/FlFmVfcmu8%2BHFWIGcek5x3YlQgRvQ4o3W3q9QrVtaE%2BTJg0eW1N1%2BfFzbiQI8STtgKrl8jW4oMZMACxRi4LRnqZnfdyQgZAdTm3EfcUAC7CJ6",
-        "nombre": "Plantillas licitador.odt"
-      }
-    ],
-    "analisis": {
-      "encaje": "bajo",
-      "encaje_score": 30,
-      "motivo": "Suministro de material muy diverso y de baja cantidad: parte encaja con mobiliario de oficina/escolar del catálogo Higiofi (tablones de corcho, pizarras, tableros, atriles, perchero, paragüero) pero la mayor parte son electrodomésticos (ventiladores, calentadores, radiadores), consumibles de oficina (encuadernadoras, plastificadoras, grapadoras) y alfombras — fuera del catálogo. Volumen pequeño por artículo.",
-      "resumen": "Ayuntamiento de Sevilla. Suministro a demanda hasta 31/12/2026 de material auxiliar diverso para las dependencias municipales: armarios de llaves, buzones, paragüeros, percheros, reposapiés, flexos LED, lámparas, atriles, reposamuñecas, tablones de corcho, pizarras, vitrinas, ventiladores, calentadores, radiadores, alfombras, encuadernadoras, mástil para bandera, grapadoras, guillotinas y plastificadoras. Lista de 30 artículos con precios unitarios. Garantía 3 años.",
-      "productos_aplicables": [
-        "Pizarras y tablones de anuncios escolares/oficina",
-        "Atriles, percheros, paragüeros, armarios de llaves (mobiliario auxiliar)",
-        "Mástil para bandera"
-      ],
-      "requisitos_criticos": [
-        "Lista cerrada de 30 artículos diferentes con descuento único — todo o nada",
-        "Garantía 3 años",
-        "Plazo de entrega 15 días naturales por pedido"
-      ],
-      "banderas_rojas": [
-        "Mayoría del listado fuera del catálogo Higiofi (electrodomésticos, consumibles oficina, alfombras antideslizantes)",
-        "Descuento único aplicado a todos los precios — si no se cubre todo el catálogo se pierde competitividad"
-      ]
-    }
+    },
+    "es_nueva": false
   },
   {
     "id": 3304,
@@ -920,10 +878,11 @@ const LICITACIONES = [
         "Higiofi vende mobiliario, no lo alquila — incompatible con el modelo de negocio",
         "Contrato de 4 años con servicios de logística asociados que requieren personal de montaje"
       ]
-    }
+    },
+    "es_nueva": false
   }
 ];
-const META = {"generado_en": "2026-05-16T21:41:47+00:00", "total_db": 24326, "total_candidatas": 16, "con_analisis": 16};
+const META = {"generado_en": "2026-05-22T08:53:22+00:00", "total_db": 104692, "total_candidatas": 16, "con_analisis": 13, "nuevas": 3};
 
 // === CONSTANTES ===
 const KEYWORDS = [
@@ -989,7 +948,6 @@ function abrirPliegos(id) {
 }
 
 function diasRestantes(iso) { return Math.ceil((new Date(iso) - new Date()) / 86400000); }
-function esDeHoy(iso) { return iso && iso.slice(0,10) === new Date().toISOString().slice(0,10); }
 function fmtImporte(n) { return new Intl.NumberFormat("es-ES", { style:"currency", currency:"EUR", maximumFractionDigits:0 }).format(n); }
 function fmtImporteCorto(n) {
   if (n >= 1000000) return (n/1000000).toFixed(1) + "M €";
@@ -1048,8 +1006,12 @@ function renderCard(lic) {
   const textoDias = dias < 0 ? "cerrada" : dias === 0 ? "cierra HOY" : dias === 1 ? "1 día" : `${dias} días`;
   const badgeUrge = urgencia === "alta"
     ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-red-600 text-white">URGE</span>` : "";
-  const badgeNuevo = esDeHoy(lic.fecha_publicacion)
-    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">NUEVO</span>` : "";
+  const badgeNuevo = lic.es_nueva
+    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">✨ NUEVA</span>` : "";
+  // Borde verde de 2px para las licitaciones nuevas (entraron en la última actualización)
+  const borderClass = lic.es_nueva
+    ? "border-2 border-emerald-500"
+    : "border border-slate-200 dark:border-slate-800";
 
   const nPliegos = (lic.pliegos_urls || []).length;
   const tieneNota = !!notas[lic.id];
@@ -1106,7 +1068,7 @@ function renderCard(lic) {
   }
 
   return `
-    <article class="fade-in bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition overflow-hidden ${ringClass}" data-id="${lic.id}">
+    <article class="fade-in bg-white dark:bg-slate-900 rounded-lg ${borderClass} hover:border-slate-300 dark:hover:border-slate-700 transition overflow-hidden ${ringClass}" data-id="${lic.id}">
       <div class="h-1 ${encajeBarClass(lic)}"></div>
       <div class="p-5">
         <div class="flex items-start justify-between gap-4 mb-3">
@@ -1198,7 +1160,9 @@ function render() {
   const importeTotal = LICITACIONES
     .filter(l => estadoEnCurso(estadoDe(l.id)))
     .reduce((s, l) => s + (l.importe_sin_iva || 0), 0);
+  const nuevas = LICITACIONES.filter(l => l.es_nueva).length;
   document.getElementById("kpi-total").textContent = total;
+  document.getElementById("kpi-nuevas").textContent = nuevas;
   document.getElementById("kpi-sin-analizar").textContent = sinAnalizar;
   document.getElementById("kpi-en-curso").textContent = enCurso;
   document.getElementById("kpi-urgentes").textContent = urgentes;
@@ -1221,8 +1185,9 @@ function render() {
   document.getElementById("count-historico").textContent = counts.historico;
 
   let visibles = LICITACIONES.filter(l => tabContiene(estadoDe(l.id), l) && coincide(l));
-  // Orden: primero por urgencia ≤7d, luego por encaje_score, luego sin_analizar al final
+  // Orden: nuevas primero, luego urgencia ≤7d, luego encaje_score, luego importe.
   visibles.sort((a, b) => {
+    if (a.es_nueva !== b.es_nueva) return a.es_nueva ? -1 : 1;
     const da = diasRestantes(a.fecha_limite), db = diasRestantes(b.fecha_limite);
     if (da >= 0 && db >= 0 && Math.min(da, db) <= 7 && da !== db) return da - db;
     const sa = a.analisis ? a.analisis.encaje_score : -1;

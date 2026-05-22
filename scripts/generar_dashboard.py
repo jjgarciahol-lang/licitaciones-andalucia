@@ -33,12 +33,21 @@ SQL_CANDIDATAS = """
 SELECT l.id, l.expediente, l.organo_contratacion, l.provincia, l.municipio,
        l.importe_sin_iva, l.importe_con_iva, l.fecha_publicacion,
        l.fecha_limite_presentacion, l.cpv_principal, l.objeto, l.enlace_placsp,
-       l.documentos_urls
+       l.documentos_urls, l.fecha_ingesta
 FROM licitaciones l
 WHERE l.pasa_filtros = 1
   AND (l.fecha_limite_presentacion IS NULL
        OR l.fecha_limite_presentacion > datetime('now'))
 ORDER BY l.importe_sin_iva DESC
+"""
+
+# Fecha de inicio de la última ejecución de ingesta. Las licitaciones con
+# fecha_ingesta posterior a este corte se consideran "nuevas" en el dashboard.
+SQL_ULTIMA_EJECUCION = """
+SELECT fecha_inicio FROM log_ejecuciones
+WHERE etapa IN ('pipeline_diario', 'ingesta')
+ORDER BY fecha_inicio DESC
+LIMIT 1
 """
 
 SQL_ULTIMO_ANALISIS = """
@@ -87,6 +96,15 @@ def construir_payload() -> tuple[list[dict], dict]:
     licitaciones: list[dict] = []
     with conexion() as conn:
         total_db = conn.execute("SELECT COUNT(*) FROM licitaciones").fetchone()[0]
+
+        # Corte para marcar "nuevas": inicio de la última ejecución de ingesta.
+        fila_corte = conn.execute(SQL_ULTIMA_EJECUCION).fetchone()
+        fecha_corte = fila_corte["fecha_inicio"] if fila_corte else None
+        if fecha_corte:
+            log.info("Corte 'nuevas': licitaciones con fecha_ingesta >= %s", fecha_corte)
+        else:
+            log.info("Sin ejecuciones previas registradas — ninguna licitación se marca como nueva")
+
         filas = conn.execute(SQL_CANDIDATAS).fetchall()
         log.info("Candidatas vivas: %d (de %d en DB)", len(filas), total_db)
 
@@ -105,6 +123,10 @@ def construir_payload() -> tuple[list[dict], dict]:
             else:
                 analisis = None
 
+            es_nueva = bool(
+                fecha_corte and f["fecha_ingesta"] and f["fecha_ingesta"] >= fecha_corte
+            )
+
             licitaciones.append({
                 "id": f["id"],
                 "expediente": f["expediente"],
@@ -120,6 +142,7 @@ def construir_payload() -> tuple[list[dict], dict]:
                 "enlace_placsp": f["enlace_placsp"],
                 "pliegos_urls": _docs_filtrados(f["documentos_urls"]),
                 "analisis": analisis,
+                "es_nueva": es_nueva,
             })
 
     meta = {
@@ -127,6 +150,7 @@ def construir_payload() -> tuple[list[dict], dict]:
         "total_db": total_db,
         "total_candidatas": len(licitaciones),
         "con_analisis": sum(1 for l in licitaciones if l["analisis"] is not None),
+        "nuevas": sum(1 for l in licitaciones if l["es_nueva"]),
     }
     return licitaciones, meta
 

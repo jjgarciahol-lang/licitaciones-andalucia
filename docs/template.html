@@ -85,10 +85,14 @@
   </div>
 
   <div class="max-w-7xl mx-auto px-6 pb-5">
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
       <div class="bg-slate-50 dark:bg-slate-800 rounded-lg p-3">
         <div class="text-xs text-slate-500 dark:text-slate-400 uppercase tracking-wide">Total</div>
         <div class="text-2xl font-bold tabular-nums" id="kpi-total">—</div>
+      </div>
+      <div class="bg-emerald-600 rounded-lg p-3">
+        <div class="text-xs text-emerald-50 uppercase tracking-wide">Nuevas</div>
+        <div class="text-2xl font-bold tabular-nums text-white" id="kpi-nuevas">—</div>
       </div>
       <div class="bg-indigo-50 dark:bg-indigo-900/30 rounded-lg p-3">
         <div class="text-xs text-indigo-700 dark:text-indigo-300 uppercase tracking-wide">Sin analizar</div>
@@ -260,7 +264,6 @@ function abrirPliegos(id) {
 }
 
 function diasRestantes(iso) { return Math.ceil((new Date(iso) - new Date()) / 86400000); }
-function esDeHoy(iso) { return iso && iso.slice(0,10) === new Date().toISOString().slice(0,10); }
 function fmtImporte(n) { return new Intl.NumberFormat("es-ES", { style:"currency", currency:"EUR", maximumFractionDigits:0 }).format(n); }
 function fmtImporteCorto(n) {
   if (n >= 1000000) return (n/1000000).toFixed(1) + "M €";
@@ -319,8 +322,12 @@ function renderCard(lic) {
   const textoDias = dias < 0 ? "cerrada" : dias === 0 ? "cierra HOY" : dias === 1 ? "1 día" : `${dias} días`;
   const badgeUrge = urgencia === "alta"
     ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-red-600 text-white">URGE</span>` : "";
-  const badgeNuevo = esDeHoy(lic.fecha_publicacion)
-    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">NUEVO</span>` : "";
+  const badgeNuevo = lic.es_nueva
+    ? `<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-emerald-600 text-white">✨ NUEVA</span>` : "";
+  // Borde verde de 2px para las licitaciones nuevas (entraron en la última actualización)
+  const borderClass = lic.es_nueva
+    ? "border-2 border-emerald-500"
+    : "border border-slate-200 dark:border-slate-800";
 
   const nPliegos = (lic.pliegos_urls || []).length;
   const tieneNota = !!notas[lic.id];
@@ -377,7 +384,7 @@ function renderCard(lic) {
   }
 
   return `
-    <article class="fade-in bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 transition overflow-hidden ${ringClass}" data-id="${lic.id}">
+    <article class="fade-in bg-white dark:bg-slate-900 rounded-lg ${borderClass} hover:border-slate-300 dark:hover:border-slate-700 transition overflow-hidden ${ringClass}" data-id="${lic.id}">
       <div class="h-1 ${encajeBarClass(lic)}"></div>
       <div class="p-5">
         <div class="flex items-start justify-between gap-4 mb-3">
@@ -469,7 +476,9 @@ function render() {
   const importeTotal = LICITACIONES
     .filter(l => estadoEnCurso(estadoDe(l.id)))
     .reduce((s, l) => s + (l.importe_sin_iva || 0), 0);
+  const nuevas = LICITACIONES.filter(l => l.es_nueva).length;
   document.getElementById("kpi-total").textContent = total;
+  document.getElementById("kpi-nuevas").textContent = nuevas;
   document.getElementById("kpi-sin-analizar").textContent = sinAnalizar;
   document.getElementById("kpi-en-curso").textContent = enCurso;
   document.getElementById("kpi-urgentes").textContent = urgentes;
@@ -492,8 +501,9 @@ function render() {
   document.getElementById("count-historico").textContent = counts.historico;
 
   let visibles = LICITACIONES.filter(l => tabContiene(estadoDe(l.id), l) && coincide(l));
-  // Orden: primero por urgencia ≤7d, luego por encaje_score, luego sin_analizar al final
+  // Orden: nuevas primero, luego urgencia ≤7d, luego encaje_score, luego importe.
   visibles.sort((a, b) => {
+    if (a.es_nueva !== b.es_nueva) return a.es_nueva ? -1 : 1;
     const da = diasRestantes(a.fecha_limite), db = diasRestantes(b.fecha_limite);
     if (da >= 0 && db >= 0 && Math.min(da, db) <= 7 && da !== db) return da - db;
     const sa = a.analisis ? a.analisis.encaje_score : -1;
