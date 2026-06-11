@@ -162,15 +162,16 @@ def inyectar(template: str, licitaciones: list[dict], meta: dict) -> str:
     #   const LICITACIONES = /*__LICITACIONES_JSON__*/ [];
     # tras la sustitución queda:
     #   const LICITACIONES = [ {...}, {...} ];
+    # Usar lambda para evitar que re.sub interprete \n, \r, etc. del JSON como escapes
     salida = re.sub(
         r"/\*__LICITACIONES_JSON__\*/\s*\[\]",
-        json_licitaciones,
+        lambda _: json_licitaciones,
         template,
         count=1,
     )
     salida = re.sub(
         r"/\*__META_JSON__\*/\s*\{[^}]*\}",
-        json_meta,
+        lambda _: json_meta,
         salida,
         count=1,
     )
