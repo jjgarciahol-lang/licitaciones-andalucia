@@ -1,212 +1,45 @@
 [
   {
-    "licitacion_id": 108729,
-    "encaje": "alto",
-    "encaje_score": 88,
-    "motivo": "Parque infantil de gran escala con tobogan ladera, red trepa, tirolina cuadruple, pavimento caucho 130m2 y cesped artificial 343m2 -- todas partidas presentes en catalogo Higiofi (HGA, HGS, HGSG).",
-    "resumen": "Ayuntamiento de Bormujos solicita la adquisicion e instalacion de juegos infantiles en Avenida San Juan de Dios (413.807EUR). El proyecto incluye: guitarra espanola singular de 8,4m de altura, tirolina cuadruple, cama elastica de 8m, pergolas abanico, red trepa, tobogan ladera, pavimento de caucho (100+30m2) y cesped artificial (343m2). Las partidas de parques infantiles, pavimentos de seguridad y cesped artificial encajan directamente con el catalogo HGA y HGS de Higiofi. La guitarra espanola es una estructura singular de diseno, y la cama elastica de 8m es un elemento que requiere verificar disponibilidad en catalogo.",
-    "productos_aplicables": [
-      "HGA toboganes y estructuras trepa",
-      "HGA redes trepa y paneles de escalada",
-      "HGA tirolinas",
-      "HGPM/HGPT parques infantiles modulares",
-      "HGS pavimento de caucho EPDM (100+30m2)",
-      "HGSG cesped artificial (343m2)"
-    ],
-    "requisitos_criticos": [
-      "Cumplimiento norma EN 1176/1177 para parques infantiles",
-      "Empresa instaladora homologada y con experiencia acreditada",
-      "Plazo de ejecucion segun contrato (verificar en pliego administrativo)",
-      "Garantia minima 2 anos sobre elementos instalados"
-    ],
-    "banderas_rojas": [
-      "Guitarra espanola de 8,4m de altura -- pieza singular que puede requerir diseno a medida fuera de catalogo estandar",
-      "Cama elastica de 8m de diametro -- verificar si esta en catalogo Higiofi o requiere subcontratacion",
-      "Importe elevado (413.807EUR) exige solvencia economica y tecnica acreditadas"
-    ]
-  },
-  {
-    "licitacion_id": 108710,
-    "encaje": "alto",
-    "encaje_score": 92,
-    "motivo": "Remodelacion de 5 parques infantiles en Alora con columpios, muelles, balancines, vallas infantiles, pavimento EPDM in situ (641m2), cesped sintetico (300m2), papeleras, bancos y mesas picnic -- catalogo Higiofi completo para todas las partidas.",
-    "resumen": "Ayuntamiento de Alora (Malaga) licitacion de 98.652EUR para remodelar 5 parques infantiles (La Canuela, Los Verdiales, Bellavista, Bermejo, Calle Canales). Elementos: multijuego barco pirata, columpios biplaza mixtos, muelles inclusivos/balancin sube-baja, vallas de colores (28+72m), pavimento caucho EPDM in situ (186+184+154+117m2), cesped sintetico 300m2, papeleras basculantes x6, bancos madera x3, mesas picnic x3. La cobertura del catalogo Higiofi es practicamente total. Deadline 2026-06-25 -- plazo de presentacion muy ajustado (14 dias desde hoy).",
-    "productos_aplicables": [
-      "HGA columpios biplaza mixtos",
-      "HGA muelles inclusivos y balancines sube-baja",
-      "HGA multijuego barco pirata / estructuras tematicas",
-      "Vallas infantiles de colores para parque (100m total)",
-      "HGS pavimento EPDM in situ (641m2)",
-      "HGSG cesped sintetico (300m2)",
-      "HGSY papeleras basculantes (x6)",
-      "HGSY bancos de madera (x3)",
-      "HGSY mesas picnic (x3)"
-    ],
-    "requisitos_criticos": [
-      "Norma EN 1176/1177 para todos los elementos de juego infantil",
-      "Instalacion EPDM in situ requiere equipo especializado y experiencia verificable",
-      "5 localizaciones distintas en el mismo municipio -- logistica de instalacion simultanea"
-    ],
-    "banderas_rojas": [
-      "Deadline 2026-06-25: solo 14 dias desde hoy para preparar y presentar oferta -- plazo muy ajustado",
-      "La instalacion EPDM in situ (641m2 en 4 parques) requiere capacidad de ejecucion demostrable"
-    ]
-  },
-  {
-    "licitacion_id": 109026,
+    "licitacion_id": 109742,
     "encaje": "bajo",
-    "encaje_score": 18,
-    "motivo": "Lote 1 incluye sillas y mesas de trabajo que la linea HGI de Higiofi podria cubrir parcialmente, pero el Lote 2 (retablo roble macizo, mostrador recepcion a medida) es mobiliario singular para edificio patrimonial fuera de catalogo.",
-    "resumen": "Ayuntamiento de Ubeda licitacion 75.890EUR para equipar el Palacio Marques de Mancera (Museo Joaquin Sabina). Lote 1: sillones oficina x5 (700EUR/u), butacas auditorio x45+3 (850EUR/u), sillas colectividades x22, mesas trabajo x11, mesa reuniones, bancadas 4 plazas x3. Lote 2: mostrador recepcion a medida en roble (3.800EUR), retablo roble macizo (10.000EUR), mueble cierre instalaciones (1.700EUR). Solo el Lote 1 (mesas y sillas) tiene solapamiento parcial con la linea HGI, pero las butacas de auditorio con tapizado especifico y el Lote 2 de carpinteria singular quedan fuera.",
+    "encaje_score": 15,
+    "motivo": "Parques caninos con circuitos agility -- el equipamiento principal (puertas, saltos, muros, tuneles, balanceos) es especifico para perros y ajeno al catalogo Higiofi. Solo los bancos de madera, papeleras caninas y fuentes de acero inox son perifericamente compatibles con HGSY.",
+    "resumen": "Ayuntamiento de Vegas del Genil (Granada) licitacion de 32.000EUR para crear 5 parques caninos (areas agility) en distintos barrios. El grueso del contrato es equipamiento de agility canino (circuito de obstaculos: puerta, salto, pisada, muro, barrera, balanceo, puente, tunel) que no existe en el catalogo Higiofi. Elementos HGS candidatos: bancos fenix madera tropical con patas fundicion, papeleras caninas con dispensador bolsas, fuentes caninas acero inox con doble grifo. Vallado perimetral de malla metalica plastificada verde con postes BREA (industrial, no catalogo). Norma UNE EN 1176 exigida pero aplicada a equipamiento canino.",
     "productos_aplicables": [
-      "HGI mesas de trabajo (Lote 1 -- parcial)",
-      "HGI sillas de colectividades (Lote 1 -- parcial)"
+      "HGSY bancos fenix madera tropical con patas fundicion (5 unidades, uno por parque)",
+      "HGSY papeleras caninas con dispensador de bolsas (5 unidades)",
+      "HGSY fuentes caninas acero inox doble grifo (4 unidades en 4 de los 5 parques)"
     ],
     "requisitos_criticos": [
-      "Butacas auditorio con tapizado especifico para 45 unidades -- no es catalogo estandar Higiofi",
-      "Lote 2: carpinteria a medida en roble macizo para edificio cultural protegido -- requiere empresa especializada",
-      "Edificio patrimonial: posibles restricciones de intervencion"
+      "Norma UNE EN 1176 o equivalente para equipamiento de parques caninos",
+      "Garantia minima 2 anos elementos agility, 5 anos acabados",
+      "Repuestos originales disponibles 10 anos tras fin fabricacion",
+      "Certificado de inspeccion emitido por empresa certificadora acreditada",
+      "Incluye obra civil (cimentacion, replanteo, excavacion, transporte residuos)"
     ],
     "banderas_rojas": [
-      "Retablo en roble macizo (10.000EUR) para palacio patrimonial -- completamente fuera del catalogo Higiofi",
-      "45 butacas de auditorio con tapizado (850EUR/u) son mobiliario de sala de espectaculos, no catalogo Higiofi",
-      "Deadline 2026-06-24 -- plazo muy corto (13 dias)"
+      "Equipamiento agility canino (80% del valor estimado) completamente fuera del catalogo Higiofi",
+      "Vallado perimetral malla metalica plastificada -- producto industrial no disponible",
+      "Se requiere suministro integral incluyendo elementos no disponibles en Higiofi",
+      "Importe global bajo (32.000EUR) para un paquete multi-producto con obra civil incluida"
     ]
   },
   {
-    "licitacion_id": 106020,
+    "licitacion_id": 109746,
     "encaje": "ninguno",
     "encaje_score": 0,
-    "motivo": "Contrato de suministro de material de oficina y papeleria consumible para la Diputacion Provincial de Sevilla -- completamente ajeno al catalogo de mobiliario urbano y parques de Higiofi.",
-    "resumen": "Diputacion de Sevilla licitacion de 51.462EUR para suministro sucesivo de material consumible de oficina (boligrafos, clips, grapas, archivadores, rotuladores, corrector, etc.) para todas sus dependencias. Objeto totalmente distinto al catalogo Higiofi de mobiliario urbano, parques infantiles y pavimentos.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Objeto completamente ajeno al catalogo Higiofi -- material de oficina consumible",
-      "Requiere presentacion de muestras fisicas de cada articulo y presencia en listado"
-    ]
-  },
-  {
-    "licitacion_id": 105361,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Dotacion museografica a medida para Centro de Interpretacion Cultural de Brenes -- modulos expositivos DM ignifugo lacado, vitrinas de vidrio laminar e iluminacion LED. Nada relacionado con el catalogo Higiofi.",
-    "resumen": "Ayuntamiento de Brenes (41.322EUR) para equipar el CIC de Brenes (antigua Casa Consistorial) con mobiliario expositivo fabricado a medida: 3 modulos con vitrina encastrada, 3 modulos en esquina, 6 modulos trasdosados, 2 tarimas, 2 peanas, 17 modulos auxiliares, 10 modulos centrales autoportantes y 3 embocaduras. Material: DM ignifugo lacado, vitrinas vidrio laminar, iluminacion LED 1,4W 3000K. Fabricacion artesanal de ebanisteria museografica especializada.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Fabricacion de mobiliario museografico expositivo a medida -- especialidad completamente diferente al catalogo Higiofi",
-      "Requiere empresa de museografia con experiencia en instalacion de exposiciones permanentes"
-    ]
-  },
-  {
-    "licitacion_id": 108158,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "42 taquillas metalicas con compartimento para arma reglamentaria para la Policia Local de Torrox -- producto especifico de uso policial completamente fuera del catalogo Higiofi.",
-    "resumen": "Ayuntamiento de Torrox (26.000EUR) para adquirir 42 taquillas de vestuario para funcionarios de la Policia Local. Especificaciones: chapa acero epoxi 0,7mm, compartimento seguro para arma reglamentaria (36cm ancho), cierre 2 puntos, color gris/azul. Objeto totalmente distinto al catalogo de mobiliario urbano y parques infantiles de Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Producto de uso policial (compartimento para arma) que requiere fabricante especializado",
-      "Objeto completamente ajeno al catalogo Higiofi"
-    ]
-  },
-  {
-    "licitacion_id": 108048,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "6 lotes de suministro para proyecto Habitar Fuente Obejuna: equipos informaticos, mobiliario de oficina, material de oficina, material campana, libros de jardineria y sustratos/semillas -- ningun lote coincide con el catalogo Higiofi.",
-    "resumen": "Ayuntamiento de Fuente Obejuna (16.658EUR total, 6 lotes) para el proyecto de reto demografico Habitar Fuente Obejuna: Lote 1 PCs+monitores (2.200EUR), Lote 2 mesas+sillas ergonomicas oficina (1.800EUR), Lote 3 material de oficina (2.458EUR), Lote 4 folletos/libretas campana (1.200EUR), Lote 5 manuales jardineria+carpetas (3.536EUR), Lote 6 sustratos+semillas ecologicas+herramientas jardineria (5.463EUR). Ningun lote es compatible con el catalogo de mobiliario urbano y parques de Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Objeto completamente ajeno al catalogo Higiofi",
-      "Importe total muy reducido (16.658EUR) con lotes de minimo 1.200EUR incompatibles con la operativa"
-    ]
-  },
-  {
-    "licitacion_id": 104792,
-    "encaje": "medio",
-    "encaje_score": 60,
-    "motivo": "Lote 2 (9.892EUR) con multijuego infantil, columpio adaptado, bancos x5 y papeleras x6 encaja directamente con catalogo Higiofi HGA y HGSY. Lote 1 (6.636EUR) de mobiliario biosaluda ble adultos mayores encaja parcialmente con linea HGDP si Higiofi tiene estos elementos.",
-    "resumen": "Ayuntamiento de Pruna (Sevilla) licitacion de 16.528EUR en 2 lotes para parques y jardines municipales. Lote 1 biosaluda ble mayores: banco doble con pedales (1.611EUR), volante/rueda de hombros (1.115EUR), giro de cintura doble (1.115EUR), panel laberintos cognitivos (1.396EUR), panel ejercicios muneca/punos (1.396EUR). Lote 2 infantil: multijuego madera (tobogan+pasarela+trepadero+columpio, 5.537EUR), columpio adaptado mixto EN 1176-2 (2.377EUR), bancos fundicion x5 (289EUR/u), papeleras fundicion x6 (70EUR/u), senales MOPU x3. Mejora valorable: tirolina 23m (3.300EUR). Deadline 2026-06-15 -- muy urgente.",
-    "productos_aplicables": [
-      "HGA multijuego infantil madera (tobogan, pasarela, trepadero, columpio) -- Lote 2",
-      "HGA columpio adaptado mixto inclusivo EN 1176-2 -- Lote 2",
-      "HGSY bancos de fundicion (x5) -- Lote 2",
-      "HGSY papeleras de fundicion (x6) -- Lote 2",
-      "HGA tirolina 23m (mejora valorable) -- Lote 2",
-      "HGDP banco biosaluda ble con pedales -- Lote 1 (verificar catalogo)",
-      "HGDP rueda de hombros y giro de cintura -- Lote 1 (verificar catalogo)"
-    ],
-    "requisitos_criticos": [
-      "Lote 2: norma EN 1176/1177 para todos los elementos de juego infantil",
-      "Lote 1: aval de medico rehabilitador y fisioterapeuta obligatorio para el mobiliario biosaluda ble",
-      "Deadline 2026-06-15: solo 4 dias desde hoy para presentar oferta"
-    ],
-    "banderas_rojas": [
-      "Deadline 2026-06-15 a las 14:00h -- plazo extremadamente ajustado (4 dias naturales)",
-      "Importe reducido (16.528EUR total) con margenes comerciales limitados",
-      "Lote 1 biosaluda ble mayores requiere aval medico especializado"
-    ]
-  },
-  {
-    "licitacion_id": 105082,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Suministro de papel A4/A3, cartulinas, archivadores y sobres timbrados para el Ayuntamiento de Loja -- material de papeleria de oficina completamente ajeno al catalogo Higiofi.",
-    "resumen": "Ayuntamiento de Loja (Granada) licitacion de 9.892EUR anual para suministro de papel A4 (1.000 paquetes), papel A3 (700 paquetes), cartulinas timbradas A3 (4.000 uds), archivadores AZ (20), archivadores definitivos (200), sobres timbrados varios formatos (7.700 uds). Objeto totalmente distinto al catalogo de mobiliario urbano y parques infantiles de Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Objeto completamente ajeno al catalogo Higiofi",
-      "Requiere personalizacion grafica con logotipos y franqueo pagado del Ayuntamiento de Loja"
-    ]
-  },
-  {
-    "licitacion_id": 107194,
-    "encaje": "bajo",
-    "encaje_score": 12,
-    "motivo": "Alquiler de vallas peatonales antivuelco para eventos de la Delegacion de Juventud de Cadiz -- modelo de negocio de alquiler con logistica incluida diferente al suministro-venta de Higiofi; vallas de evento distintas a vallas de parque infantil.",
-    "resumen": "Ayuntamiento de Cadiz (Delegacion de Juventud) licitacion de 8.340EUR para suministro en regimen de arrendamiento de vallas peatonales antivuelco durante 2 anos (695 vallas estimadas/ano) para eventos como Carnaval Juvenil, Cine en Familia, FEMANCA, Halloween, Nintendo, etc. Vallas acero galvanizado o aluminio anodizado, diseno antivuelco 15-20 grados, color rojo burdeos (Pendon de Cadiz), precio unitario 6EUR/valla con transporte incluido. El modelo es alquiler+logistica, no venta.",
+    "motivo": "Vallado de malla de simple torsion galvanizada para cerrar perimetro de mercadillo -- valla agricola/industrial completamente ajena al catalogo Higiofi.",
+    "resumen": "Ayuntamiento de Sevilla, Delegacion de Espacio Publico (9.705EUR). Contrato de suministro e instalacion de 180 metros de cerramiento de malla de simple torsion (40mm paso, 2mm diametro, galvanizado) con postes de acero galvanizado de 48mm diametro empotrados en hormigon. Objetivo: evitar que las bolsas de plastico del mercadillo de Pino Montano vuelen al exterior. Material industrial de cerramiento, mano de obra de oficial montador y ayudante incluida. Nada relacionado con mobiliario urbano, parques infantiles, pavimentos de seguridad ni cesped artificial.",
     "productos_aplicables": [],
     "requisitos_criticos": [
-      "Regimen de alquiler: el proveedor mantiene la propiedad de las vallas",
-      "Transporte, carga y descarga incluidos en el precio unitario",
-      "Seguro de responsabilidad civil obligatorio antes de adjudicacion",
-      "Color especifico rojo burdeos (Pendon de Cadiz)"
+      "180 metros de malla simple torsion galvanizada (40mm, 2mm)",
+      "Postes acero galvanizado 48mm diametro, 2.4m altura empotrados en hormigon",
+      "Plazo de ejecucion 20 dias naturales desde adjudicacion"
     ],
     "banderas_rojas": [
-      "Modelo de negocio de alquiler con logistica propia -- diferente al suministro-venta de Higiofi",
-      "Vallas peatonales antivuelco para multitudes -- especificaciones distintas a vallas de parques infantiles",
-      "Requiere flota propia de vallas y capacidad logistica en Cadiz capital"
-    ]
-  },
-  {
-    "licitacion_id": 108223,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Alquiler de 3 gradas temporales de 200 localidades cada una para la Feria de Artes Escenicas de Palma del Rio -- estructuras efimeras de espectaculo completamente fuera del catalogo Higiofi.",
-    "resumen": "Patronato Municipal de Cultura de Palma del Rio (Cordoba) licitacion de 6.611EUR para alquiler, montaje y desmontaje de 3 gradas (200 personas c/u, 10 alturas x 20 asientos por fila, 10m ancho x 7m fondo x 2,5m altura) del 22 junio al 5 julio 2026 para la 43 edicion de la Feria de Artes Escenicas. Estructuras efimeras de espectaculo. Nada relacionado con el catalogo de mobiliario urbano y parques de Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Regimen de alquiler de estructuras efimeras de espectaculo -- fuera del catalogo Higiofi",
-      "Requiere empresa especializada en estructuras temporales y gradas para eventos escenicos"
-    ]
-  },
-  {
-    "licitacion_id": 108196,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Material fungible y recursos para actividades socioeducativas con menores (papel, cuadernos, rotuladores, mochilas, USB, juegos educativos, material manualidades) -- material escolar y didactico ajeno al catalogo Higiofi.",
-    "resumen": "Ayuntamiento de Isla Cristina (Huelva) licitacion de 1.264EUR en 2 lotes para la Delegacion de Servicios Sociales: Lote 1 material fungible (folios x20 paq, cartulinas x50, rotuladores x15, pegamento x20, tijeras x15, cuadernos x37, 346EUR) y Lote 2 recursos actividades menores (mochilas x20, USB x15, juegos educativos x10, material talleres x12, material clausura, 917EUR). Objeto totalmente ajeno al catalogo de mobiliario urbano y parques infantiles de Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Importe minimo (1.264EUR total) incompatible con la operativa comercial de Higiofi",
-      "Objeto completamente ajeno al catalogo: material escolar y didactico para menores"
+      "Producto completamente ajeno al catalogo: valla de malla simple torsion galvanizada industrial",
+      "Importe minimo (9.705EUR) incompatible con la operativa comercial de Higiofi",
+      "Ambito: cerramiento de mercadillo, no mobiliario urbano ni equipamiento de ocio"
     ]
   }
 ]
