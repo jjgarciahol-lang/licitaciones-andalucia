@@ -1,45 +1,86 @@
 [
   {
-    "licitacion_id": 109742,
-    "encaje": "bajo",
-    "encaje_score": 15,
-    "motivo": "Parques caninos con circuitos agility -- el equipamiento principal (puertas, saltos, muros, tuneles, balanceos) es especifico para perros y ajeno al catalogo Higiofi. Solo los bancos de madera, papeleras caninas y fuentes de acero inox son perifericamente compatibles con HGSY.",
-    "resumen": "Ayuntamiento de Vegas del Genil (Granada) licitacion de 32.000EUR para crear 5 parques caninos (areas agility) en distintos barrios. El grueso del contrato es equipamiento de agility canino (circuito de obstaculos: puerta, salto, pisada, muro, barrera, balanceo, puente, tunel) que no existe en el catalogo Higiofi. Elementos HGS candidatos: bancos fenix madera tropical con patas fundicion, papeleras caninas con dispensador bolsas, fuentes caninas acero inox con doble grifo. Vallado perimetral de malla metalica plastificada verde con postes BREA (industrial, no catalogo). Norma UNE EN 1176 exigida pero aplicada a equipamiento canino.",
+    "licitacion_id": 111918,
+    "encaje": "alto",
+    "encaje_score": 78,
+    "motivo": "Elementos de juego infantil en Parque de Malaga: estructuras modulares multitorre (HGA/HGPM), columpios metalico y madera (HGA), balancin muelle (HGA). Presupuesto 55.144EUR razonable para Higiofi. CPV 37535240 encaje perfecto.",
+    "resumen": "Ayuntamiento de Malaga, Distrito 1 Centro, licitacion de 55.144EUR (66.724EUR con IVA) para sustituir elementos de juego obsoletos en area infantil de Parque de Malaga. Elementos a suministrar e instalar: EJ-01 estructura metalica Tipo A grande (4 torres, toboganes, red trepa, paso japones, paneles escalada, 37.823EUR), EJ-02 estructura metalica Tipo B primera infancia tematizada burritos/Platero (8.590EUR), EJ-03 cabana primera infancia (2.800EUR), CPI-01 columpio metalico con silla plana + cuna (2.750EUR), CPI-02 columpio madera (1.950EUR), BAI-01 balancin muelle tematizado burrito (906EUR), PI-01 panel informativo (325EUR). Materiales: postes aluminio 95x95mm, toboganes acero inox + HPL 13mm, cuerdas acero con cobertura protectora. Norma EN 1176 exigida. Plazo ejecucion 2 meses. Garantia 2 anos + piezas 5 anos.",
     "productos_aplicables": [
-      "HGSY bancos fenix madera tropical con patas fundicion (5 unidades, uno por parque)",
-      "HGSY papeleras caninas con dispensador de bolsas (5 unidades)",
-      "HGSY fuentes caninas acero inox doble grifo (4 unidades en 4 de los 5 parques)"
+      "HGA estructuras de juego modulares (EJ-01 grande 37.823EUR, EJ-02 1a infancia 8.590EUR, EJ-03 cabana 2.800EUR)",
+      "HGA columpios metalico y madera (CPI-01 2.750EUR + CPI-02 1.950EUR)",
+      "HGA balancin muelle (BAI-01 906EUR)"
     ],
     "requisitos_criticos": [
-      "Norma UNE EN 1176 o equivalente para equipamiento de parques caninos",
-      "Garantia minima 2 anos elementos agility, 5 anos acabados",
-      "Repuestos originales disponibles 10 anos tras fin fabricacion",
-      "Certificado de inspeccion emitido por empresa certificadora acreditada",
-      "Incluye obra civil (cimentacion, replanteo, excavacion, transporte residuos)"
+      "Postes aluminio lacados seccion cuadrada 95x95mm minimo (estructura Tipo A y B)",
+      "Toboganes deslizadera acero inox con laterales HPL 13mm minimo",
+      "Cuerdas con alma metalica acero + cobertura protectora, diametro minimo 16mm",
+      "Norma EN 1176 vigente, certificados de cumplimiento requeridos (no precertificados)",
+      "Tematizacion especifica: jardín/plantas/arboles para Tipo A; burritos/Platero para Tipo B y balancin",
+      "Altura libre de caida Tipo A max 1,50m, Tipo B max 1,10m, cabana max 0,60m",
+      "Documentacion tecnica planos acotados en 10 dias desde formalizacion",
+      "Plazo ejecucion 2 meses desde firma contrato",
+      "Garantia 2 anos contra defectos + disponibilidad piezas originales 5 anos tras vencimiento garantia venta"
     ],
     "banderas_rojas": [
-      "Equipamiento agility canino (80% del valor estimado) completamente fuera del catalogo Higiofi",
-      "Vallado perimetral malla metalica plastificada -- producto industrial no disponible",
-      "Se requiere suministro integral incluyendo elementos no disponibles en Higiofi",
-      "Importe global bajo (32.000EUR) para un paquete multi-producto con obra civil incluida"
+      "Tematizacion especifica (burritos/Platero) puede requerir diseno personalizado fuera de catalogo estandar",
+      "Especificaciones muy prescriptivas de materiales y dimensiones: requiere verificar disponibilidad exacta",
+      "Pavimento de seguridad mencionado en pliego como elemento a controlar pero sin partida presupuestaria explicita -- sin oportunidad EPDM directa en este contrato",
+      "Procedimiento simplificado abreviado: competencia alta, margen reducido"
     ]
   },
   {
-    "licitacion_id": 109746,
+    "licitacion_id": 110426,
     "encaje": "ninguno",
     "encaje_score": 0,
-    "motivo": "Vallado de malla de simple torsion galvanizada para cerrar perimetro de mercadillo -- valla agricola/industrial completamente ajena al catalogo Higiofi.",
-    "resumen": "Ayuntamiento de Sevilla, Delegacion de Espacio Publico (9.705EUR). Contrato de suministro e instalacion de 180 metros de cerramiento de malla de simple torsion (40mm paso, 2mm diametro, galvanizado) con postes de acero galvanizado de 48mm diametro empotrados en hormigon. Objetivo: evitar que las bolsas de plastico del mercadillo de Pino Montano vuelen al exterior. Material industrial de cerramiento, mano de obra de oficial montador y ayudante incluida. Nada relacionado con mobiliario urbano, parques infantiles, pavimentos de seguridad ni cesped artificial.",
+    "motivo": "Equipamiento y mobiliario interior de sala VIP aeroportuaria (778m2) -- mobiliario premium de interior (asientos lounge, barras, mesas, elementos decorativos) completamente ajeno al catalogo Higiofi de mobiliario urbano y parques infantiles.",
+    "resumen": "Aena, Aeropuerto de Sevilla, 425.170EUR. Dotacion de equipamiento y mobiliario para nueva sala VIP de 778,87m2 (zona publica pasajeros 663m2 + servicios + instalaciones). Contrato de 6 meses coordinado con obra de construccion de la sala. Requiere solvencia tecnica y certificaciones de calidad/medioambiente. PPT tecnico no descargado -- la memoria justificativa confirma que el objeto es mobiliario interior de sala VIP aeroportuaria: completamente ajeno al catalogo Higiofi.",
     "productos_aplicables": [],
     "requisitos_criticos": [
-      "180 metros de malla simple torsion galvanizada (40mm, 2mm)",
-      "Postes acero galvanizado 48mm diametro, 2.4m altura empotrados en hormigon",
-      "Plazo de ejecucion 20 dias naturales desde adjudicacion"
+      "Certificacion de calidad ISO y medioambiente exigidos",
+      "Coordinacion con obra de construccion de la sala VIP (expediente paralelo)",
+      "Plazo 6 meses desde acta de inicio",
+      "Solvencia tecnica con experiencia relevante"
     ],
     "banderas_rojas": [
-      "Producto completamente ajeno al catalogo: valla de malla simple torsion galvanizada industrial",
-      "Importe minimo (9.705EUR) incompatible con la operativa comercial de Higiofi",
-      "Ambito: cerramiento de mercadillo, no mobiliario urbano ni equipamiento de ocio"
+      "Objeto: mobiliario interior premium de sala VIP aeroportuaria -- nada relacionado con parques infantiles o mobiliario urbano exterior",
+      "Licitador debe ser empresa de mobiliario de interiores especializada en proyectos aeroportuarios",
+      "Regida por Instrucciones de Contratacion Grupo Aena, no LCSP estandar"
+    ]
+  },
+  {
+    "licitacion_id": 111732,
+    "encaje": "ninguno",
+    "encaje_score": 0,
+    "motivo": "Mobiliario interior residencial para Comandancia Guardia Civil: colchones, bases tapizadas, cortinas ignifugas, estores, sofas, sillas escritorio, taquillas metalicas -- nada relacionado con el catalogo Higiofi.",
+    "resumen": "Comandancia Guardia Civil de Granada, 24.297EUR. Suministro de mobiliario diverso para residencia de estudiantes y plazas de accion social: 68 colchones de muelles ensacados (67 uds 105x190cm + 1 ud 150x190cm), bases tapizadas, juegos de patas, 15 cortinas ignifugas, 20 estores enrollables turquesa, 5 sofas tres plazas antimanchas, 14 sillas escritorio operativas, 35 taquillas metalicas 50x50x50cm. Todo mobiliario de interior residencial/officina para uso en dependencias militares.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Colchones con certificado ignifugo UNE-EN 597-1 y 597-2",
+      "Cortinas clasificacion fuego Clase 1 UNE-EN 13773",
+      "Sillas escritorio UNE-EN 1335-1 y UNE-ISO 9241-5",
+      "Taquillas chapa acero laminado en frio, acabado epoxi-poliester"
+    ],
+    "banderas_rojas": [
+      "Objeto completamente ajeno al catalogo Higiofi: mobiliario interior residencial militar",
+      "Contratante: Guardia Civil -- sector seguridad/defensa con requisitos especificos de acceso"
+    ]
+  },
+  {
+    "licitacion_id": 111322,
+    "encaje": "ninguno",
+    "encaje_score": 0,
+    "motivo": "33 sillas ergonomicas de oficina (29 sillas operativas + 4 sillones de direccion) para Consorcio Zona Franca de Cadiz -- mobiliario de oficina completamente ajeno al catalogo Higiofi.",
+    "resumen": "Consorcio de la Zona Franca de Cadiz, 8.800EUR. Suministro de 33 asientos ergonomicos: 29 sillas operativas (malla transpirable, brazos 4D, pistón gas, base nylon) y 4 sillones de direccion (tapiceria piel, brazos 3D, reposacabezas). Normas UNE-EN 1335-1, UNE-ISO 9241-5, RD 488/1997 (pantallas visualizacion). Entrega maxima 30 dias en sede Cadiz.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [
+      "Cumplimiento UNE-EN 1335-1 sillas oficina",
+      "Ficha tecnica, fotografias, certificacion CE obligatorias con oferta",
+      "Entrega maxima 30 dias desde notificacion adjudicacion",
+      "Precio unitario indicado por articulo completo (no por componentes)"
+    ],
+    "banderas_rojas": [
+      "Objeto totalmente ajeno: sillas ergonomicas de oficina",
+      "Importe minimo (8.800EUR) incompatible con operativa comercial de Higiofi"
     ]
   }
 ]
