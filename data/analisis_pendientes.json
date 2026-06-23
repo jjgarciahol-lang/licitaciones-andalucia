@@ -1,86 +1,82 @@
 [
   {
-    "licitacion_id": 111918,
-    "encaje": "alto",
-    "encaje_score": 78,
-    "motivo": "Elementos de juego infantil en Parque de Malaga: estructuras modulares multitorre (HGA/HGPM), columpios metalico y madera (HGA), balancin muelle (HGA). Presupuesto 55.144EUR razonable para Higiofi. CPV 37535240 encaje perfecto.",
-    "resumen": "Ayuntamiento de Malaga, Distrito 1 Centro, licitacion de 55.144EUR (66.724EUR con IVA) para sustituir elementos de juego obsoletos en area infantil de Parque de Malaga. Elementos a suministrar e instalar: EJ-01 estructura metalica Tipo A grande (4 torres, toboganes, red trepa, paso japones, paneles escalada, 37.823EUR), EJ-02 estructura metalica Tipo B primera infancia tematizada burritos/Platero (8.590EUR), EJ-03 cabana primera infancia (2.800EUR), CPI-01 columpio metalico con silla plana + cuna (2.750EUR), CPI-02 columpio madera (1.950EUR), BAI-01 balancin muelle tematizado burrito (906EUR), PI-01 panel informativo (325EUR). Materiales: postes aluminio 95x95mm, toboganes acero inox + HPL 13mm, cuerdas acero con cobertura protectora. Norma EN 1176 exigida. Plazo ejecucion 2 meses. Garantia 2 anos + piezas 5 anos.",
-    "productos_aplicables": [
-      "HGA estructuras de juego modulares (EJ-01 grande 37.823EUR, EJ-02 1a infancia 8.590EUR, EJ-03 cabana 2.800EUR)",
-      "HGA columpios metalico y madera (CPI-01 2.750EUR + CPI-02 1.950EUR)",
-      "HGA balancin muelle (BAI-01 906EUR)"
-    ],
+    "licitacion_id": 112700,
+    "encaje": "ninguno",
+    "encaje_score": 0,
+    "motivo": "12 modulos de aparcamiento inteligente cerrado para bicicletas y VMP (20 taquillas individuales con cargador electrico por modulo) + software de gestion y mantenimiento 12 meses -- infraestructura de movilidad sostenible completamente ajena al catalogo Higiofi.",
+    "resumen": "Ayuntamiento de Mairena del Aljarafe (Sevilla), 475.800EUR. Suministro, instalacion y puesta en marcha de 12 modulos desmontables de aparcamiento inteligente y seguro para bicicletas y VMP de 20 taquillas individuales con punto de recarga electrica cada una (240 plazas totales). Incluye software de gestion de control de accesos, altas/bajas de usuarios y mantenimiento integral con limpieza durante 12 meses. Financiado con fondos FEDER 2021-2027 (DUS, Accion 7 carril bici). Objeto totalmente ajeno al catalogo de parques infantiles y mobiliario urbano de Higiofi.",
+    "productos_aplicables": [],
     "requisitos_criticos": [
-      "Postes aluminio lacados seccion cuadrada 95x95mm minimo (estructura Tipo A y B)",
-      "Toboganes deslizadera acero inox con laterales HPL 13mm minimo",
-      "Cuerdas con alma metalica acero + cobertura protectora, diametro minimo 16mm",
-      "Norma EN 1176 vigente, certificados de cumplimiento requeridos (no precertificados)",
-      "Tematizacion especifica: jardín/plantas/arboles para Tipo A; burritos/Platero para Tipo B y balancin",
-      "Altura libre de caida Tipo A max 1,50m, Tipo B max 1,10m, cabana max 0,60m",
-      "Documentacion tecnica planos acotados en 10 dias desde formalizacion",
-      "Plazo ejecucion 2 meses desde firma contrato",
-      "Garantia 2 anos contra defectos + disponibilidad piezas originales 5 anos tras vencimiento garantia venta"
+      "20 taquillas por modulo con cargador electrico individual",
+      "Sistema software de gestion de accesos, altas/bajas usuarios",
+      "Mantenimiento integral + limpieza obligatoria 12 meses desde puesta en marcha",
+      "Garantia minima 2 anos",
+      "12 modulos desmontables o trasladables"
     ],
     "banderas_rojas": [
-      "Tematizacion especifica (burritos/Platero) puede requerir diseno personalizado fuera de catalogo estandar",
-      "Especificaciones muy prescriptivas de materiales y dimensiones: requiere verificar disponibilidad exacta",
-      "Pavimento de seguridad mencionado en pliego como elemento a controlar pero sin partida presupuestaria explicita -- sin oportunidad EPDM directa en este contrato",
-      "Procedimiento simplificado abreviado: competencia alta, margen reducido"
+      "Objeto: aparcabicicletas inteligentes con electronica integrada -- nada relacionado con Higiofi",
+      "Incluye servicio de mantenimiento 12 meses y software de gestion -- modelo negocio diferente",
+      "Financiacion FEDER: procedimiento y documentacion exigente"
     ]
   },
   {
-    "licitacion_id": 110426,
+    "licitacion_id": 112318,
     "encaje": "ninguno",
     "encaje_score": 0,
-    "motivo": "Equipamiento y mobiliario interior de sala VIP aeroportuaria (778m2) -- mobiliario premium de interior (asientos lounge, barras, mesas, elementos decorativos) completamente ajeno al catalogo Higiofi de mobiliario urbano y parques infantiles.",
-    "resumen": "Aena, Aeropuerto de Sevilla, 425.170EUR. Dotacion de equipamiento y mobiliario para nueva sala VIP de 778,87m2 (zona publica pasajeros 663m2 + servicios + instalaciones). Contrato de 6 meses coordinado con obra de construccion de la sala. Requiere solvencia tecnica y certificaciones de calidad/medioambiente. PPT tecnico no descargado -- la memoria justificativa confirma que el objeto es mobiliario interior de sala VIP aeroportuaria: completamente ajeno al catalogo Higiofi.",
+    "motivo": "Contenedores de carga trasera con cerradura electronica e identificacion de usuario para recogida separada de biorresiduos -- equipamiento de gestion de residuos organicos completamente ajeno al catalogo Higiofi.",
+    "resumen": "AIRA Gestion Ambiental S.A.M., Alcala de Guadaira (Sevilla), 71.680EUR. Suministro de contenedores de biorresiduos (fraccion organica) con sistema de cerradura electronica e identificacion de usuario para recogida separada. Ambito: servicio municipal de recogida de residuos organicos. Objeto totalmente ajeno al catalogo de mobiliario urbano y parques infantiles de Higiofi.",
     "productos_aplicables": [],
     "requisitos_criticos": [
-      "Certificacion de calidad ISO y medioambiente exigidos",
-      "Coordinacion con obra de construccion de la sala VIP (expediente paralelo)",
-      "Plazo 6 meses desde acta de inicio",
-      "Solvencia tecnica con experiencia relevante"
+      "Contenedores de carga trasera compatibles con vehiculos de recogida existentes",
+      "Cerradura electronica con sistema de identificacion de usuario",
+      "Uso exterior resistente a condiciones climaticas"
     ],
     "banderas_rojas": [
-      "Objeto: mobiliario interior premium de sala VIP aeroportuaria -- nada relacionado con parques infantiles o mobiliario urbano exterior",
-      "Licitador debe ser empresa de mobiliario de interiores especializada en proyectos aeroportuarios",
-      "Regida por Instrucciones de Contratacion Grupo Aena, no LCSP estandar"
+      "Objeto: contenedores biorresiduos con electronica -- completamente fuera del catalogo",
+      "Contratante: empresa publica de gestion ambiental, no administracion de espacios publicos"
     ]
   },
   {
-    "licitacion_id": 111732,
+    "licitacion_id": 112473,
     "encaje": "ninguno",
     "encaje_score": 0,
-    "motivo": "Mobiliario interior residencial para Comandancia Guardia Civil: colchones, bases tapizadas, cortinas ignifugas, estores, sofas, sillas escritorio, taquillas metalicas -- nada relacionado con el catalogo Higiofi.",
-    "resumen": "Comandancia Guardia Civil de Granada, 24.297EUR. Suministro de mobiliario diverso para residencia de estudiantes y plazas de accion social: 68 colchones de muelles ensacados (67 uds 105x190cm + 1 ud 150x190cm), bases tapizadas, juegos de patas, 15 cortinas ignifugas, 20 estores enrollables turquesa, 5 sofas tres plazas antimanchas, 14 sillas escritorio operativas, 35 taquillas metalicas 50x50x50cm. Todo mobiliario de interior residencial/officina para uso en dependencias militares.",
+    "motivo": "Material de oficina consumible (papeleria) y material informatico no inventariable para Servicio Provincial Tributario de la Diputacion de Granada -- completamente ajeno al catalogo Higiofi.",
+    "resumen": "Vicepresidencia del Servicio Provincial Tributario, Diputacion de Granada, 21.830EUR. Suministro de material de oficina consumible (folios, archivadores, boligrafos, etc.) y material informatico no inventariable (cartuchos tinta, toners, memorias USB, etc.). Objeto totalmente ajeno al catalogo de mobiliario urbano y parques infantiles de Higiofi.",
     "productos_aplicables": [],
-    "requisitos_criticos": [
-      "Colchones con certificado ignifugo UNE-EN 597-1 y 597-2",
-      "Cortinas clasificacion fuego Clase 1 UNE-EN 13773",
-      "Sillas escritorio UNE-EN 1335-1 y UNE-ISO 9241-5",
-      "Taquillas chapa acero laminado en frio, acabado epoxi-poliester"
-    ],
+    "requisitos_criticos": [],
     "banderas_rojas": [
-      "Objeto completamente ajeno al catalogo Higiofi: mobiliario interior residencial militar",
-      "Contratante: Guardia Civil -- sector seguridad/defensa con requisitos especificos de acceso"
+      "Objeto: papeleria y material informatico -- completamente fuera del catalogo Higiofi"
     ]
   },
   {
-    "licitacion_id": 111322,
+    "licitacion_id": 112670,
     "encaje": "ninguno",
     "encaje_score": 0,
-    "motivo": "33 sillas ergonomicas de oficina (29 sillas operativas + 4 sillones de direccion) para Consorcio Zona Franca de Cadiz -- mobiliario de oficina completamente ajeno al catalogo Higiofi.",
-    "resumen": "Consorcio de la Zona Franca de Cadiz, 8.800EUR. Suministro de 33 asientos ergonomicos: 29 sillas operativas (malla transpirable, brazos 4D, pistón gas, base nylon) y 4 sillones de direccion (tapiceria piel, brazos 3D, reposacabezas). Normas UNE-EN 1335-1, UNE-ISO 9241-5, RD 488/1997 (pantallas visualizacion). Entrega maxima 30 dias en sede Cadiz.",
+    "motivo": "100 sillas escolares apilables y 100 pupitres individuales para aula de examenes interior universitaria (UNED) -- mobiliario escolar de interior, fuera del ambito exterior de Higiofi.",
+    "resumen": "Centro Asociado UNED Malaga, 18.500EUR. Suministro de 100 sillas escolares apilables homologadas talla 6 (tubo acero 25x1.5mm, asiento+respaldo HPL con cantos haya barnizada, tacos goma antiruido) y 100 pupitres individuales con estante rejilla metalica (tubo acero 25mm, tablero laminado 20mm, 70x78x50cm, color haya). Destino: nueva aula de examenes en C/ Sherlock Holmes 4, Malaga. Entrega e instalacion en 20 dias. Garantia 3 anos. Mobiliario de interior universitario fuera del catalogo exterior de Higiofi.",
     "productos_aplicables": [],
     "requisitos_criticos": [
-      "Cumplimiento UNE-EN 1335-1 sillas oficina",
-      "Ficha tecnica, fotografias, certificacion CE obligatorias con oferta",
-      "Entrega maxima 30 dias desde notificacion adjudicacion",
-      "Precio unitario indicado por articulo completo (no por componentes)"
+      "Silla apilable talla 6, altura asiento 460mm",
+      "Ficha tecnica de productos con oferta obligatoria",
+      "Entrega e instalacion en 20 dias desde pedido",
+      "Garantia minima 3 anos"
     ],
     "banderas_rojas": [
-      "Objeto totalmente ajeno: sillas ergonomicas de oficina",
-      "Importe minimo (8.800EUR) incompatible con operativa comercial de Higiofi"
+      "Mobiliario escolar de interior universitario -- el catalogo HGI de Higiofi es para exterior (patios escolares)",
+      "Importe bajo (18.500EUR) para un pedido de 200 unidades de mobiliario estandar"
+    ]
+  },
+  {
+    "licitacion_id": 112332,
+    "encaje": "ninguno",
+    "encaje_score": 0,
+    "motivo": "Material de oficina diverso para el Instituto de Fomento, Empleo y Formacion de Cadiz -- papeleria completamente ajena al catalogo Higiofi.",
+    "resumen": "Instituto de Fomento, Empleo y Formacion, Ayuntamiento de Cadiz, 1.358EUR. Suministro de diverso material de oficina (papeleria, carpetas, material de escritura, etc.) para los proyectos del IFEF. Importe minimo (1.358EUR) e imposible encaje con el catalogo de Higiofi.",
+    "productos_aplicables": [],
+    "requisitos_criticos": [],
+    "banderas_rojas": [
+      "Objeto: papeleria -- completamente fuera del catalogo Higiofi",
+      "Importe minimo de 1.358EUR incompatible con la operativa comercial de Higiofi"
     ]
   }
 ]
