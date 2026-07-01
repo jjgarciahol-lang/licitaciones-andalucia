@@ -1,82 +1,111 @@
 [
   {
-    "licitacion_id": 112700,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "12 modulos de aparcamiento inteligente cerrado para bicicletas y VMP (20 taquillas individuales con cargador electrico por modulo) + software de gestion y mantenimiento 12 meses -- infraestructura de movilidad sostenible completamente ajena al catalogo Higiofi.",
-    "resumen": "Ayuntamiento de Mairena del Aljarafe (Sevilla), 475.800EUR. Suministro, instalacion y puesta en marcha de 12 modulos desmontables de aparcamiento inteligente y seguro para bicicletas y VMP de 20 taquillas individuales con punto de recarga electrica cada una (240 plazas totales). Incluye software de gestion de control de accesos, altas/bajas de usuarios y mantenimiento integral con limpieza durante 12 meses. Financiado con fondos FEDER 2021-2027 (DUS, Accion 7 carril bici). Objeto totalmente ajeno al catalogo de parques infantiles y mobiliario urbano de Higiofi.",
-    "productos_aplicables": [],
+    "licitacion_id": 107289,
+    "encaje": "bajo",
+    "encaje_score": 22,
+    "motivo": "Renting de cesped artificial para campo de futbol municipal en Tarifa (Cadiz). El producto HGSG esta en catalogo pero la modalidad RENTING es una barrera operativa critica: Higiofi tendria que financiar la inversion, ceder la propiedad temporalmente y asumir el mantenimiento durante todo el contrato. Ademas exige certificacion FIFA QUALITY PRO obligatoria del fabricante (FIFA Preferred Producer), ISCC PLUS, EPD, ISO 45001/14001/9001 y GREEN ELECTRICITY del hilo — nivel de certificacion exclusivo de grandes fabricantes industriales. Por ultimo, el lote incluye sistema de riego, iluminacion y redes de proteccion perimetrales, que estan fuera del catalogo de Higiofi.",
+    "resumen": "Renting de cesped artificial 60mm FIFA para campo municipal Antonio Lopez Pua, Tarifa (Cadiz). 486K EUR. Incluye riego, iluminacion, porterias F11+F7 y banquillos. La modalidad renting y las certificaciones FIFA Preferred Producer obligatorias lo hacen inaccesible para Higiofi en el corto plazo.",
+    "productos_aplicables": ["HGSG - Cesped artificial"],
     "requisitos_criticos": [
-      "20 taquillas por modulo con cargador electrico individual",
-      "Sistema software de gestion de accesos, altas/bajas usuarios",
-      "Mantenimiento integral + limpieza obligatoria 12 meses desde puesta en marcha",
-      "Garantia minima 2 anos",
-      "12 modulos desmontables o trasladables"
+      "Certificado FIFA QUALITY PRO obligatorio del fabricante",
+      "FIFA Preferred Producer (solo grandes fabricantes industriales)",
+      "ISO 45001 + ISO 14001 + ISO 9001 del fabricante de cesped",
+      "ISCC PLUS y EPD (declaracion medioambiental del producto)",
+      "Modalidad renting (no compra directa)"
     ],
     "banderas_rojas": [
-      "Objeto: aparcabicicletas inteligentes con electronica integrada -- nada relacionado con Higiofi",
-      "Incluye servicio de mantenimiento 12 meses y software de gestion -- modelo negocio diferente",
-      "Financiacion FEDER: procedimiento y documentacion exigente"
+      "RENTING: requiere capital propio + mantenimiento plurianual del contratista",
+      "FIFA Preferred Producer es requisito eliminatorio — solo fabricantes tier-1",
+      "Riego, iluminacion y porterias fuera del catalogo Higiofi"
     ]
   },
   {
-    "licitacion_id": 112318,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Contenedores de carga trasera con cerradura electronica e identificacion de usuario para recogida separada de biorresiduos -- equipamiento de gestion de residuos organicos completamente ajeno al catalogo Higiofi.",
-    "resumen": "AIRA Gestion Ambiental S.A.M., Alcala de Guadaira (Sevilla), 71.680EUR. Suministro de contenedores de biorresiduos (fraccion organica) con sistema de cerradura electronica e identificacion de usuario para recogida separada. Ambito: servicio municipal de recogida de residuos organicos. Objeto totalmente ajeno al catalogo de mobiliario urbano y parques infantiles de Higiofi.",
-    "productos_aplicables": [],
+    "licitacion_id": 107494,
+    "encaje": "bajo",
+    "encaje_score": 18,
+    "motivo": "Obras de urbanizacion del Parque Severiano Ballesteros en Playa Granada, Motril (Granada), CPV 45112711. El proyecto incluye retirada de elementos existentes (bancos de hormigon, juegos infantiles tipo balancin), mejora de pavimentacion y colocacion de nuevo mobiliario urbano (bancos Durbanis IO-S, papeleras IBIZA/SULO). El contrato referencia marcas especificas (Durbanis, SULO) con 'o equivalente', y es fundamentalmente un contrato de OBRA civil — Higiofi no puede licitar directamente. Ademas el plazo limite era 02/07 (ayer) por lo que esta oportunidad ya ha vencido.",
+    "resumen": "Obras parque Severiano Ballesteros, Playa Granada, Motril. 481K EUR, CPV 45112711. Incluye mobiliario urbano (bancos Durbanis, papeleras SULO) con partidas abiertas a equivalentes. Contrato de obra — acceso solo como subcontratista. Plazo vencido 02/07.",
+    "productos_aplicables": ["HGSY - Mobiliario urbano (bancos, papeleras, jardineras)"],
     "requisitos_criticos": [
-      "Contenedores de carga trasera compatibles con vehiculos de recogida existentes",
-      "Cerradura electronica con sistema de identificacion de usuario",
-      "Uso exterior resistente a condiciones climaticas"
+      "Empresa constructora clasificada como licitante principal",
+      "Marcas referenciadas: bancos Durbanis IO-S, papeleras SULO IBIZA — con 'o equivalente'"
     ],
     "banderas_rojas": [
-      "Objeto: contenedores biorresiduos con electronica -- completamente fuera del catalogo",
-      "Contratante: empresa publica de gestion ambiental, no administracion de espacios publicos"
+      "Plazo de presentacion vencido 02/07/2026 — oportunidad cerrada",
+      "Contrato de obra: Higiofi solo puede actuar como proveedor del adjudicatario"
     ]
   },
   {
-    "licitacion_id": 112473,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Material de oficina consumible (papeleria) y material informatico no inventariable para Servicio Provincial Tributario de la Diputacion de Granada -- completamente ajeno al catalogo Higiofi.",
-    "resumen": "Vicepresidencia del Servicio Provincial Tributario, Diputacion de Granada, 21.830EUR. Suministro de material de oficina consumible (folios, archivadores, boligrafos, etc.) y material informatico no inventariable (cartuchos tinta, toners, memorias USB, etc.). Objeto totalmente ajeno al catalogo de mobiliario urbano y parques infantiles de Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": [
-      "Objeto: papeleria y material informatico -- completamente fuera del catalogo Higiofi"
-    ]
-  },
-  {
-    "licitacion_id": 112670,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "100 sillas escolares apilables y 100 pupitres individuales para aula de examenes interior universitaria (UNED) -- mobiliario escolar de interior, fuera del ambito exterior de Higiofi.",
-    "resumen": "Centro Asociado UNED Malaga, 18.500EUR. Suministro de 100 sillas escolares apilables homologadas talla 6 (tubo acero 25x1.5mm, asiento+respaldo HPL con cantos haya barnizada, tacos goma antiruido) y 100 pupitres individuales con estante rejilla metalica (tubo acero 25mm, tablero laminado 20mm, 70x78x50cm, color haya). Destino: nueva aula de examenes en C/ Sherlock Holmes 4, Malaga. Entrega e instalacion en 20 dias. Garantia 3 anos. Mobiliario de interior universitario fuera del catalogo exterior de Higiofi.",
-    "productos_aplicables": [],
+    "licitacion_id": 110698,
+    "encaje": "bajo",
+    "encaje_score": 15,
+    "motivo": "Rehabilitacion del Parque Cristo de los Afligidos Fase II en Utrera (Sevilla), CPV 45112711. El pliego describe la modificacion de un proyecto de ejecucion de parque publico — contrato de obra civil. El PPT descargado es el proyecto completo de obra con sus mediciones y estudio de seguridad y salud. Higiofi podria ser proveedor de los elementos de mobiliario o equipamiento del parque que incluya el proyecto, pero no puede licitar como empresa de suministro.",
+    "resumen": "Rehabilitacion Parque Cristo de los Afligidos Fase II, Utrera (Sevilla). 290K EUR. Contrato de obra de parque publico. Higiofi puede ser subcontratista del constructor adjudicatario para los elementos de mobiliario o juego que contemple el proyecto.",
+    "productos_aplicables": ["HGA - Parques infantiles", "HGS - Pavimento EPDM", "HGSY - Mobiliario urbano"],
     "requisitos_criticos": [
-      "Silla apilable talla 6, altura asiento 460mm",
-      "Ficha tecnica de productos con oferta obligatoria",
-      "Entrega e instalacion en 20 dias desde pedido",
-      "Garantia minima 3 anos"
+      "Empresa constructora con clasificacion de obras como licitante",
+      "Acceso como proveedor del constructor adjudicatario"
     ],
     "banderas_rojas": [
-      "Mobiliario escolar de interior universitario -- el catalogo HGI de Higiofi es para exterior (patios escolares)",
-      "Importe bajo (18.500EUR) para un pedido de 200 unidades de mobiliario estandar"
+      "Contrato de obra — Higiofi no puede licitar directamente",
+      "No confirmado el desglose de partidas de equipamiento en el proyecto"
     ]
   },
   {
-    "licitacion_id": 112332,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Material de oficina diverso para el Instituto de Fomento, Empleo y Formacion de Cadiz -- papeleria completamente ajena al catalogo Higiofi.",
-    "resumen": "Instituto de Fomento, Empleo y Formacion, Ayuntamiento de Cadiz, 1.358EUR. Suministro de diverso material de oficina (papeleria, carpetas, material de escritura, etc.) para los proyectos del IFEF. Importe minimo (1.358EUR) e imposible encaje con el catalogo de Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
+    "licitacion_id": 104877,
+    "encaje": "medio",
+    "encaje_score": 48,
+    "motivo": "A pesar de que el objeto PLACSP dice 'renting', el pliego tecnico (Proyecto Basico y de Ejecucion) describe una obra de instalacion de cesped artificial convencional con mediciones, presupuesto y estudio de seguridad — no una modalidad de pago en cuotas. El proyecto contempla homologacion FIFA, garantia de 5 anos y mantenimiento del campo. El producto HGSG (cesped artificial) encaja directamente. El condicionante principal es que la certificacion FIFA es una exigencia ('no homologable para la FIFA' como argumento de necesidad) y que el contrato puede requerir empresa instaladora especializada en cesped deportivo. El importe de 270K EUR es viable.",
+    "resumen": "Suministro e instalacion de cesped artificial para campo de futbol Gregorio Manzano, Bailen (Jaen). 270K EUR. El pliego describe obra convencional (no renting real). Requiere homologacion FIFA y garantia 5 anos. HGSG en catalogo — verificar si Higiofi tiene instalador de cesped deportivo certificado.",
+    "productos_aplicables": ["HGSG - Cesped artificial"],
+    "requisitos_criticos": [
+      "Homologacion FIFA del campo tras la instalacion",
+      "Empresa instaladora especializada en cesped deportivo",
+      "Garantia de 5 anos sobre la instalacion",
+      "Mantenimiento del campo incluido en el alcance"
+    ],
     "banderas_rojas": [
-      "Objeto: papeleria -- completamente fuera del catalogo Higiofi",
-      "Importe minimo de 1.358EUR incompatible con la operativa comercial de Higiofi"
+      "Objeto PLACSP dice 'renting' pero el pliego describe obra convencional — confirmar con convocatoria PCAP",
+      "Homologacion FIFA implica requisitos tecnicos del tipo de fibra y relleno"
+    ]
+  },
+  {
+    "licitacion_id": 110605,
+    "encaje": "alto",
+    "encaje_score": 78,
+    "motivo": "Suministro e instalacion (modalidad compra directa, no renting) de cesped artificial para renovar el campo de futbol 11 'Joaquin Reyes Espinar' en Paradas (Sevilla). El campo es de 104x62m y tiene 16 anos de antiguedad. El pliego exige un 'documento de ensayo de declaracion FIFA' mediante laboratorio independiente acreditado — es un informe de laboratorio, NO la certificacion FIFA Preferred Producer (exclusiva de grandes fabricantes industriales). El sistema requiere cesped monofilamento+fibrilado sobre base elastica de corcho, relleno con arena de silice. El contrato es mixto (suministro + instalacion). Importe 237K EUR manejable. Unico contrato de cesped artificial sin modalidad renting — el mas accesible para Higiofi HGSG.",
+    "resumen": "Suministro e instalacion de cesped artificial campo F11 'Joaquin Reyes Espinar', Paradas (Sevilla). 237K EUR. Campo 104x62m, 16 anos de antiguedad. Modalidad directa (no renting). Exige informe FIFA de laboratorio independiente (no certificacion FIFA exclusiva). Base elastica corcho + arena de silice. El contrato de cesped de mayor accesibilidad para Higiofi en el lote actual.",
+    "productos_aplicables": ["HGSG - Cesped artificial"],
+    "requisitos_criticos": [
+      "Documento de ensayo FIFA acreditado por laboratorio independiente (no FIFA Preferred Producer)",
+      "Cesped monofilamento + fibrilado, altura 40-50mm, sobre base elastica de corcho",
+      "Instalacion completa incluida: desmontaje del existente + colocacion + marcaciones",
+      "Experiencia previa en instalacion de campos de cesped artificial deportivo"
+    ],
+    "banderas_rojas": [
+      "Verificar que Higiofi tiene laboratorio independiente que certifique la fibra segun FIFA",
+      "Incluye desmontaje del cesped existente y gestion de residuos (SBR, arena)"
+    ]
+  },
+  {
+    "licitacion_id": 109157,
+    "encaje": "bajo",
+    "encaje_score": 25,
+    "motivo": "Adecuacion de parque publico entre calles Duero y Tajo, Churriana de la Vega (Granada), CPV 45112711. El proyecto incluye zona de juegos infantiles (241m²), columpios (partida de 37.695 EUR), pavimento caucho, zona biosaludable y aparatos deportivos — el nucleo exacto del catalogo de Higiofi (HGA, HGS, HGDP). Sin embargo, es un contrato de OBRA civil: el adjudicatario debe ser empresa constructora, y Higiofi podria participar como proveedor de los elementos de juego y pavimento caucho. El valor del equipamiento especifico (columpios, biosaludables, caucho) representa una fraccion del presupuesto total de 186K EUR.",
+    "resumen": "Adecuacion parque publico Churriana de la Vega (Granada). 186K EUR. El proyecto contempla zona infantil 241m² con columpios (37,7K EUR), pavimento caucho, zona biosaludable y mobiliario urbano — catalogo Higiofi completo. Contrato de obra: Higiofi puede ser proveedor del constructor pero no licitante directo.",
+    "productos_aplicables": [
+      "HGA - Parques infantiles (columpios, juegos 241m²)",
+      "HGS - Pavimento EPDM (zonas de juego)",
+      "HGDP - Aparatos biosaludables y deportivos",
+      "HGSY - Mobiliario urbano"
+    ],
+    "requisitos_criticos": [
+      "Empresa constructora como adjudicataria principal",
+      "Partidas abiertas a 'o equivalente' para columpios y mobiliario"
+    ],
+    "banderas_rojas": [
+      "Contrato de obra: acceso indirecto como proveedor del constructor adjudicatario",
+      "Contactar al constructor tras la adjudicacion para ofrecer equipamiento"
     ]
   }
 ]
