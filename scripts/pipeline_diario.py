@@ -99,7 +99,15 @@ def main() -> int:
             # Paso 1: descargar ZIP del mes en curso
             if not args.omitir_descarga:
                 log.info("[1/5] Descargando ZIP de PLACSP del mes en curso...")
-                ruta_zip = descargar_mes(hoy.year, hoy.month, force=True)
+                try:
+                    ruta_zip = descargar_mes(hoy.year, hoy.month, force=True)
+                except RuntimeError:
+                    # A principios de mes PLACSP aún no ha publicado el ZIP del mes nuevo
+                    mes_ant = hoy.month - 1 or 12
+                    año_ant = hoy.year if hoy.month > 1 else hoy.year - 1
+                    log.warning("ZIP %d-%02d no disponible, usando mes anterior %d-%02d",
+                                hoy.year, hoy.month, año_ant, mes_ant)
+                    ruta_zip = descargar_mes(año_ant, mes_ant, force=False)
             else:
                 from src.ingesta.placsp_downloader import ruta_local
                 ruta_zip = ruta_local(hoy.year, hoy.month)
