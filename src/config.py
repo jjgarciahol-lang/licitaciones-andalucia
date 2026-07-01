@@ -120,7 +120,14 @@ CPVS_RELEVANTES: tuple[str, ...] = (
     # --- Pavimentación y obra asociada a parques/áreas deportivas -----------
     "45236210",  # Pavimentación de zonas de juego infantil (caucho, etc.).
     "45236200",  # Pavimentación de instalaciones deportivas.
-    "45112723",  # Trabajos de paisajismo en zonas de juego.
+    "451127",    # 45112711 parques, 45112712 zonas recreativas, 45112720 areas
+                 # deportivas/ocio/juego, 45112723 trabajos de paisajismo en zonas
+                 # de juego. Prefijo amplio — la IA descarta lo que no encaje.
+
+    # --- Césped artificial (producto directo del catálogo HGSG) ------------
+    "392934",    # 39293400 — Suministro/renting de césped artificial (campos de
+                 # fútbol y zonas recreativas). Captura licitaciones municipales
+                 # que las administraciones no etiquetan como 45236xxx.
 
     # --- Material y mobiliario escolar (núcleo del catálogo) ----------------
     "39160",     # 39160xxx — Mobiliario escolar (mesas, sillas, pizarras,
