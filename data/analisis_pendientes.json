@@ -1,213 +1,85 @@
 [
   {
-    "licitacion_id": 115362,
+    "licitacion_id": 116566,
     "encaje": "alto",
-    "encaje_score": 90,
-    "motivo": "Suministro e instalacion de parque infantil tipo 'Castillo Medieval' con pavimento continuo de caucho (81m²) y vallado perimetral (34ml) en Alfacar, Granada. El ayuntamiento ejecuta previamente por sus propios medios la solera de hormigon — el contrato es puro suministro+instalacion, sin obra civil. Los tres componentes del contrato corresponden exactamente al catalogo de Higiofi: HGA (conjunto modular infantil), HGS (pavimento EPDM continuo) y vallado perimetral metalico. Procedimiento abierto simplificado, importe 20K EUR. Sin barreras tecnicas evidentes mas alla de acreditar cumplimiento de UNE-EN 1176 y UNE-EN 1177 para el equipamiento y el caucho.",
-    "resumen": "Parque infantil Castillo Medieval + caucho 81m² + vallado 34ml en Alfacar (Granada). 20.661 EUR. Obra civil excluida del contrato — solo suministro e instalacion. Nucleo del catalogo Higiofi (HGA+HGS). Sin barreras operativas. Procedimiento abierto simplificado.",
+    "encaje_score": 88,
+    "motivo": "Suministro e instalacion de un parque infantil tematico estilo cohete espacial en la Plaza Mayor de Jun (Granada). Procedimiento abierto simplificado abreviado. El objeto es un conjunto multijuego tridimensional de gran formato con 4 plataformas a distintas alturas, toboganes (recto, helicoidal y tubo cerrado curvo), rampa rocódromo, puentes y paneles decorativos de PEHD bicolor con motivos espaciales (planetas, astronautas, cohete). Postes de tubo cuadrado metalico 90x90x3mm. Producto directamente dentro del catalogo HGA de Higiofi. El pliego describe las caracteristicas tecnicas minimas con 'u otra estructura equivalente', dejando margen al ofertante. Sin mencion de certificacion especial del fabricante mas alla de la normativa UNE-EN 1176 estandar. Importe 45K EUR — procedimiento abreviado, pocos requisitos formales.",
+    "resumen": "Parque infantil tematico cohete espacial, Plaza Mayor de Jun (Granada). 45.000 EUR. Procedimiento abierto simplificado abreviado. Conjunto modular PEHD + postes metalicos, toboganes, rocódromo. HGA exacto. Pliego abierto a equivalentes con caracteristicas similares. Oportunidad directa para Higiofi.",
     "productos_aplicables": [
-      "HGA - Parque infantil modular tipo Castillo Medieval",
-      "HGS - Pavimento continuo de caucho EPDM 81m²",
-      "Vallado perimetral metalico de colores 34ml"
+      "HGA - Conjunto multijuego modular tematico (cohete espacial)",
+      "HGA - Toboganes y elementos de juego individuales"
     ],
     "requisitos_criticos": [
-      "Cumplimiento UNE-EN 1176 (equipamiento) y UNE-EN 1177 (superficie amortiguadora)",
+      "Cumplimiento UNE-EN 1176 y UNE-EN 1177",
       "Decreto 127/2001 Andalucia (seguridad parques infantiles)",
-      "Instalacion incluida — requiere operarios propios o subcontratados"
+      "Instalacion incluida — base ya existente o preparada por el ayuntamiento"
     ],
     "banderas_rojas": [
-      "Verificar que el conjunto 'Castillo Medieval' que oferta Higiofi tiene ensayo UNE-EN 1176 vigente",
-      "Confirmar que el caucho 81m² cumple UNE-EN 1177 (altura de caida libre del castillo)"
+      "Verificar que el conjunto ofertado cumple especificaciones minimas de alturas y componentes del pliego",
+      "Confirmar si incluye pavimento de caucho o solo el juego — el pliego no lo menciona explicitamente"
     ]
   },
   {
-    "licitacion_id": 113821,
+    "licitacion_id": 117347,
     "encaje": "alto",
-    "encaje_score": 82,
-    "motivo": "Suministro e instalacion de equipamiento para el Parque Deportivo Camino de las Azuelas en Sayalonga (Malaga), Fase II. El proyecto describe una estacion de calistenia, aparatos deportivos de exterior (maquinas biosaludables) y una mesa de ping pong exterior antivandálica, mas 5 bancos de madera en zona de estancia. Los equipos biosaludables y calistenia son exactamente la linea HGDP de Higiofi. Las fichas tecnicas del fabricante especifican que no es obligatorio que sean del fabricante indicado — 'cualquier otro siempre que no cambie las caracteristicas'. Importe 29.752 EUR manejable. La obra civil (explanacion, losa de hormigon) ya esta ejecutada — el contrato es solo suministro+instalacion. Proveedor habitual: Sumo Didactic o similar.",
-    "resumen": "Equipamiento parque deportivo Sayalonga (Malaga) Fase II. 29.752 EUR. Estacion calistenia + aparatos biosaludables exterior + mesa ping pong + bancos. Catalogo HGDP exacto. Obra civil ya ejecutada. Fichas tecnicas abiertas a equivalentes.",
+    "encaje_score": 80,
+    "motivo": "Suministro e instalacion de juegos infantiles en el parque municipal de Carratraca (Malaga), expediente 249/2025 financiado con PAEM 2024-4ª Fase. El contrato incluye un conjunto modular tipo Castillo Medieval con toboganes de acero inoxidable AISI 304, estructura de madera de pino tratada en autoclave Nivel IV, multiples plataformas, escaleras, rampas y elementos de juego. Producto directamente dentro del catalogo HGA de Higiofi. Punto de atencion: el pliego exige que las empresas licitantes esten 'debidamente homologadas como fabricantes o instaladoras de juegos infantiles conforme a la normativa europea UNE-EN 1176 vigente'. Esto puede interpretarse como exigencia de ser fabricante o instalador acreditado. Higiofi debe confirmar si puede acreditar esta condicion (instaladora) con documentacion de trabajos previos. Importe 22K EUR.",
+    "resumen": "Juegos infantiles castillo medieval, parque Carratraca (Malaga). 22.236 EUR. PAEM 2024. HGA exacto (castillo + toboganes acero inox + madera autoclave). Barrera: pliego exige empresas 'homologadas como fabricantes o instaladoras UNE-EN 1176' — verificar si Higiofi puede acreditarlo.",
     "productos_aplicables": [
-      "HGDP - Estacion de calistenia exterior",
-      "HGDP - Aparatos biosaludables y deportivos de exterior",
-      "HGSY - Bancos de madera zona de estancia"
+      "HGA - Conjunto modular castillo medieval con toboganes",
+      "HGA - Elementos de juego en madera autoclave y PEHD"
     ],
     "requisitos_criticos": [
-      "Certificados de calidad de los equipos biosaludables (similares a los indicados en memoria)",
-      "Instalacion incluida sobre losa de hormigon existente"
+      "Empresa homologada como fabricante o instaladora de juegos infantiles UNE-EN 1176",
+      "Toboganes de acero inoxidable AISI 304",
+      "Madera de pino tratada en autoclave Nivel IV",
+      "Cumplimiento UNE-EN 1176 y UNE-EN 1177"
     ],
     "banderas_rojas": [
-      "Sayalonga (Axarquia, Malaga): zona de montana, verificar accesibilidad de transporte"
+      "Exigencia de homologacion como fabricante o instaladora UNE-EN 1176 — confirmar si Higiofi puede acreditarla",
+      "Carratraca (Malaga): municipio pequeno en sierra, verificar acceso logistico"
     ]
   },
   {
-    "licitacion_id": 114904,
+    "licitacion_id": 117354,
     "encaje": "medio",
-    "encaje_score": 48,
-    "motivo": "Suministro de mobiliario y equipamiento para el nuevo Centro Civico Medina de Haro en Alcala de Guadaira (Sevilla), en 5 lotes. El contrato incluye mobiliario de oficina interior (mesas, sillas operativas, sillas de confidente/reunion, bancadas de espera, armarios, percheros, sillas plegables, mesas plegables) que encaja con la linea HGI de Higiofi. Sin embargo, tambien incluye elementos fuera del catalogo: Smart TVs 65'/95', mostrador de recepcion a medida, escenario modular, directorio de edificio, atril de imagen corporativa. El encaje real depende de en que lotes se divida y si Higiofi puede cubrir los lotes de mobiliario puro sin tener que ofertar tambien los equipos AV. Importe global 112K EUR.",
-    "resumen": "Mobiliario centro civico Alcala de Guadaira (Sevilla). 112.676 EUR en 5 lotes. Mobiliario de oficina (sillas, mesas, bancadas, armarios, sillas plegables) encaja con HGI. TVs, escenario y mostrador de recepcion no encajan. Valorar si algun lote es ofertable de forma independiente.",
+    "encaje_score": 50,
+    "motivo": "Suministro de material de oficina para el Ayuntamiento de Casares (Malaga). CPV 30192700 (material de escritorio y oficina). El material de oficina y papeleria es una de las tres lineas de negocio de Higiofi. Sin pliego descargado, la valoracion es provisional. Casares esta en la comarca de la Costa del Sol Occidental (Malaga), distancia razonable desde Villamartin. Importe de 28.675 EUR — contrato de tamano medio. La ausencia de pliego impide valorar si es un pedido de material consumible (papel, boligrafos, carpetas) o si incluye equipamiento de mayor valor.",
+    "resumen": "Material de oficina Ayto Casares (Malaga). 28.675 EUR. Linea de negocio habitual de Higiofi. Sin pliego descargado — analisis provisional. Confirmar desglose de productos para valorar cobertura total del catalogo.",
     "productos_aplicables": [
-      "HGI - Mesas de trabajo y modulares",
-      "HGI - Sillas operativas, de reunion y confidente",
-      "HGI - Bancadas de espera",
-      "HGI - Sillas y mesas plegables para salon de actos",
-      "HGI - Armarios con puertas y cerradura"
+      "Material de oficina y papeleria (linea habitual Higiofi)"
     ],
     "requisitos_criticos": [
-      "Necesario leer PCAP para confirmar si se puede licitar solo a lotes especificos",
-      "TVs y equipamiento AV/recepcion fuera del catalogo Higiofi"
+      "Sin pliego: confirmar desglose de productos y si requiere catalogo amplio o items especificos"
     ],
     "banderas_rojas": [
-      "Sin PCAP disponible — no se puede confirmar si los lotes son separables",
-      "Si el contrato es un solo lote global, los TVs y mostrador a medida son bloqueantes"
+      "Sin pliego descargado — analisis provisional hasta leer contenido"
     ]
   },
   {
-    "licitacion_id": 113248,
-    "encaje": "medio",
-    "encaje_score": 52,
-    "motivo": "Suministro de equipamiento y mobiliario para el Aula de la Juventud de Castellar de la Frontera (Cadiz). Contrato de suministro de mobiliario interior para un local municipal: mesas, sillas, armarios, estanterias, equipamiento de zonas de actividad juvenil. El catalogo HGI de Higiofi (mesas, sillas, mobiliario modular) aplica directamente. Castellar de la Frontera esta en el Campo de Gibraltar (Cadiz), zona logistica sencilla desde Villamartin. Importe 40K EUR. Sin mas informacion del pliego (solo portada vista), hay que confirmar el desglose exacto de productos para valorar si Higiofi cubre todos o parcialmente.",
-    "resumen": "Mobiliario Aula de la Juventud, Castellar de la Frontera (Cadiz). 40.021 EUR. Local municipal Cadiz — logistica sencilla. HGI aplica (mesas, sillas, mobiliario). Confirmar desglose completo para verificar cobertura total.",
-    "productos_aplicables": [
-      "HGI - Mesas y sillas para aulas y zonas de actividad",
-      "HGI - Estanterias y armarios"
-    ],
-    "requisitos_criticos": [
-      "Confirmar desglose completo de productos en pliego",
-      "Verificar si incluye equipamiento especializado fuera del catalogo HGI"
-    ],
-    "banderas_rojas": [
-      "Solo vista portada del pliego — analisis provisional hasta leer contenido completo"
-    ]
-  },
-  {
-    "licitacion_id": 114592,
-    "encaje": "medio",
-    "encaje_score": 42,
-    "motivo": "Suministro de mobiliario para las distintas areas del Ayuntamiento de Armilla (Granada): Cultura, Policia Local, Proteccion Civil, Mayores y Servicios Generales. Contrato de mobiliario de oficina municipal diverso — sillas ergonomicas, mesas, estanterias, armarios, mobiliario de zona de espera. La linea HGI de Higiofi aplica a gran parte del catalogo requerido. Sin embargo, es un ayuntamiento pequeno de la zona metropolitana de Granada y el pliego de Armilla ya aparece en otras licitaciones de este ciclo (soportes informativos, equipamiento deportivo) — no se puede sumar el importe de distintos contratos del mismo organo en el mismo ejercicio sin riesgo de fraccionamiento. Importe 92K EUR. Modalidad concesion de servicios segun el pliego (inusual para mobiliario — posible error de redaccion o contrato mixto).",
-    "resumen": "Mobiliario diversas areas Ayto Armilla (Granada). 92.342 EUR. Sillas, mesas, estanterias para oficinas municipales. HGI aplica. Nota: el pliego menciona 'concesion de servicios' como modalidad, lo que es inusual para suministro de mobiliario — confirmar tipo real de contrato con PCAP.",
-    "productos_aplicables": [
-      "HGI - Sillas ergonomicas y de oficina",
-      "HGI - Mesas de trabajo y despacho",
-      "HGI - Estanterias y armarios"
-    ],
-    "requisitos_criticos": [
-      "Confirmar modalidad real del contrato: el PPT dice 'concesion de servicios' pero el objeto es suministro de mobiliario",
-      "Verificar si hay criterios de juicio de valor o es 100% precio"
-    ],
-    "banderas_rojas": [
-      "Modalidad 'concesion de servicios' en PPT es anomala para suministro — podria implicar obligaciones de mantenimiento no previstas"
-    ]
-  },
-  {
-    "licitacion_id": 115771,
+    "licitacion_id": 116654,
     "encaje": "bajo",
-    "encaje_score": 15,
-    "motivo": "Obras de mejora de conjunto de espacios libres en Sanlucar la Mayor (Sevilla), proyecto de 273 paginas con Memoria, Pliego de Prescripciones Tecnicas, Presupuesto, Estudio de Seguridad y Salud y Gestion de Residuos. CPV 45112723 (trabajos de paisajismo en zonas de juego). Es un contrato de OBRA civil completo — el adjudicatario debe ser empresa constructora clasificada. Higiofi no puede licitar directamente. Puede actuar como proveedor de los elementos de mobiliario, juego o pavimento que incluya el proyecto, pero eso es una oportunidad comercial indirecta (contactar al constructor adjudicatario), no una licitacion directa.",
-    "resumen": "Obras mejora espacios libres Sanlucar la Mayor (Sevilla). 495.867 EUR. Proyecto de obra de 273 paginas, CPV 45112723. Contrato de obra civil — Higiofi solo puede ser proveedor del constructor adjudicatario.",
-    "productos_aplicables": ["HGA - Parques infantiles (posible)", "HGSY - Mobiliario urbano (posible)"],
-    "requisitos_criticos": ["Empresa constructora clasificada como licitante"],
-    "banderas_rojas": [
-      "Contrato de obra — no licitacion directa para Higiofi",
-      "Contactar al constructor tras adjudicacion para posible suministro de equipamiento"
-    ]
-  },
-  {
-    "licitacion_id": 116241,
-    "encaje": "bajo",
-    "encaje_score": 20,
-    "motivo": "Equipamiento deportivo para eventos y espacios publicos de Armilla (Granada), dividido en 4 lotes: Lote 1 (150 vallas peatonales de plastico para eventos), Lote 2 (mesas ping pong + mesas ajedrez exterior antivandálicas), Lote 3 (estaciones mantenimiento + lavado de bicicletas), Lote 4 (carpas plegables). Ningun lote encaja perfectamente con el nucleo del catalogo Higiofi. El Lote 2 (mesas exterior antivandálicas) podria explorarse si Higiofi tiene mobiliario exterior antivandálico en catalogo, pero no es la linea principal. El Lote 1 (vallas de polipropileno certificadas UNE+ANSI) requiere un proveedor especializado en equipamiento para eventos que Higiofi no tiene habitualmente.",
-    "resumen": "Equipamiento deportivo/eventos Armilla (Granada). 46.044 EUR. 4 lotes: vallas evento / mesas exterior antivandálicas / estaciones bicicleta / carpas. Periferico al catalogo de Higiofi. Lote 2 (mesas exterior) es el unico con posible encaje parcial.",
-    "productos_aplicables": ["HGSY - Mesas exterior antivandálicas (Lote 2, parcial)"],
+    "encaje_score": 22,
+    "motivo": "Equipamiento para la sala de exposiciones de la Casa de la Cultura de Alora (Malaga). El objeto es el suministro e instalacion de mobiliario y material para una sala de exposiciones — paneles expositores, sistemas de iluminacion para exposicion, vitrinas, soportes para obra artistica, etc. Es un equipamiento de tipo museistico/cultural muy especializado que tipicamente requiere proveedores de equipamiento de exposicion. No es el mobiliario de oficina ni el mobiliario urbano habitual del catalogo de Higiofi, aunque podria incluir alguna mesa o silla de sala. Sin ver el desglose completo del pliego (solo portada leida), el encaje es bajo. El plazo de entrega es 90 dias desde la formalizacion.",
+    "resumen": "Equipamiento sala exposiciones Casa Cultura, Alora (Malaga). 49.587 EUR. Mobiliario y material para sala de exposiciones artistica — equipamiento especializado de tipo museistico. Fuera del core del catalogo Higiofi. Podria haber algun elemento de mobiliario general pero el encaje global es bajo.",
+    "productos_aplicables": ["HGI - Posibles mesas o sillas de sala (parcial, a confirmar con desglose)"],
     "requisitos_criticos": [
-      "Lote 1: certificacion UNE A10.18 + ANSI para vallas — proveedor especializado en eventos",
-      "Lote 3: estaciones de lavado de bicicletas — producto de nicho"
+      "Proveedor de equipamiento de exposicion/museistico especializado",
+      "Plazo entrega 90 dias desde formalizacion"
     ],
     "banderas_rojas": [
-      "Cuatro lotes con productos muy diversos; ningun lote es el core del catalogo Higiofi",
-      "Mismo ayuntamiento (Armilla) con varias licitaciones simultaneas — vigilar acumulacion"
+      "Equipamiento de sala de exposiciones: nicho especializado fuera del core de Higiofi",
+      "Solo leida portada del pliego — verificar desglose completo antes de descartar definitivamente"
     ]
   },
   {
-    "licitacion_id": 113709,
-    "encaje": "bajo",
-    "encaje_score": 10,
-    "motivo": "Suministros e infraestructuras para la organizacion de la llegada a Sevilla de la 17ª etapa de la Vuelta Ciclista a Espana 2026 (9 de septiembre de 2026). Contrato de duracion muy corta (hasta 5 dias despues del evento). Los suministros son especificos para el evento ciclista: vallas de seguridad, señalizacion temporal, infraestructura de llegada. Este tipo de contratos son muy especificos y habitualmente van a empresas especializadas en organizacion de eventos deportivos. Fuera del catalogo habitual de Higiofi.",
-    "resumen": "Suministros Vuelta Ciclista Espana 2026 etapa Sevilla (9/09/2026). 61.770 EUR. Contrato temporal para evento ciclista. Muy especifico y fuera del catalogo Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": ["Empresa especializada en infraestructura de eventos deportivos"],
-    "banderas_rojas": [
-      "Contrato para un dia de evento — no es el tipo de suministro habitual de Higiofi",
-      "Proveedor habitual de eventos deportivos a gran escala necesario"
-    ]
-  },
-  {
-    "licitacion_id": 113765,
-    "encaje": "ninguno",
-    "encaje_score": 5,
-    "motivo": "Suministro de 450 taquillas metalicas para el servicio de la Policia Local de Cordoba. Taquillas de acero laminado con cerraduras para uso intensivo policial. Producto muy especifico (taquillas industriales de seguridad) que no forma parte del catalogo habitual de Higiofi. Si bien Higiofi puede tener alguna linea de almacenamiento, las taquillas para policia requieren especificaciones de seguridad y resistencia particulares y cantidades elevadas (450 unidades) que apuntan a un proveedor especializado en equipamiento para cuerpos de seguridad.",
-    "resumen": "450 taquillas metalicas Policia Local Cordoba. 92.250 EUR. Producto muy especifico fuera del catalogo habitual. No recomendable.",
-    "productos_aplicables": [],
-    "requisitos_criticos": ["Taquillas de acero para uso policial — especificaciones de seguridad particulares"],
-    "banderas_rojas": ["Producto especializado fuera del core de Higiofi"]
-  },
-  {
-    "licitacion_id": 115600,
-    "encaje": "ninguno",
-    "encaje_score": 2,
-    "motivo": "Ajardinado de zona ornamental Fuente de la Granada, Armilla (Granada). CPV 45112700 (trabajos de jardineria/paisajismo). Es un contrato de servicio de jardineria y paisajismo — siembra, plantacion, mantenimiento de zona verde ornamental. Requiere visita previa obligatoria (segun documentacion adjunta). No es un contrato de suministro de equipamiento. Absolutamente fuera del catalogo y la actividad de Higiofi.",
-    "resumen": "Ajardinado zona ornamental Armilla (Granada). 99.435 EUR. Servicio de jardineria y paisajismo. Fuera del catalogo y actividad de Higiofi — no procede.",
-    "productos_aplicables": [],
-    "requisitos_criticos": ["Empresa especializada en jardineria y paisajismo con experiencia acreditada"],
-    "banderas_rojas": ["Servicio de jardineria: no es suministro de equipamiento — fuera del ambito de Higiofi"]
-  },
-  {
-    "licitacion_id": 113750,
+    "licitacion_id": 117058,
     "encaje": "ninguno",
     "encaje_score": 0,
-    "motivo": "Suministro de material electrico para mantenimiento del alumbrado publico: brazos, prolongaciones y luminarias LED para reposicion en la red de alumbrado de Armilla (Granada). Material electrico de alumbrado urbano completamente fuera del catalogo de Higiofi.",
-    "resumen": "Material electrico alumbrado publico Armilla (Granada). 68.200 EUR. Luminarias LED y brazos para alumbrado urbano. Fuera del catalogo Higiofi.",
+    "motivo": "Impresion, suministro y colocacion de carteleria de señalizacion exterior e interior en los centros deportivos municipales del Instituto Municipal de Deportes (IMD) de Sevilla. El contrato se articula por precios unitarios: el IMD facilita el diseño y el adjudicatario solo imprime, suministra y coloca. Es un contrato de impresion grafica y señaletica deportiva — completamente fuera del catalogo y actividad de Higiofi.",
+    "resumen": "Carteleria señalizacion IMD Sevilla (centros deportivos). 71.305 EUR. Impresion y colocacion de carteles por precios unitarios. Fuera del catalogo Higiofi.",
     "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": ["Material electrico: fuera del ambito de Higiofi"]
-  },
-  {
-    "licitacion_id": 114951,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Iluminacion ornamental para la dinamizacion de fiestas y eventos municipales en Paradas (Sevilla). Suministro de luminarias decorativas y ornamentales para eventos locales. Fuera del catalogo de Higiofi.",
-    "resumen": "Iluminacion ornamental fiestas y eventos Paradas (Sevilla). 20.462 EUR. Luminarias decorativas para eventos. Fuera del catalogo Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": ["Iluminacion decorativa: fuera del ambito de Higiofi"]
-  },
-  {
-    "licitacion_id": 114385,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Suministro, instalacion, puesta en funcionamiento y mantenimiento de soportes de informacion municipal y señalizacion de rutas saludables en Armilla (Granada). 4 lotes: pantallas LED exteriores, mupis digitales, mupis tradicionales y señalizacion de rutas saludables. Tecnologia digital de informacion urbana completamente fuera del catalogo de Higiofi.",
-    "resumen": "Soportes informativos municipales (pantallas LED, mupis digitales) + señalizacion rutas saludables, Armilla (Granada). 205.598 EUR. Tecnologia de informacion digital urbana. Fuera del catalogo Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": ["Sistemas digitales de informacion urbana: fuera del ambito de Higiofi"]
-  },
-  {
-    "licitacion_id": 116009,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Suministro de piezas compatibles y analogas para los 14 mini puntos limpios instalados en Malaga (contenedor SANIMOBEL de acero inoxidable). Es suministro de piezas de repuesto especificas para un modelo de contenedor existente — un mercado de recambios muy especializado. Fuera del catalogo de Higiofi.",
-    "resumen": "Piezas de repuesto para contenedores SANIMOBEL LIMASAM, Malaga. 14.030 EUR. Recambios de contenedores especificos. Fuera del catalogo Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": ["Piezas de repuesto para modelo especifico de contenedor — mercado cerrado"]
-  },
-  {
-    "licitacion_id": 114262,
-    "encaje": "ninguno",
-    "encaje_score": 0,
-    "motivo": "Contrato de suministro en regimen de ALQUILER de sillas y mesas para diversos eventos municipales en Cordoba. Importe de 3.636 EUR — contrato menor. La modalidad es alquiler (no venta) y el importe es insignificante. Higiofi no opera en alquiler de mobiliario para eventos. Doble barrera: modalidad incorrecta + importe minimo.",
-    "resumen": "Alquiler sillas y mesas para eventos, Cordoba. 3.636 EUR. Contrato menor. Modalidad alquiler, importe minimo. No procede para Higiofi.",
-    "productos_aplicables": [],
-    "requisitos_criticos": [],
-    "banderas_rojas": ["Modalidad alquiler — Higiofi no opera en alquiler", "Importe 3.636 EUR — contrato menor sin interes comercial"]
+    "requisitos_criticos": ["Empresa de impresion grafica con capacidad de colocacion en instalaciones deportivas"],
+    "banderas_rojas": ["Impresion grafica/señaletica: fuera del ambito de Higiofi"]
   }
 ]
