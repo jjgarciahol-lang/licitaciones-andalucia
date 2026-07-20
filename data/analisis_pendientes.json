@@ -1,85 +1,69 @@
 [
   {
-    "licitacion_id": 116566,
+    "licitacion_id": 118565,
     "encaje": "alto",
-    "encaje_score": 88,
-    "motivo": "Suministro e instalacion de un parque infantil tematico estilo cohete espacial en la Plaza Mayor de Jun (Granada). Procedimiento abierto simplificado abreviado. El objeto es un conjunto multijuego tridimensional de gran formato con 4 plataformas a distintas alturas, toboganes (recto, helicoidal y tubo cerrado curvo), rampa rocódromo, puentes y paneles decorativos de PEHD bicolor con motivos espaciales (planetas, astronautas, cohete). Postes de tubo cuadrado metalico 90x90x3mm. Producto directamente dentro del catalogo HGA de Higiofi. El pliego describe las caracteristicas tecnicas minimas con 'u otra estructura equivalente', dejando margen al ofertante. Sin mencion de certificacion especial del fabricante mas alla de la normativa UNE-EN 1176 estandar. Importe 45K EUR — procedimiento abreviado, pocos requisitos formales.",
-    "resumen": "Parque infantil tematico cohete espacial, Plaza Mayor de Jun (Granada). 45.000 EUR. Procedimiento abierto simplificado abreviado. Conjunto modular PEHD + postes metalicos, toboganes, rocódromo. HGA exacto. Pliego abierto a equivalentes con caracteristicas similares. Oportunidad directa para Higiofi.",
+    "encaje_score": 82,
+    "motivo": "Suministro, instalacion y puesta en marcha de mobiliario para las aulas de la nueva Facultad de Turismo de la Universidad de Malaga (Campus Teatinos). Objeto exacto del catalogo HGI: 282 mesas de aula de 240cm para 3 puestos de trabajo, 846 sillas para alumnado, 18 mesas de profesorado electrificables y 18 sillones de despacho. El pliego especifica las caracteristicas tecnicas minimas con equivalentes aceptados, dejando margen al ofertante. Certificaciones requeridas: UNE-EN 1729-1 y 2 o EN 16139 nivel 1 (sillas alumnado), UNE-EN 527 y ANSI/BIFMA x6.5 y x5.5 (mesas profesor). Son normas estandar del sector de mobiliario escolar. Se exige presentacion de muestras fisicas antes de la adjudicacion. El pliego exige ademas ISO 9001 e ISO 14001 del adjudicatario. ATENCION: fecha limite de presentacion 30/07/2026 — queda menos de 10 dias desde hoy (20/07/2026). Plazo de entrega e instalacion: 60 dias naturales desde formalizacion.",
+    "resumen": "URGENTE (cierra 30/07/2026). Mobiliario aulas Facultad de Turismo, Universidad de Malaga. 52.620 EUR. HGI exacto: 282 mesas aula + 846 sillas alumnado + 18 mesas profesor electrificables + 18 sillones despacho. Pliego con equivalentes. Muestras fisicas obligatorias. ISO 9001+14001 exigidas. Plazo entrega 60 dias.",
     "productos_aplicables": [
-      "HGA - Conjunto multijuego modular tematico (cohete espacial)",
-      "HGA - Toboganes y elementos de juego individuales"
+      "HGI - Mesas para aulas universitarias 240x60cm para 3 puestos",
+      "HGI - Sillas apilables de polipropileno para alumnado",
+      "HGI - Mesas de profesorado electrificables",
+      "HGI - Sillones ergonomicos de despacho"
     ],
     "requisitos_criticos": [
-      "Cumplimiento UNE-EN 1176 y UNE-EN 1177",
-      "Decreto 127/2001 Andalucia (seguridad parques infantiles)",
-      "Instalacion incluida — base ya existente o preparada por el ayuntamiento"
+      "FECHA LIMITE: 30/07/2026 — quedan menos de 10 dias",
+      "UNE-EN 1729-1 y 2 o EN 16139 nivel 1 para sillas (certificado en vigor)",
+      "UNE-EN 527, ANSI/BIFMA x6.5 y x5.5 para mesas profesor (certificado en vigor)",
+      "ISO 9001 e ISO 14001 de la empresa adjudicataria",
+      "Presentacion de muestras fisicas obligatoria"
     ],
     "banderas_rojas": [
-      "Verificar que el conjunto ofertado cumple especificaciones minimas de alturas y componentes del pliego",
-      "Confirmar si incluye pavimento de caucho o solo el juego — el pliego no lo menciona explicitamente"
+      "Plazo muy ajustado: cierra 30/07/2026 — hay que actuar hoy o manana",
+      "Muestras fisicas requeridas antes de adjudicacion — prever logistica",
+      "ISO 9001 + 14001: confirmar si Higiofi las tiene en vigor"
     ]
   },
   {
-    "licitacion_id": 117347,
-    "encaje": "alto",
-    "encaje_score": 80,
-    "motivo": "Suministro e instalacion de juegos infantiles en el parque municipal de Carratraca (Malaga), expediente 249/2025 financiado con PAEM 2024-4ª Fase. El contrato incluye un conjunto modular tipo Castillo Medieval con toboganes de acero inoxidable AISI 304, estructura de madera de pino tratada en autoclave Nivel IV, multiples plataformas, escaleras, rampas y elementos de juego. Producto directamente dentro del catalogo HGA de Higiofi. Punto de atencion: el pliego exige que las empresas licitantes esten 'debidamente homologadas como fabricantes o instaladoras de juegos infantiles conforme a la normativa europea UNE-EN 1176 vigente'. Esto puede interpretarse como exigencia de ser fabricante o instalador acreditado. Higiofi debe confirmar si puede acreditar esta condicion (instaladora) con documentacion de trabajos previos. Importe 22K EUR.",
-    "resumen": "Juegos infantiles castillo medieval, parque Carratraca (Malaga). 22.236 EUR. PAEM 2024. HGA exacto (castillo + toboganes acero inox + madera autoclave). Barrera: pliego exige empresas 'homologadas como fabricantes o instaladoras UNE-EN 1176' — verificar si Higiofi puede acreditarlo.",
-    "productos_aplicables": [
-      "HGA - Conjunto modular castillo medieval con toboganes",
-      "HGA - Elementos de juego en madera autoclave y PEHD"
-    ],
-    "requisitos_criticos": [
-      "Empresa homologada como fabricante o instaladora de juegos infantiles UNE-EN 1176",
-      "Toboganes de acero inoxidable AISI 304",
-      "Madera de pino tratada en autoclave Nivel IV",
-      "Cumplimiento UNE-EN 1176 y UNE-EN 1177"
-    ],
-    "banderas_rojas": [
-      "Exigencia de homologacion como fabricante o instaladora UNE-EN 1176 — confirmar si Higiofi puede acreditarla",
-      "Carratraca (Malaga): municipio pequeno en sierra, verificar acceso logistico"
-    ]
-  },
-  {
-    "licitacion_id": 117354,
-    "encaje": "medio",
-    "encaje_score": 50,
-    "motivo": "Suministro de material de oficina para el Ayuntamiento de Casares (Malaga). CPV 30192700 (material de escritorio y oficina). El material de oficina y papeleria es una de las tres lineas de negocio de Higiofi. Sin pliego descargado, la valoracion es provisional. Casares esta en la comarca de la Costa del Sol Occidental (Malaga), distancia razonable desde Villamartin. Importe de 28.675 EUR — contrato de tamano medio. La ausencia de pliego impide valorar si es un pedido de material consumible (papel, boligrafos, carpetas) o si incluye equipamiento de mayor valor.",
-    "resumen": "Material de oficina Ayto Casares (Malaga). 28.675 EUR. Linea de negocio habitual de Higiofi. Sin pliego descargado — analisis provisional. Confirmar desglose de productos para valorar cobertura total del catalogo.",
-    "productos_aplicables": [
-      "Material de oficina y papeleria (linea habitual Higiofi)"
-    ],
-    "requisitos_criticos": [
-      "Sin pliego: confirmar desglose de productos y si requiere catalogo amplio o items especificos"
-    ],
-    "banderas_rojas": [
-      "Sin pliego descargado — analisis provisional hasta leer contenido"
-    ]
-  },
-  {
-    "licitacion_id": 116654,
+    "licitacion_id": 117728,
     "encaje": "bajo",
-    "encaje_score": 22,
-    "motivo": "Equipamiento para la sala de exposiciones de la Casa de la Cultura de Alora (Malaga). El objeto es el suministro e instalacion de mobiliario y material para una sala de exposiciones — paneles expositores, sistemas de iluminacion para exposicion, vitrinas, soportes para obra artistica, etc. Es un equipamiento de tipo museistico/cultural muy especializado que tipicamente requiere proveedores de equipamiento de exposicion. No es el mobiliario de oficina ni el mobiliario urbano habitual del catalogo de Higiofi, aunque podria incluir alguna mesa o silla de sala. Sin ver el desglose completo del pliego (solo portada leida), el encaje es bajo. El plazo de entrega es 90 dias desde la formalizacion.",
-    "resumen": "Equipamiento sala exposiciones Casa Cultura, Alora (Malaga). 49.587 EUR. Mobiliario y material para sala de exposiciones artistica — equipamiento especializado de tipo museistico. Fuera del core del catalogo Higiofi. Podria haber algun elemento de mobiliario general pero el encaje global es bajo.",
-    "productos_aplicables": ["HGI - Posibles mesas o sillas de sala (parcial, a confirmar con desglose)"],
+    "encaje_score": 18,
+    "motivo": "Equipamiento integrado por 4 lotes para el Centro Penitenciario (Psiquiatrico) de Alcala de Guadaira (Sevilla), licitado por SIEPSE (Sociedad de Infraestructuras y Equipamientos Penitenciarios). Los lotes incluyen: Lote 1 Mobiliario General (camas de seguridad con anclaje al suelo y tornillos soldados, taquillas de dos cuerpos para funcionarios, armarios metalicos, encimeras inoxidable, bancos de vestuario, sillones ergonomicos de uso intensivo 24h); Lote 2 Estanterias; Lote 3 Mobiliario de Enfermeria (camas clinicas, camillas); Lote 4 Sonido e Imagen (televisores). El equipamiento penitenciario tiene especificaciones de seguridad muy especificas: camas con taladros de anclaje al suelo, soldaduras en cabezas de tornillos, materiales reforzados (chapa acero >=2mm para armarios seguros). Algunos elementos del Lote 1 (sillones de despacho, armarios de oficina convencionales) podrian cubrirse desde HGI, pero el contrato es integral por lotes y SIEPSE trabaja habitualmente con proveedores especializados en equipamiento penitenciario. El perfil del adjudicatario debe incluir experiencia de 5-10 anos en montaje de equipamiento penitenciario similar.",
+    "resumen": "Centro Penitenciario Psiquiatrico Alcala de Guadaira (Sevilla), 4 lotes SIEPSE. 139.622 EUR. Equipamiento penitenciario especializado: camas de seguridad ancladas, taquillas reforzadas, mobiliario clinico, television. Algunos elementos HGI (sillones, armarios) pero el nicho penitenciario requiere proveedor especialista con 5-10 anos de experiencia documentada. Encaje global bajo.",
+    "productos_aplicables": [
+      "HGI - Sillones y sillas de oficina (Lote 1, fraccion menor)",
+      "HGI - Armarios de oficina metalicos estandar (Lote 1, fraccion menor)"
+    ],
     "requisitos_criticos": [
-      "Proveedor de equipamiento de exposicion/museistico especializado",
-      "Plazo entrega 90 dias desde formalizacion"
+      "Experiencia minima 5-10 anos en montaje de equipamiento penitenciario similar",
+      "Camas de seguridad con anclaje al suelo (taladros + soldadura) — producto especializado",
+      "Sillon funcionario: BS 5459-2:2000+A2:2008 (uso intensivo 24h, 150 kg)",
+      "Seguro de Responsabilidad Civil durante 2 anos post-recepcion (Lote 3 estanterias)"
     ],
     "banderas_rojas": [
-      "Equipamiento de sala de exposiciones: nicho especializado fuera del core de Higiofi",
-      "Solo leida portada del pliego — verificar desglose completo antes de descartar definitivamente"
+      "SIEPSE: empresa publica penitenciaria con proveedores habituales especializados",
+      "Camas de seguridad ancladas al suelo fuera del catalogo estandar de Higiofi",
+      "Contrato integral por lotes — no es posible licitar solo un subconjunto de productos"
     ]
   },
   {
-    "licitacion_id": 117058,
+    "licitacion_id": 118688,
     "encaje": "ninguno",
     "encaje_score": 0,
-    "motivo": "Impresion, suministro y colocacion de carteleria de señalizacion exterior e interior en los centros deportivos municipales del Instituto Municipal de Deportes (IMD) de Sevilla. El contrato se articula por precios unitarios: el IMD facilita el diseño y el adjudicatario solo imprime, suministra y coloca. Es un contrato de impresion grafica y señaletica deportiva — completamente fuera del catalogo y actividad de Higiofi.",
-    "resumen": "Carteleria señalizacion IMD Sevilla (centros deportivos). 71.305 EUR. Impresion y colocacion de carteles por precios unitarios. Fuera del catalogo Higiofi.",
+    "motivo": "Suministro de estanterias para el almacen de repuestos de aeronaves (ARA) del Intendente de Rota (Base Naval de Rota, Cadiz). Es equipamiento industrial de almacenamiento de repuestos aeronauticos para instalacion militar. CPV 39151100 (estanterias metalicas). Nicho industrial/militar completamente fuera del catalogo y actividad de Higiofi.",
+    "resumen": "Estanterias almacen repuestos aeronaves, Base Naval de Rota (Cadiz). 77.477 EUR. Equipamiento industrial militar para almacenamiento aeronautico. Fuera del catalogo Higiofi.",
     "productos_aplicables": [],
-    "requisitos_criticos": ["Empresa de impresion grafica con capacidad de colocacion en instalaciones deportivas"],
-    "banderas_rojas": ["Impresion grafica/señaletica: fuera del ambito de Higiofi"]
+    "requisitos_criticos": ["Proveedor de estanterias industriales para instalaciones militares/aeronauticas"],
+    "banderas_rojas": ["Instalacion militar: Base Naval de Rota. Fuera del ambito de Higiofi"]
+  },
+  {
+    "licitacion_id": 119595,
+    "encaje": "ninguno",
+    "encaje_score": 0,
+    "motivo": "Suministro e instalacion de senalizacion turistico-cultural del municipio de Rute (Cordoba), financiado 100% con subvencion MUNITUR 2024. Dos lotes: Lote 1 postes telescopicos de aluminio para senalizacion de trafico rodado y peatonal (21 unidades); Lote 2 letras corporeas 'RUTE' de gran formato + senales de acceso a aldeas. Es un contrato de fabricacion e instalacion de carteleria urbana y letras monumentales decorativas. Completamente fuera del catalogo de Higiofi.",
+    "resumen": "Senalizacion turistico-cultural Rute (Cordoba). 48.844 EUR. Letras corporeas 'RUTE' + postes telescopicos aluminio + senales acceso aldeas. MUNITUR 2024. Carteleria urbana — fuera del catalogo Higiofi.",
+    "productos_aplicables": [],
+    "requisitos_criticos": ["Fabricante/instalador de senalizacion urbana y letras corporeas de gran formato"],
+    "banderas_rojas": ["Senalizacion urbana turistica: fuera del ambito de Higiofi"]
   }
 ]
